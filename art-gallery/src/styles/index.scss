@@ -2,7 +2,7 @@
     --background-color: #060608; 
     --background-light: #4a4a48;
     --shadow-color: #444f5a;
-    --primary-color: #ff004d;
+    --primary-color:#ff347f;
     --text-color: #fcefed;
     --text-light: #fbf9fa;
     --font-size: 16px;
@@ -31,55 +31,6 @@ a{
     text-decoration: none;
 }
 
-.navbar{
-    height: 55px;
-    box-shadow: 0 4px 7px var(--shadow-color);
-    background-color: var(--background-color);
-    color: var(--text-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .logo{
-        font-size: 1.3em;
-        font-weight: bolder;
-        color: var(--primary-color);
-        text-shadow: 0 1px 3px var(--shadow-color);
-        span{
-            color: var(--text-color);
-        }
-    }
-
-    .nav-links{
-       a{
-        margin-left: 1em;
-        color: var(--text-light);
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        position: relative ;
-        font-size: .9em;
-        &::before{
-            content: "" ;
-            display: inline-block;
-            height: 3px;
-            width: 100%;
-            background-color: var(--primary-color);
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            transform: scaleX(0);
-            transition: getAnimationDuration(.2s)ease-in-out;
-        }
-        &:hover{
-            &::before{
-                transform: scaleX(1);
-            }
-        }
-        &.active{
-            color: var(--primary-color);
-            font-weight: bold;
-            }
-       }
-    }
 
     .sidebar-btn{
         height: 28px;
@@ -146,7 +97,7 @@ a{
         font-size: 1.1em;
         transform: translateX(-100%);
         animation: getAnimationDuration(.3s)slideInLeft forwards;
-        @for $i from 1 through 3{
+        @for $i from 1 through 4{
             &:nth-child(#{$i}){
                 animation-delay: #{$i * .1}s ;
             }
@@ -166,13 +117,24 @@ a{
                 
 }
 
+.main{
+    padding-block:3vw ;
+    a{
+        color: #fbf9fa;
+    }
 }
 .container{
     padding-inline: 20vw;
        }
 
 
+@import "./pages/home.scss";
+@import "partials/nav-bar.scss";
 @import "partials/animations.scss";
+@import "./pages/slider.scss";
+@import "./pages/footer.scss";
+
+
 @media screen and (max-width: 768px){
     .navbar{
         .nav-links{

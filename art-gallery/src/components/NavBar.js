@@ -1,8 +1,8 @@
 import React from "react";
-
-
 import { useState } from "react";
 import SideBar from "./SideBar";
+
+
 
 function NavBar() {
   const [showSideBar, setShowSideBar] = useState(false);
@@ -37,7 +37,7 @@ function NavBar() {
     <>
       <div className="navbar container">
         <a href="#!" className="logo">
-          M<span>areike</span> Albers
+          P<span>allas</span> Galaxy
         </a>
         <div className="nav-links">
             {links.map(link=>(
