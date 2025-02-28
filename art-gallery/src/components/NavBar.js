@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import SideBar from "./SideBar";
-
+import { Link,useLocation  } from "react-router-dom";
 
 
 function NavBar() {
   const [showSideBar, setShowSideBar] = useState(false);
+  const location = useLocation()
   const links= [
     {
         name: "Home",
@@ -14,7 +15,7 @@ function NavBar() {
     },
     {
         name: "About",
-        path: "/about",
+        path: "/artistProfile",
         
     },
     {
@@ -40,9 +41,10 @@ function NavBar() {
           P<span>allas</span> Galaxy
         </a>
         <div className="nav-links">
-            {links.map(link=>(
-                <a href="#!" key={link.name}>{link.name} </a>
+        { links.map(link=>(
+                <Link Link to={link.path} className= {location.pathname === link.path ? " active" : ""}  key={link.name}>{link.name}</Link>
             ))}
+      
           {/* <a href="">Home</a>
           <a href="">About</a>
           <a href="">Gallery</a>
