@@ -5,13 +5,15 @@ import ImageSlider from "./SpecificPages/ImageSlider";
 const HomePage = () => {
   return (
     <section className="home">
-      <div className="overlay"></div>
+      <div className="overlay">
+     
+      </div>
       <ImageSlider />
       <div className="content">
-        <h1>Explorando a Arte Contemporânea</h1>
-        <p>Uma jornada visual através da criatividade e expressão.</p>
+        <h1>Exploring Contemporary Art</h1>
+        <p>A visual journey through creativity and expression.</p>
         <a href="/gallery" className="cta-btn">
-          Ver Galeria
+          Gallery
         </a>
       </div>
     </section>

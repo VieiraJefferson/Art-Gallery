@@ -1,0 +1,187 @@
+.gallery-container {
+  width: 100%; // Ocupa toda a largura da tela
+  max-width: 100%;
+  padding: 50px 2vw; // Adiciona margem lateral responsiva
+  background-color: var(--background-color);
+  overflow: hidden; // Previne possíveis barras de rolagem horizontal
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.3vh;
+  padding-top: 0;
+}
+
+// Grid de imagens
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.7em;
+  width: 100%; /* Ocupa toda a largura disponível */
+  height: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  grid-auto-flow: initial;
+}
+
+// Estilo dos itens da galeria
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border: 0.9rem inset #2e2e2e;
+  padding: 1.8em;
+  background: #fcfcff;
+  height: 100%;
+
+  position: relative;
+  padding: 1.8em;
+  background: #ffffff;
+  border: 10px inset #2e2e2e; // Moldura principal
+  inset: 0;
+  border: 1em solid transparent; // Define o espaço da borda
+  border-top-color: rgb(82, 79, 79); // Cor na parte superior
+  border-left-color: rgb(82, 79, 79); // Cor na parte esquerda
+  border-bottom-color: rgb(44, 42, 42); // Cor na parte inferior
+  border-right-color: rgb(44, 42, 42); // Cor na parte direita
+
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      border: 0.1rem solid #00000054;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      box-shadow: inset 0px 0px 0.7em rgba(0, 0, 0, 0.9);
+      pointer-events: none; // Garante que não interfira nos cliques
+    }
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+
+    .overlay {
+      opacity: 1;
+    }
+  }
+}
+
+//  .gallery-item:nth-child(3n) {
+//     grid-column: span 2;    grid-row: span 3;
+//  }
+
+@media screen and (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(200px, 1fr)
+    ); /* Ajusta para telas menores */
+    gap: 1.5em; /* Reduz o espaçamento entre os itens */
+  }
+
+  .gallery-item {
+    padding: 1em; /* Reduz o padding */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(150px, 1fr)
+    ); /* Ajusta para telas muito pequenas */
+    gap: 1em; /* Reduz ainda mais o espaçamento */
+  }
+
+  .gallery-item {
+    padding: 0.5em; /* Reduz o padding */
+  }
+}
+
+// .gallery-links {
+//   display: flex;
+//   width: 100%;
+//   height: 3em;
+//   margin-bottom: 2em;
+//   margin-top: 0;
+//   flex-direction: row;
+//   align-items: center;
+//   justify-content: center;
+//   padding-right: 3vw;
+//   padding-left: 3vw;
+//   a {
+//     // background-color: red;
+//     border:#fff 10px;
+//     justify-content: space-between;
+//     color: var(--text-light);
+//     letter-spacing: 1px;
+//     text-transform: uppercase;
+//     position: relative;
+//     font-size: 1.2em;
+//     margin: 15px;
+    
+//   }
+// }
+.gallery-links {
+  display: flex;
+  width: 100%;
+  height: 3em;
+  margin-bottom: 2em;
+  margin-top: 0;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-right: 3vw;
+  padding-left: 3vw;
+
+  a {
+    box-sizing: border-box;
+    border: 1px solid #fff; // Define uma borda branca
+    padding: 8px 16px; // Adiciona espaçamento interno
+    justify-content: space-between;
+    color: var(--text-light);
+    letter-spacing: .05em;
+    // text-transform: uppercase;
+    position: relative;
+    font-size: 1em;
+    margin: 15px;
+    text-decoration: none; // Remove o sublinhado padrão
+    transition: all 0.3s ease-in-out; // Suaviza animações
+
+    &:hover {
+      border-color: var(--primary-color); // Muda a cor da borda ao passar o mouse
+      color:var(--primary-color); // Muda a cor do texto
+    }
+  }
+}
