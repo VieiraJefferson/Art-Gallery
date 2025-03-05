@@ -14,7 +14,7 @@
   /* Grid de imagens */
   .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Colunas responsivas */
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Colunas responsivas */
     gap: 16px; /* Espaçamento entre as imagens */
     padding: 16px;
   }
@@ -23,7 +23,7 @@
   .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: .1em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
