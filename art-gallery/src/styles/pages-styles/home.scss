@@ -1,65 +1,125 @@
-.home {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display:flex;
-    flex-direction: column;
-    padding-inline: 20vw;
-   
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    overflow: hidden;
+
+
+/* Estilos gerais da home page */
+.home-page {
+  width: 100%;
+  margin-top: 0;
+  color: #333;
+}
+
+/* Estilos da seção Hero */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  background-image: url('../../../public/img/Stolz.jpg'); /* Adicione o caminho da imagem */
+  background-size: cover;
+  background-position: center;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+}
+
+/* Pseudo-elemento para controlar a opacidade da imagem de fundo */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .92); /* Cor preta com 50% de opacidade */
+}
+
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay escuro para melhorar a legibilidade */
+}
+
+// .hero-content {
+//   width: 50%;
+//   margin-left: 8vw;
+
+//   z-index: 1;
+//   text-align: left;
+ 
+// }
+.hero-content {
+  position: absolute;
+  top: 18vh; /* Espaço do topo */
+  left: 8vw; /* Espaço da esquerda */
+  max-width: 600px;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.hero-content h1 {
   
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-    }
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.cta-btn {
+  padding: 10px 20px;
+  font-size: .8rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cta-btn:hover {
+  background-color: var(--backgorund-color-light);
+}
+
+/* Estilos da seção do carrossel */
+.carousel-section {
   
-    .content {
-      position: absolute;
-      z-index: 10;
-      width: 60vw;
-      height: 23vh;
-      max-width: 600px;
-      background-color: rgba(0, 0, 0, .6);
-      border-radius: 5px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-     
-      
-  
-      h1 {
-        margin-top: 3vh;
-        font-size: 2.6rem;
-        margin-bottom: 1rem;
-        color: var(--text-color);
-      }
-  
-      p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-      }
-  
-      .cta-btn {
-        background:var(--primary-color);
-        color: white;
-        padding: 10px 20px;
-        font-size: 1.2rem;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: 0.3s;
-  
-        &:hover {
-          background: #c0392b;
-        }
-      }
-    }
-  }
-  
+  margin-top: 5vh;
+  width: 100vw; /* Ocupa toda a largura da página */
+  margin-left: calc(-50vw + 50%); /* Centraliza e estende até as bordas */
+  padding: 0; /* Remove o padding */
+  background-color: var(--background-color); /* Usa a cor de fundo global */
+  overflow: hidden; /* Evita que o conteúdo ultrapasse os limites */
+}
+
+.carousel-container {
+  width: 100%; /* Ocupa toda a largura disponível */
+  max-width: 100%; /* Garante que não ultrapasse a largura da página */
+  margin: 0; /* Remove a margem */
+  padding: 0; /* Remove o padding */
+}
+
+/* Estilos da seção de conteúdo adicional */
+.content-section {
+  padding: 50px 20px;
+  background-color: var(--background-color);
+  text-align: center;
+}
+
+.content-block {
+  margin-bottom: 40px;
+}
+
+.content-block h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.content-block p {
+  font-size: 1rem;
+  color: var(--text-color);
+}

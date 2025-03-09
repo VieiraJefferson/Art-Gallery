@@ -1,36 +1,192 @@
+// // .slider-container {
+// //   position: relative;
+// //   width: 100%;
+// //   height: 100vh;
+// //   overflow: hidden;
+
+// //   .slider {
+// //     width: 100%;
+// //     height: 100%;
+
+// //     .slide {
+// //       display: flex;
+// //       align-items: center;
+// //       justify-content: center;
+// //       height: 100vh;
+// //       position: relative;
+// //     }
+
+// //     .image-container {
+// //       width: 100%;
+// //       height: 100%;
+// //       display: flex;
+// //       align-items: center;
+// //       justify-content: center;
+// //       transform: translateY(50%);
+// //       opacity: 0; // Começa invisível
+// //       transition: transform 1.2s ease-out, opacity 1.2s ease-out, scale 1.2s ease-out;
+
+// //       img {
+// //         width: 100%;
+// //         height: 100%;
+// //         object-fit: cover;
+// //       }
+// //     }
+// //   }
+// // }
+
+// /* Estilos do contêiner do slider */
+// .slider-container {
+//   width: 100%;
+//   height: 100vh; /* Altura total da tela */
+//   overflow: hidden;
+// }
+
+// /* Estilos do Swiper */
+// .slider {
+//   width: 100%;
+//   height: 100%;
+// }
+
+// /* Estilos de cada slide */
+// .slide {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// /* Estilos do contêiner da imagem */
+// .image-container {
+//   width: 100%;
+//   height: 100%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// /* Estilos da imagem */
+// .image-container img {
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover; /* Garante que a imagem cubra todo o espaço */
+// }
+
+
+// dia 06/03
+
+// .carousel-section{
+//   background-color: var(--background-color);
+// }
+
+
+// .slider-container {
+//   background-color: var(--background-color);
+//     width: 100%;
+//     height: 100vh; /* Altura total da tela */
+//     overflow: hidden;
+// }
+// //Estilos do contêiner da imagem 
+// .image-container {
+//   width: 100%;
+//   height: 100%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+// /* Estilos para o contêiner do Swiper */
+// .mySwiper {
+//   width: 100%;
+//   height: 100%;
+//   padding-top: 50px;
+//   padding-bottom: 50px;
+// }
+
+// /* Estilos para cada slide */
+// .swiper-slide {
+//   background-position: center;
+//   background-size: cover;
+//   width: 300px;
+//   height: 300px;
+// }
+
+// /* Estilos para as imagens dentro dos slides */
+// .swiper-slide img {
+//   display: block;
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+//   border-radius: 10px;
+// }
+
+// /* Estilos para a navegação (setas) */
+// .swiper-button-next,
+// .swiper-button-prev {
+//   color: #fff;
+//   background: rgba(0, 0, 0, 0.5);
+//   padding: 20px;
+//   border-radius: 50%;
+// }
+
+// /* Estilos para a paginação (bolinhas) */
+// .swiper-pagination-bullet {
+//   background: #fff;
+//   opacity: 0.5;
+// }
+
+// .swiper-pagination-bullet-active {
+//   background: #007bff;
+//   opacity: 1;
+// } 
+
+
+/// NOVO
+/// 
+
+
+.carousel-section{
+  background-color: var(--background-color);
+}
+
+
+
+/* Estilos do contêiner do slider */
 .slider-container {
-  position: relative;
   width: 100%;
-  height: 100vh;
   overflow: hidden;
+}
 
-  .slider {
-    width: 100%;
-    height: 100%;
+/* Estilos do Swiper */
+.mySwiper {
+  width: 100%;
+  height: 100%;
+}
 
-    .slide {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      position: relative;
-    }
+/* Estilos de cada slide */
+.swiper-slide {
+  width: 23vw; /* Largura fixa para cada slide (ajuste conforme necessário) */
+  height: 42vh; /* Altura fixa para cada slide (ajuste conforme necessário) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .image-container {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transform: translateY(50%);
-      opacity: 0; // Começa invisível
-      transition: transform 1.2s ease-out, opacity 1.2s ease-out, scale 1.2s ease-out;
+/* Estilos da imagem dentro dos slides */
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que a imagem cubra todo o espaço */
+  border-radius: 1px; /* Bordas arredondadas (opcional) */
+}
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
+.swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+
+
+@media (max-width: 768px) {
+  .swiper-slide {
+    width: 40vw; /* Mais largo em dispositivos móveis */
+    height: 30vh;
   }
 }
