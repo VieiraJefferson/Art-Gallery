@@ -22,10 +22,14 @@
 
 body{
     font-size: var(--font-size);
-    font-family: "Jura", serif;
+    // font-family: "Jura", serif;
+    font-family: "Fira Sans Condensed", sans-serif;
+    font-weight: 500;
+    font-style: normal;
     background-color: var(--background-color);
     font-weight: 200;
-    letter-spacing: .02em;
+    letter-spacing: .04em;
+    padding-top: 3vh;
 }
 
 
@@ -36,21 +40,68 @@ a{
 
 
 .main{
-    padding-block:3vw ;
-    a{
-        color: #fbf9fa;
-    }
+    // margin-top: 25vh;
+    // width: 100%;
+    // // margin: 0% auto;
+    // // padding: 0 auto;
+    // padding-block:3vw ;
+    // a{
+    //     color: #fbf9fa;
+    // }
+    margin-top: 25vh; /* Ajuste conforme necessário */
+    width: 100%; /* Ocupa toda a largura do body */
+    padding-block: 3vw; /* Espaçamento vertical */
+  
 }
 .container{
     // padding-inline: 20vw;
+    // width: 100%; /* Ocupa toda a largura disponível */
+    // padding-inline: 0; /* Remove o padding horizontal */
+    // max-width: 100%;
     width: 100%; /* Ocupa toda a largura disponível */
-    padding-inline: 0; /* Remove o padding horizontal */
-    max-width: 100%;
+    max-width: 100%; /* Garante que não ultrapasse a largura do body */
+    margin: 0 auto; /* Centraliza o container */
+    padding-inline: -10px; /* Espaçamento interno horizontal (ajuste conforme necessário) */
        }
 
 .navbar.container{
-    padding-inline: 20vw;
+    padding-inline: 10vw;
+    position: fixed; /* Fixa o Navbar no topo */
+    top: 0; /* Alinha no topo da página */
+    left: 0; /* Alinha à esquerda */
+     width: 100%; /* Ocupa toda a largura */
+     height: 8vh;
+//   background-color: #ffffff; /* Cor de fundo */
+    box-shadow: 1px 0 0 1px rgba($color: #ff347f, $alpha: .3) ;
+    z-index: 1000; /* Garante que o Navbar fique acima de outros elementos */
+    padding: 5px 10px; /* Espaçamento interno */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
 }
+
+.navbar.container .logo {
+    margin-left: 4em; /* Espaço extra à esquerda do logo */
+    font-size: 1.3em;
+  }
+
+/* Estilos para os links do Navbar */
+.nav-links {
+    font-size: 0.8em;
+    display: flex;
+    gap: 5px; /* Espaçamento entre os links */
+    margin-right: 6em;
+    
+  }
+
+
+  .nav-links a.active {
+    color: var(--primary-color); /* Cor do link ativo */
+  }
+  
+
+
 @import "./pages-styles/home.scss";
 @import "./pages-styles/slider.scss";
 @import "./pages-styles/footer.scss";
@@ -59,7 +110,7 @@ a{
 @import "partials/animations.scss";
 @import "./pages-styles/gallery.scss";
 @import "./pages-styles/artist-profile.scss";
-@import "./pages-styles/subcolecao.scss";
+@import "./pages-styles/subcolection.scss";
 
 @media screen and (max-width: 768px){
     .navbar{

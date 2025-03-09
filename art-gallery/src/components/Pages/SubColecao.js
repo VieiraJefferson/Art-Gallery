@@ -1,7 +1,8 @@
+
+
 // import React, { useEffect, useState } from "react";
 // import { useParams } from "react-router-dom";
 // import axios from "axios";
-
 
 // const SubColecao = () => {
 //   const { id } = useParams(); // Pega o ID da subcoleção da URL
@@ -54,15 +55,18 @@
 //   }
 
 //   return (
-//     <div className="subcolecao-container">
+//     <div className="sub-colecao-container">
 //       <h1>{subColecao.subCollectionName}</h1>
-//       <div className="gallery-grid">
+//       <div className="sub-gallery-grid">
 //         {subColecao.pictures.map((picture) => {
-//              const imageUrl = `https://art-api-nine.vercel.app/${picture.src}`;
-//           console.log("Caminho da imagem:", picture.src); // Verifique o caminho no console
+//           // Use a URL do Cloudinary diretamente
+//           const imageUrl = picture.src;
+
+//           console.log("Caminho da imagem:", imageUrl); // Verifique o caminho no console
+
 //           return (
-//             <div key={picture._id} className="gallery-item">
-//               <div className="image-wrapper">
+//             <div key={picture._id} className="sub-gallery-item">
+//               <div className="sub-image-wrapper">
 //                 <img
 //                   src={imageUrl}
 //                   alt={picture.name}
@@ -71,7 +75,7 @@
 //                   }}
 //                 />
 //               </div>
-//               <div className="overlay">
+//               <div className="sub-overlay">
 //                 <span>{picture.name}</span>
 //               </div>
 //             </div>
@@ -82,7 +86,9 @@
 //   );
 // };
 
-// export default SubColecao;
+// export default SubColecao;   
+
+
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -139,18 +145,15 @@ const SubColecao = () => {
   }
 
   return (
-    <div className="subcolecao-container">
+    <div className="sub-colecao-container">
       <h1>{subColecao.subCollectionName}</h1>
-      <div className="gallery-grid">
+      <div className="sub-gallery-grid">
         {subColecao.pictures.map((picture) => {
-          // Use a URL do Cloudinary diretamente
           const imageUrl = picture.src;
 
-          console.log("Caminho da imagem:", imageUrl); // Verifique o caminho no console
-
           return (
-            <div key={picture._id} className="gallery-item">
-              <div className="image-wrapper">
+            <div key={picture._id} className="sub-gallery-item">
+              <div className="sub-image-wrapper">
                 <img
                   src={imageUrl}
                   alt={picture.name}
@@ -158,9 +161,9 @@ const SubColecao = () => {
                     e.target.src = "/img/placeholder.jpg"; // Fallback para imagens quebradas
                   }}
                 />
-              </div>
-              <div className="overlay">
-                <span>{picture.name}</span>
+                <div className="sub-overlay">
+                  <span>{picture.name}</span>
+                </div>
               </div>
             </div>
           );

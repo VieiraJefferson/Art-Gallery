@@ -37,7 +37,7 @@ function NavBar() {
   return (
     <>
       <div className="navbar container">
-        <a href="#!" className="logo">
+        <a href="/" className="logo">
           P<span>allas</span> Galaxy
         </a>
         <div className="nav-links">
