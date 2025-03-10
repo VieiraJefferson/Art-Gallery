@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import {
   FaInstagram,
@@ -29,8 +27,23 @@ const Footer = () => {
           <div className="widget">
             <h6 className="widget-title">About</h6>
             <p>
-            Blending surrealism and symbolism, Maria Pallas crafts thought-provoking works exploring solitude, connection, and the human experience. Their art juxtaposes whimsical and macabre elements, placing familiar figures in dreamlike settings. Through striking contrasts in color, texture, and subject matter, their pieces balance emotion and abstraction, inviting deep reflection. From intimate portraits to fantastical landscapes,
-             each artwork challenges perception and encourages viewers to uncover layered meanings.
+              Blending surrealism and symbolism, Maria Pallas crafts
+              thought-provoking works exploring solitude, connection, and the
+              human experience.
+              <p>
+                Their art juxtaposes whimsical and macabre elements, placing
+                familiar figures in dreamlike settings.
+              </p>
+              <p>
+                Through striking contrasts in color, texture, and subject
+                matter, their pieces balance emotion and abstraction, inviting
+                deep reflection.
+              </p>
+              <p>
+                From intimate portraits to fantastical landscapes, each artwork
+                challenges perception and encourages viewers to uncover layered
+                meanings.
+              </p>
             </p>
             {/* <p>
               Etiam facilisis eu nisi scelerisque faucibus. Proin semper suscipit
@@ -38,8 +51,8 @@ const Footer = () => {
             </p> */}
           </div>
 
-          {/* Widget 2: Recent Work */ }
-            <div className="widget">
+          {/* Widget 2: Recent Work */}
+          <div className="widget">
             <h6 className="widget-title">Recent Work</h6>
             <div className="gallery">
               <img
@@ -73,43 +86,39 @@ const Footer = () => {
                 className="gallery-image"
               />
             </div>
-          </div> 
-
-
-
+          </div>
 
           {/* Widget 3: Tags */}
           <div className="widget">
             <h6 className="widget-title">Tags</h6>
             <div className="tag-cloud">
               <a href="#" className="tag">
-              Surrealism 
+                Surrealism
               </a>
               <a href="#" className="tag">
-              Contemporary surrealism
+                Contemporary surrealism
               </a>
               <a href="#" className="tag">
-              Original art for sale
+                Original art for sale
               </a>
               <a href="#" className="tag">
-              Emotional depth 
+                Emotional depth
               </a>
               <a href="#" className="tag">
-              Visual storytelling
+                Visual storytelling
               </a>
               <a href="#" className="tag">
-              Dreamlike art 
+                Dreamlike art
               </a>
               <a href="#" className="tag">
-              Symbolism 
+                Symbolism
               </a>
               <a href="#" className="tag">
-              Fantasy art 
+                Fantasy art
               </a>
               <a href="#" className="tag">
-              Bold color palettes 
+                Bold color palettes
               </a>
-             
             </div>
           </div>
 
@@ -138,9 +147,11 @@ const Footer = () => {
                   className="post-image"
                 />
                 <div className="post-content">
-                  <h4>"Whispers of the Surreal: A Journey Through Dream and Drama"</h4>
+                  <h4>
+                    "Whispers of the Surreal: A Journey Through Dream and Drama"
+                  </h4>
                   <p>
-                    <span>17 Nov</span> 
+                    <span>17 Nov</span>
                     {/* | <span>0 Comments</span> */}
                   </p>
                 </div>
@@ -154,8 +165,7 @@ const Footer = () => {
                 <div className="post-content">
                   <h4>"Emotions in Motion: A Symphony of Color and Texture"</h4>
                   <p>
-                    <span>3 Nov</span> |
-                     {/* <span>1 Comment</span> */}
+                    <span>3 Nov</span> |{/* <span>1 Comment</span> */}
                   </p>
                 </div>
               </div>
