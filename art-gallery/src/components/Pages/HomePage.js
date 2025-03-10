@@ -34,9 +34,9 @@ const HomePage = () => {
       <section className="hero-section">
         <div className="overlay"></div>
         <div className="hero-content">
-          <h1>Reimagine Espaços com Arte Pallas Galaxy</h1>
+          <h1>Where Surrealism Intertwines with the Essence of Being in Dreamlike Stories </h1>
           <p>
-            Descubra a criatividade através de portfólios modernos em Lisboa, onde a arte transforma espaços em experiências sofisticadas e únicas.
+          Discover daring creativity where surrealism and symbolism transform spaces into immersive experiences, blending whimsy, emotion, and the essence of human connection.
           </p>
           <a href="/gallery" className="cta-btn">
             Explore  Gallery
@@ -55,9 +55,9 @@ const HomePage = () => {
       {/* Seção de Conteúdo Adicional */}
       <section className="content-section">
         <div className="content-block">
-          <h2>Design Hoje</h2>
+          <h2>Maria Pallas</h2>
           <p>
-            Explore o futuro do design contemporâneo com a Pallas Galaxy, onde a arte moderna ganha vida na vibrante Lisboa.
+          Blending surrealism with evocative symbolism, creating life on art.
           </p>
         </div>
 

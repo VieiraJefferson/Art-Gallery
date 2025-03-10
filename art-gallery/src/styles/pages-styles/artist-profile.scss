@@ -158,8 +158,8 @@
 }
 
 .artist-image img {
-  min-width: 75%;
-  max-width: 80%;
+  min-width: 70%;
+  max-width: 75%;
   height: auto;
   // border-radius: 1px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
@@ -200,18 +200,66 @@
   gap: 10px;
   height: auto;
   .text-block-left{
+    // min-width: 30vw;
+    // align-items: self-start;
+    // margin-bottom: 2px;
+    // margin-right: 50%;
+    position: relative; /* Ensure the icon is positioned relative to this container */
     min-width: 30vw;
     align-items: self-start;
     margin-bottom: 2px;
     margin-right: 50%;
   }
+
+
+
+  .icon-container {
+    position: absolute; /* Position the icon absolutely within the text block */
+    right: -30vw; /* Adjust this value to position the icon to the left of the text */
+    top: 16vh; /* Align the icon to the top */
+  }
+  
+  .icon-left {
+    font-size: 12em; /* Adjust the size of the icon */
+    color: rgba(255, 52, 127, 0.4) /* Adjust the color of the icon */
+  }
+
+
+  .icon-left:hover{
+    transition: transform .4s ease-in;
+    transform: scale(1.2);
+  }
+
+
+
   .text-block-right{
     
-    min-width: 30vw;
+  //   min-width: 30vw;
+  // margin-left: 50%;
+  position: relative; /* Ensure the icon is positioned relative to this container */
+  min-width: 30vw;
+  align-items: self-start;
+  margin-bottom: 2px;
   margin-left: 50%;
-    
   }
 }
+
+.icon-container-right {
+  position: absolute; /* Position the icon absolutely within the text block */
+  left: -30vw; /* Adjust this value to position the icon to the left of the text */
+  top: 8vh; /* Align the icon to the top */
+}
+
+.icon-right {
+  font-size: 12em; /* Adjust the size of the icon */
+  color: rgba(255, 52, 127, 0.4) /* Adjust the color of the icon */
+}
+
+.icon-right:hover{
+  transition: transform .4s ease-in;
+  transform: scale(1.2);
+}
+
 
 @media screen and (max-width: 768px) {
   .artist-image img {
@@ -289,7 +337,5 @@
   padding: 5px; /* Espaçamento ao redor do ícone */
   border-radius: 50%; /* Para ícones circulares */
 }
-
-
 
 

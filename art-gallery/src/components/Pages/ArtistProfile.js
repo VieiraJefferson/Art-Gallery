@@ -2,6 +2,8 @@ import React from "react";
 import { FaQuoteLeft } from "react-icons/fa";
 import { FaQuoteRight } from "react-icons/fa";
 import { HiOutlinePaintBrush } from "react-icons/hi2";
+import { GiPencilBrush } from "react-icons/gi";
+import { LuPalette } from "react-icons/lu";
 
 const Spacer = ({ height = "20px" }) => {
   return (
@@ -18,7 +20,7 @@ const ArtistProfile = () => {
         <div className="artist-content">
           <div className="artist-image">
             <img
-              src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212727/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/mczc7lwgqergchuuzvkw.jpg"
+              src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212413/galeria/galeria/Pallas%20Galaxy%20Collection/2014-2015/xhwaz6awcjnmgw4ytoaw.gif"
               alt="Artista"
             />
           </div>
@@ -28,7 +30,9 @@ const ArtistProfile = () => {
           </div>
           <section className="text-container">
             <div className="text-block-left">
-            
+            <div className="icon-container">
+                <GiPencilBrush className="icon-left" />
+              </div>
               <p><FaQuoteLeft className="quote-icon" /> 
                 The art of Maria Pallas is a captivating fusion of surrealism,
                 symbolism, and emotional depth. Each piece tells a story,
@@ -55,8 +59,9 @@ const ArtistProfile = () => {
                 unexpected contexts, sparking curiosity and inviting
                 interpretation. <FaQuoteRight className="quote-icon" />
               </p>
+          
             </div>
-            <div className="line">
+            {/* <div className="line">
               <span className="icon" style={{ left: "20%" }}>
                 <HiOutlinePaintBrush />
               </span>
@@ -66,9 +71,12 @@ const ArtistProfile = () => {
               <span className="icon" style={{ left: "80%" }}>
                 <HiOutlinePaintBrush />
               </span>
-            </div>
+            </div> */}
 
             <div className="text-block-right">
+            <div className="icon-container-right">
+                <LuPalette className="icon-right" />
+              </div>
               <p><FaQuoteLeft className="quote-icon" /> 
                 Symbolism plays a significant role in Maria Pallas’s artistic
                 language. Recurring motifs such as tigers, birds, and enigmatic

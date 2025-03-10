@@ -131,6 +131,10 @@
 .widget {
   flex: 1;
   padding: 10px; /* Espaçamento interno reduzido */
+  p{
+    font-size: .8rem;
+
+  }
 }
 
 .widget-title {
@@ -185,6 +189,7 @@
 
 .tag{
   text-decoration: underline rgba(255, 255, 255, 0.7);
+  font-size: .8rem;
 }
 
 @media (max-width: 768px) {

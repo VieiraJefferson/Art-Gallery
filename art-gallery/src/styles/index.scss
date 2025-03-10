@@ -101,7 +101,7 @@ a{
   }
   
 
-
+@import "./pages-styles/loader.scss";
 @import "./pages-styles/home.scss";
 @import "./pages-styles/slider.scss";
 @import "./pages-styles/footer.scss";
@@ -111,6 +111,8 @@ a{
 @import "./pages-styles/gallery.scss";
 @import "./pages-styles/artist-profile.scss";
 @import "./pages-styles/subcolection.scss";
+@import "./pages-styles/contact.scss";
+
 
 @media screen and (max-width: 768px){
     .navbar{
