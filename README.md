@@ -43,9 +43,9 @@ Vercel 🚀
 
 
 
-📂 Project Structure
-Copy
-📦 art-gallery
+📂 Project Structure<br>
+Copy<br>
+📦 art-gallery<br>
 ├── 📁 src<br>
 │   ├── 📁 components<br>
 │   │   ├── Navbar.js<br>
