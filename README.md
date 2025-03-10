@@ -46,28 +46,28 @@ Vercel 🚀
 📂 Project Structure
 Copy
 📦 art-gallery
-├── 📁 src
-│   ├── 📁 components
-│   │   ├── Navbar.js
-│   │   ├── Footer.js
-│   │   ├── ArtworkCard.js
-│   ├── 📁 pages
-│   │   ├── HomePage.js
-│   │   ├── Gallery.js
-│   │   ├── ArtistProfile.js
-│   │   ├── Colecao.js
-│   │   ├── SubColecao.js
-│   │   ├── Contact.js
-│   ├── 📁 styles
-│   │   ├── main.scss
-│   │   ├── navbar.scss
-│   │   ├── footer.scss
-│   ├── 📁 api
-│   │   ├── api.js
-│   ├── App.js
-│   ├── index.js
-├── package.json
-└── README.md
+├── 📁 src<br>
+│   ├── 📁 components<br>
+│   │   ├── Navbar.js<br>
+│   │   ├── Footer.js<br>
+│   │   ├── ArtworkCard.js<br>
+│   ├── 📁 pages<br>
+│   │   ├── HomePage.js<br>
+│   │   ├── Gallery.js<br>
+│   │   ├── ArtistProfile.js<br>
+│   │   ├── Colecao.js<br>
+│   │   ├── SubColecao.js<br>
+│   │   ├── Contact.js<br>
+│   ├── 📁 styles<br>
+│   │   ├── main.scss<br>
+│   │   ├── navbar.scss<br>
+│   │   ├── footer.scss<br>
+│   ├── 📁 api<br>
+│   │   ├── api.js<br>
+│   ├── App.js<br>
+│   ├── index.js<br>
+├── package.json<br>
+└── README.md<br>
 
 
 
