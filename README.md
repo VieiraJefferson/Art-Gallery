@@ -39,6 +39,10 @@ Vercel 🚀
 
 ✅ Responsive Design 📱💻
 
+
+
+
+
 📂 Project Structure
 Copy
 📦 art-gallery
@@ -64,6 +68,20 @@ Copy
 │   ├── index.js
 ├── package.json
 └── README.md
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 📦 Installation and Execution
 Clone the repository:
 
