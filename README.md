@@ -137,8 +137,6 @@ The Art Gallery is a web application dedicated to showcasing the works of the ta
 🔗 Links
 GitHub Repository: Art Gallery
 
-Live Demo: Vercel Deployment (if deployed)
-
 📸 Screenshots
 (You can add screenshots of your project here to showcase the UI.)
 
