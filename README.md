@@ -24,7 +24,7 @@ Material-UI Icons 🎨
 
 Vercel 🚀
 
-📌 Features
+📌 Features<br>
 ✅ Interactive Gallery 🖼️
 
 ✅ Artwork Listing 🎨
