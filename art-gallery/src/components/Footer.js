@@ -12,13 +12,13 @@ const Footer = () => {
       <div className="container">
         {/* Top Section */}
         <div className="footer-top">
-          <div className="footer-logo">Pallas Galaxy</div>
-          <nav className="footer-nav">
+          {/* <div className="footer-logo">Pallas Galaxy</div> */}
+          {/* <nav className="footer-nav">
             <a href="#">Home</a>
             <a href="#">About</a>
             <a href="#">Gallery</a>
             <a href="#">Contact</a>
-          </nav>
+          </nav> */}
         </div>
 
         {/* Middle Section - 4 Widgets */}
