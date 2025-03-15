@@ -12,7 +12,7 @@ const Footer = () => {
       <div className="container">
         {/* Top Section */}
         <div className="footer-top">
-          {/* <div className="footer-logo">Pallas Galaxy</div> */}
+          <div className="logo"> P<span>allas</span> Galaxy</div>
           {/* <nav className="footer-nav">
             <a href="#">Home</a>
             <a href="#">About</a>
