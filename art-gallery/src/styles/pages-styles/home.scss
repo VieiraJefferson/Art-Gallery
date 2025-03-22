@@ -41,47 +41,85 @@
   background-color: rgba(0, 0, 0, 0.5); /* Overlay escuro para melhorar a legibilidade */
 }
 
-// .hero-content {
-//   width: 50%;
-//   margin-left: 8vw;
 
-//   z-index: 1;
-//   text-align: left;
- 
+// .hero-content {
+//   position: absolute;
+//   top: 18vh; /* Espaço do topo */
+//   left: 8vw; /* Espaço da esquerda */
+//   max-width: 600px;
+//   padding: 2rem;
+//   border-radius: 8px;
 // }
+
+// .hero-content h1 {
+  
+//   font-size: 2rem;
+//   margin-bottom: 1rem;
+// }
+
+// .hero-content p {
+//   font-size: 1rem;
+//   margin-bottom: 2rem;
+// }
+
+// .cta-btn {
+//   padding: 10px 20px;
+//   font-size: .8rem;
+//   background-color: var(--primary-color);
+//   color: white;
+//   border: none;
+//   border-radius: 3px;
+//   text-decoration: none;
+//   cursor: pointer;
+// }
+
+// .cta-btn:hover {
+//   background-color: var(--backgorund-color-light);
+// }
+
 .hero-content {
   position: absolute;
   top: 18vh; /* Espaço do topo */
   left: 8vw; /* Espaço da esquerda */
-  max-width: 600px;
+  max-width: 700px;
+  
   padding: 2rem;
   border-radius: 8px;
 }
 
 .hero-content h1 {
-  
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 2.7rem; /* Aumentado para 3rem */
+  margin-bottom: 1.5rem; /* Ajuste no espaçamento */
+  line-height: 1.2; /* Melhora a legibilidade */
 }
 
 .hero-content p {
-  font-size: 1rem;
+  font-size: 1.25rem; /* Aumentado para 1.25rem */
   margin-bottom: 2rem;
+  line-height: 1.6; /* Melhora a legibilidade */
 }
 
 .cta-btn {
-  padding: 10px 20px;
-  font-size: .8rem;
+  padding: 12px 24px; /* Aumentado o padding */
+  font-size: 1rem; /* Aumentado para 1rem */
   background-color: var(--primary-color);
   color: white;
   border: none;
   border-radius: 3px;
   text-decoration: none;
   cursor: pointer;
+  transition: background-color 0.3s ease; /* Adicionado transição */
 }
 
 .cta-btn:hover {
-  background-color: var(--backgorund-color-light);
+  background-color: var(--background-color-light);
+}
+
+
+@media (max-width: 768px){
+  .hero-content{
+    top: 10vh;
+  }
 }
 
 /* Estilos da seção do carrossel */

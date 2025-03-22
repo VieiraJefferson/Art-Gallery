@@ -8,8 +8,9 @@
     justify-content: space-between;
     align-items: center;
     .logo{
-        font-size: 1.5em;
+        font-size: 2.1em;
         font-weight: bolder;
+        margin-left: 3.7em;
         color: var(--primary-color);
         text-shadow: 0 1px 3px var(--shadow-color);
         span{
@@ -19,13 +20,18 @@
  
 
     .nav-links{
+        // font-size: 0.5rem;
+        display: flex;
+        gap: 5px; /* Espaçamento entre os links */
+        margin-right: 4em;
+
        a{
         margin-left: 1em;
         color: var(--text-light);
         letter-spacing: 1px;
         text-transform: uppercase;
         position: relative ;
-        font-size: 1em;
+        font-size: 1.1rem;
         &::before{
             content: "" ;
             display: inline-block;
@@ -51,3 +57,82 @@
     }
 }
 
+
+.navbar.container{
+    // padding-inline: 20px;
+    position: fixed; /* Fixa o Navbar no topo */
+    top: 0; /* Alinha no topo da página */
+    left: 0; /* Alinha à esquerda */
+     width: 100%; /* Ocupa toda a largura */
+     height: 8vh;
+//   background-color: #ffffff; /* Cor de fundo */
+    box-shadow: 1px 0 0 1px rgba($color: #ff347f, $alpha: .3) ;
+    z-index: 1000; /* Garante que o Navbar fique acima de outros elementos */
+    padding: 5px 10px; /* Espaçamento interno */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    
+}
+
+// .navbar.container .logo {
+//     margin-left: 4em; /* Espaço extra à esquerda do logo */
+//     font-size: 2.3em;
+//   }
+
+/* Estilos para os links do Navbar */
+// .nav-links {
+//     font-size: 0.5rem;
+//     display: flex;
+//     gap: 5px; /* Espaçamento entre os links */
+//     margin-right: 4em;
+
+    
+//   }
+
+
+
+  .nav-links a.active {
+    color: var(--primary-color); /* Cor do link ativo */
+  }
+  
+  
+@media screen and (max-width: 768px){
+    .navbar{
+        .nav-links{
+            display: none;
+        }
+        .sidebar-btn{
+            display: block;
+        }
+    }
+}
+
+
+/* Media Queries para telas menores */
+@media screen and (max-width: 768px) {
+    .navbar {
+        .nav-links {
+            display: none; /* Esconde os links em telas menores */
+        }
+
+        .sidebar-btn {
+            display: block; /* Mostra o botão do menu lateral */
+        }
+    }
+
+    .navbar.container {
+        padding-inline: 10px; /* Reduz o padding em telas menores */
+
+        .logo {
+            margin-left: 1em; /* Reduz o espaçamento do logo */
+            font-size: 1.5rem; /* Reduz o tamanho da fonte do logo */
+        }
+
+        .nav-links {
+            font-size: 1rem; /* Reduz o tamanho da fonte dos links */
+            margin-right: 1em; /* Reduz o espaçamento dos links */
+        }
+    }
+}

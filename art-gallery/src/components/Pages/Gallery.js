@@ -147,6 +147,145 @@
 
 
 
+// import React, { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
+// import axios from "axios";
+
+// const Gallery = () => {
+//   const [colecoes, setColecoes] = useState([]);
+//   const [carregando, setCarregando] = useState(true);
+//   const [erro, setErro] = useState(null);
+
+//   // Função para buscar as coleções da API
+//   useEffect(() => {
+//     const buscarColecoes = async () => {
+//       try {
+//         const resposta = await axios.get('https://art-api-nine.vercel.app/collections/get-all');
+//         console.log(resposta.data.collections);
+
+//         setColecoes(resposta.data.collections);
+//         setCarregando(false);
+//       } catch (error) {
+//         console.error("Erro ao buscar coleções!");
+//         setErro(error.response ? error.response.data.message : error.message);
+//         setCarregando(false);
+//       }
+//     };
+
+//     buscarColecoes();
+//   }, []);
+
+//   if (carregando) {
+//     return <div>Carregando...</div>;
+//   }
+
+//   if (erro) {
+//     return <div>Erro: {erro}</div>;
+//   }
+
+//   return (
+//     <div className="gallery-container">
+//       <div className="hexagon-grid">
+//         {colecoes.map((colecao) =>
+//           colecao.subCollections.map((subColecao) => (
+//             <div key={subColecao._id} className="hexagon">
+//               <Link to={`/subcolecao/${subColecao._id}`}>
+//                 <div className="hexagon-inner">
+//                   <img
+//                     src={subColecao.pictures && subColecao.pictures.length > 0 ? subColecao.pictures[1].src : "/img/placeholder.jpg"}
+//                     alt={`Capa da subcoleção ${subColecao.subCollectionName}`}
+//                     onError={(e) => {
+//                       e.target.src = "/img/placeholder.jpg"; // Fallback para imagens quebradas
+//                     }}
+//                   />
+//                 </div>
+//                 <div className="overlay">
+//                   <span>{subColecao.subCollectionName}</span>
+//                 </div>
+//               </Link>
+//             </div>
+//           ))
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Gallery; 
+
+// import React, { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
+// import axios from "axios";
+
+// const Gallery = () => {
+//   const [colecoes, setColecoes] = useState([]);
+//   const [carregando, setCarregando] = useState(true);
+//   const [erro, setErro] = useState(null);
+
+//   // Função para buscar as coleções da API
+//   useEffect(() => {
+//     const buscarColecoes = async () => {
+//       try {
+//         const token = localStorage.getItem('token'); // Obtém o token do localStorage
+//         const resposta = await axios.get('https://art-api-nine.vercel.app/collections/get-all', {
+//           headers: {
+//             Authorization: `Bearer ${token}`, // Adiciona o token no header
+//           },
+//         });
+//         console.log(resposta.data.collections);
+
+//         setColecoes(resposta.data.collections);
+//         setCarregando(false);
+//       } catch (error) {
+//         console.error("Erro ao buscar coleções!");
+//         setErro(error.response ? error.response.data.message : error.message);
+//         setCarregando(false);
+//       }
+//     };
+
+//     buscarColecoes();
+//   }, []);
+
+//   if (carregando) {
+//     return <div>Carregando...</div>;
+//   }
+
+//   if (erro) {
+//     return <div>Erro: {erro}</div>;
+//   }
+
+//   return (
+//     <div className="gallery-container">
+//       <div className="hexagon-grid">
+//         {colecoes.map((colecao) =>
+//           colecao.subCollections.map((subColecao) => (
+//             <div key={subColecao._id} className="hexagon">
+//               <Link to={`/subcolecao/${subColecao._id}`}>
+//                 <div className="hexagon-inner">
+//                   <img
+//                     src={subColecao.pictures && subColecao.pictures.length > 0 ? subColecao.pictures[1].src : "/img/placeholder.jpg"}
+//                     alt={`Capa da subcoleção ${subColecao.subCollectionName}`}
+//                     onError={(e) => {
+//                       e.target.src = "/img/placeholder.jpg"; // Fallback para imagens quebradas
+//                     }}
+//                   />
+//                 </div>
+//                 <div className="overlay">
+//                   <span>{subColecao.subCollectionName}</span>
+//                 </div>
+//               </Link>
+//             </div>
+//           ))
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Gallery;
+
+
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -156,18 +295,25 @@ const Gallery = () => {
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState(null);
 
+  // Token fixo para autenticação
+  const fixedToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJndWVzdCIsImlhdCI6MTc0MjY0OTM5MCwiZXhwIjoxNzQ1MjQxMzkwfQ.HAOUcKQLxQpZ2b4ogcUiOGtUWh96tMe1PLtl-IXkI-o"; // Substitua pelo token gerado
+
   // Função para buscar as coleções da API
   useEffect(() => {
     const buscarColecoes = async () => {
       try {
-        const resposta = await axios.get('https://art-api-nine.vercel.app/collections/get-all');
+        const resposta = await axios.get("https://art-api-nine.vercel.app/collections/get-all", {
+          headers: {
+            Authorization: `Bearer ${fixedToken}`, // Adiciona o token fixo no header
+          },
+        });
         console.log(resposta.data.collections);
 
         setColecoes(resposta.data.collections);
         setCarregando(false);
       } catch (error) {
         console.error("Erro ao buscar coleções!");
-        setErro(error.message);
+        setErro(error.response ? error.response.data.message : error.message);
         setCarregando(false);
       }
     };
@@ -192,7 +338,11 @@ const Gallery = () => {
               <Link to={`/subcolecao/${subColecao._id}`}>
                 <div className="hexagon-inner">
                   <img
-                    src={subColecao.pictures && subColecao.pictures.length > 0 ? subColecao.pictures[1].src : "/img/placeholder.jpg"}
+                    src={
+                      subColecao.pictures && subColecao.pictures.length > 0
+                        ? subColecao.pictures[1].src
+                        : "/img/placeholder.jpg"
+                    }
                     alt={`Capa da subcoleção ${subColecao.subCollectionName}`}
                     onError={(e) => {
                       e.target.src = "/img/placeholder.jpg"; // Fallback para imagens quebradas
@@ -211,5 +361,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery; 
-
+export default Gallery;
