@@ -9,16 +9,26 @@
 
 /* Estilos da seção Hero */
 .hero-section {
+  width: 100vw;
   position: relative;
+  left: 50%; /* Move para o meio */
+  margin-left: -50vw; /* Corrige a posição */
   height: 100vh;
+  min-height: 500px;
   background-image: url('../../../public/img/Stolz.jpg'); /* Adicione o caminho da imagem */
   background-size: cover;
   background-position: center;
   align-items: center;
   color: white;
   overflow: hidden;
+  align-items: center;
+  justify-content: flex-start;
 }
-
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Evita barra de rolagem horizontal */
+}
 /* Pseudo-elemento para controlar a opacidade da imagem de fundo */
 .hero-section::before {
   content: "";
@@ -41,48 +51,50 @@
   background-color: rgba(0, 0, 0, 0.5); /* Overlay escuro para melhorar a legibilidade */
 }
 
-// .hero-content {
-//   width: 50%;
-//   margin-left: 8vw;
 
-//   z-index: 1;
-//   text-align: left;
- 
-// }
+
 .hero-content {
   position: absolute;
-  top: 18vh; /* Espaço do topo */
-  left: 8vw; /* Espaço da esquerda */
-  max-width: 600px;
+  width: 90%;
+  max-width: 700px;
   padding: 2rem;
+  z-index: 2;
   border-radius: 8px;
+  left: 8vw; /* Posição à esquerda em telas grandes */
+  top: 50%; /* Centraliza verticalmente */
+  transform: translateY(-50%); /* Ajuste fino para centralização vertical */
 }
 
+
 .hero-content h1 {
-  
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 2.7rem; /* Aumentado para 3rem */
+  margin-bottom: 1.5rem; /* Ajuste no espaçamento */
+  line-height: 1.2; /* Melhora a legibilidade */
 }
 
 .hero-content p {
-  font-size: 1rem;
+  font-size: 1.25rem; /* Aumentado para 1.25rem */
   margin-bottom: 2rem;
+  line-height: 1.6; /* Melhora a legibilidade */
 }
 
 .cta-btn {
-  padding: 10px 20px;
-  font-size: .8rem;
+  padding: 12px 24px; /* Aumentado o padding */
+  font-size: 1rem; /* Aumentado para 1rem */
   background-color: var(--primary-color);
   color: white;
   border: none;
   border-radius: 3px;
   text-decoration: none;
   cursor: pointer;
+  transition: background-color 0.3s ease; /* Adicionado transição */
 }
 
 .cta-btn:hover {
-  background-color: var(--backgorund-color-light);
+  background-color: var(--background-color-light);
 }
+
+
 
 /* Estilos da seção do carrossel */
 .carousel-section {
@@ -122,4 +134,95 @@
 .content-block p {
   font-size: 1rem;
   color: var(--text-color);
+}
+
+
+
+
+
+
+
+
+/* Media Queries para responsividade */
+@media (max-width: 992px) {
+  .hero-content {
+    max-width: 600px;
+    left: 5vw; /* Ajusta um pouco a posição esquerda */
+  }
+  
+  .hero-content h1 {
+    font-size: 2.7rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    height: 100vh;
+    min-height: 500px; /* Aumentado para dar mais espaço */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px; /* Espaço para o navbar */
+    padding-bottom: 40px;
+    margin-top: -30px; /* Remove a margem superior */;
+    
+  }
+  
+  .hero-content {
+    position: relative; /* Muda para relativo em telas menores */
+    width: 85%;
+    padding: 2rem;
+    left: auto;
+    top: auto;
+    transform: none;
+    margin: 0 auto; /* Centraliza horizontalmente */
+    text-align: center;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.6rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+  }
+  
+  .hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta-btn {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    min-height: 70vh;
+    padding-top: 70px; /* Garante espaço para o navbar */
+    padding-bottom: 40px;
+  }
+  
+  .hero-content {
+    width: 90%;
+    padding: 1rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .cta-btn {
+    padding: 8px 16px;
+    font-size: 1rem;
+  }
 }

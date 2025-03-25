@@ -1,290 +1,90 @@
-// .artist-container {
-//     max-width: 100%;
-//     margin: 0 auto;
-//     padding: 50px 5vw;
-//     text-align: center;
-//     background-color: var(--background-color);
-//     display: flex;
-//     flex-direction: row;
-//     // align-items: center;
-//     // justify-content: center;
-//     width: 100%;
-//     height: 100%;
-//   }
-  
-//   .artist-header h1 {
-//     font-size: 2rem;
-//     color: var(--text-color);
-//     margin-bottom: 10px;
-    
-    
-//   }
-  
-//   .artist-header p {
-//     width: 20vw;
-//     height: 100%;
-//     font-size: .8em;
-//     color: var(--text-light);
-//     margin-right: 5vw;
-//     margin-top: 0;
-//     letter-spacing: .4rem;
-//     text-align:start;
-//     // margin-bottom: 30px;
-//   }
-  
-//   .artist-content {
-//    justify-content: right;
-//    margin-left: 1vw;
-   
-   
-//   }
-  
-//   .artist-image img {
-//     width: 100%;
-//     height: 100%;
-//     // max-width: 600px;
-//     // border-radius: 10px;
-//     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-//   }
-  
-//   .artist-text {
-//     max-width: 800px;
-//     margin-top: 20px;
-//     font-size: .1em;
-//     color: var(--text-light);;
-//     text-align: justify;
-//   }
-  
-
-// @media screen and (max-width: 768px) {
-//     .artist-header p {
-//       width: 80%;
-//       font-size: 1.4rem;
-//     }
-    
-//     .artist-image img {
-//       width: 100%;
-//       max-width: 100%;
-//     }
-//   }
-  
- /// 09/03
- 
-
-
-// .artist-container {
-//   max-width: 1170px;
-//   margin: 0 auto;
-//   padding: 50px 20px;
-//   background-color: var(--background-color);
-//   display: flex;
-//   flex-direction: row;
-//   align-items: flex-start;
-//   justify-content: space-between;
-//   width: 100%;
-//   height: 100%;
-// }
-
-// .artist-header {
-//   flex: 1;
-//   margin-right: 5vw;
-// }
-
-// .artist-header h1 {
-//   font-size: 2rem;
-//   color: var(--text-color);
-//   margin-bottom: 20px;
-// }
-
-// .artist-header p {
-//   font-size: 1rem;
-//   color: var(--text-light);
-//   line-height: 1.6;
-//   text-align: justify;
-// }
-
-// .artist-content {
-//   flex: 1;
-//   margin-left: 5vw;
-// }
-
-// .artist-image img {
-//   width: 100%;
-//   height: auto;
-//   max-width: 600px;
-//   border-radius: 10px;
-//   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-// }
-
-// @media screen and (max-width: 768px) {
-//   .artist-container {
-//     flex-direction: column;
-//     align-items: center;
-//     text-align: center;
-//   }
-
-//   .artist-header {
-//     margin-right: 0;
-//     margin-bottom: 30px;
-//   }
-
-//   .artist-header p {
-//     width: 100%;
-//     font-size: 1rem;
-//     text-align: justify;
-//   }
-
-//   .artist-content {
-//     margin-left: 0;
-//   }
-
-//   .artist-image img {
-//     width: 100%;
-//     max-width: 100%;
-//   }
-// }
-
 
 .artist-container {
-  max-width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 50px 20px;
   background-color: var(--background-color);
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  height: 100%;
 }
 
+
+.artist-image {
+  width: 80%; /* Define a largura como 80% do container pai */
+  margin: 50px auto 30px; /* Centraliza horizontalmente (auto) e ajusta margens verticalmente */
+  display: flex;
+  justify-content: center; /* Centraliza a imagem dentro da div */
+}
 .artist-image img {
-  min-width: 70%;
-  max-width: 75%;
+  width: 100%;
+  max-width: 100%;
   height: auto;
-  // border-radius: 1px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-  margin-bottom: 30px;
-  margin-top: 0;
+
 }
 
-.artist-header {
-  width: 80%;
-  margin-top: 8px;
-  text-align: center;
-  
-}
-
-.artist-header h1 {
-  font-size: 2rem;
+.about-title h1 {
+  font-size: 3.6rem;
+  font-weight: 300;
   color: var(--text-color);
   margin-bottom: 20px;
+  text-align: center;
 }
 
-.artist-header p {
-  font-size: .8rem;
-  color: var(--text-light);
-  line-height: 1.6;
-  text-align: justify;
+.text-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 40px; /* Espaçamento entre os containers */
 }
 
-
-.artist-header {
-  width: 80%;
-}
-
-
-
-.text-container{
+.text-block {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  height: auto;
-  .text-block-left{
-    // min-width: 30vw;
-    // align-items: self-start;
-    // margin-bottom: 2px;
-    // margin-right: 50%;
-    position: relative; /* Ensure the icon is positioned relative to this container */
-    min-width: 30vw;
-    align-items: self-start;
-    margin-bottom: 2px;
-    margin-right: 50%;
-  }
+  align-items: center;
+  gap: 60px; /* Espaçamento entre texto e ícone */
+}
 
-
-
-  .icon-container {
-    position: absolute; /* Position the icon absolutely within the text block */
-    right: -30vw; /* Adjust this value to position the icon to the left of the text */
-    top: 16vh; /* Align the icon to the top */
-  }
-  
-  .icon-left {
-    font-size: 12em; /* Adjust the size of the icon */
-    color: rgba(255, 52, 127, 0.4) /* Adjust the color of the icon */
-  }
-
-
-  .icon-left:hover{
-    transition: transform .4s ease-in;
-    transform: scale(1.2);
-  }
-
-
-
-  .text-block-right{
-    
-  //   min-width: 30vw;
-  // margin-left: 50%;
-  position: relative; /* Ensure the icon is positioned relative to this container */
-  min-width: 30vw;
-  align-items: self-start;
-  margin-bottom: 2px;
-  margin-left: 50%;
+.text-block.reverse {
+ 
+  display: flex;
+   flex-direction: row-reverse; /* Inverte a ordem para o segundo container */
+  align-items: center;
+  gap: 60px; /* Espaçamento entre texto e ícone */
+  background-color: var(--background-color);
+  p{
+    color: var(--text-color);
   }
 }
 
-.icon-container-right {
-  position: absolute; /* Position the icon absolutely within the text block */
-  left: -30vw; /* Adjust this value to position the icon to the left of the text */
-  top: 8vh; /* Align the icon to the top */
+.text-content {
+  flex: 1; /* Ocupa o espaço restante */
+  padding: 40px;
+  background-color: var(--background-color);
+  border-radius: 8px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  p{
+    color: var(--text-color);
+    font-size: 1.5rem;
+  }
 }
 
-.icon-right {
-  font-size: 12em; /* Adjust the size of the icon */
-  color: rgba(255, 52, 127, 0.4) /* Adjust the color of the icon */
+.icon-container {
+  flex-shrink: 0; /* Impede que o ícone diminua */
+  font-size: 17em;
+  color: rgba(255, 52, 127, 0.4);
 }
 
-.icon-right:hover{
-  transition: transform .4s ease-in;
+.icon {
+  transition: transform 0.4s ease-in;
+}
+
+.icon:hover {
   transform: scale(1.2);
 }
 
-
-@media screen and (max-width: 768px) {
-  .artist-image img {
-    width: 50vw;
-  }
-
- 
-
-  .artist-header h1 {
-    font-size: 1.8rem;
-  }
-
-  .artist-header p {
-    font-size: 0.9rem;
-  }
-}
-
-
-.about-title{
-  display: flex;
-
-}
-
-.quote-icon{
-  font-size: 2rem;
+.quote-icon {
+  font-size: 2.9rem;
   color: var(--primary-color);
   margin-right: 10px;
   vertical-align: middle;
@@ -293,49 +93,59 @@
 
 
 
-.line {
-  margin-top: 5vh;
-  margin-bottom: 5vh;
-  width: 100%;
-  height: .05em;
-  background: linear-gradient(
-    to right,
-    transparent 8%,
-    rgba(255, 255, 255, 0.1) 8%,
-    rgba(255, 255, 255, 0.1)  50%,
-    transparent  18%,
-    transparent  19%,
-    rgba(255, 255, 255, 0.1) 20%,
-    rgba(255, 255, 255, 0.1) 32%,
-    transparent  32%,
-    transparent  48%,
-    rgba(255, 255, 255, 0.1)  20%,
-    rgba(255, 255, 255, 0.1)  55%,
-    transparent  46%,
-    transparent  54%,
-    rgba(255, 255, 255, 0.1)  54%,
-    rgba(255, 255, 255, 0.1) 80%,
-    transparent  70%,
-    transparent  79%,
-    rgba(255, 255, 255, 0.1)  80%,
-    rgba(255, 255, 255, 0.1)  93%,
-    transparent 90%
-  );
-  position: relative;
+/* ... (seu CSS existente) ... */
+
+@media screen and (max-width: 768px) {
+  .artist-image img {
+    width: 95%;
+  }
+
+  .text-block {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .text-block.reverse {
+    flex-direction: column;
+  }
+
+  .icon-container {
+    font-size: 10em; /* Ajuste menor para o ícone (era 25em) */
+  }
+
+  /* --- Correções para fontes --- */
+  .about-title h1 {
+    font-size: 2.5rem; /* Sobrescreve a regra específica do h1 */
+  }
+
+  .text-content p {
+    font-size: 1.5rem; /* Sobrescreve a regra específica do p */
+  }
+
+  .quote-icon {
+    font-size: 2.2rem; /* Reduz o tamanho das aspas */
+  }
 }
 
+@media screen and (max-width: 480px) {
+  .artist-image img {
+    width: 100%;
+  }
 
+  .icon-container {
+    font-size: 5em;
+  }
 
+  /* --- Correções para fontes --- */
+  .about-title h1 {
+    font-size: 2rem;
+  }
 
-.icon {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.1em;
-  color: rgba(255, 52, 127, 0.4);
-  background-color: var(--background-color); /* Fundo para cobrir a linha */
-  padding: 5px; /* Espaçamento ao redor do ícone */
-  border-radius: 50%; /* Para ícones circulares */
+  .text-content p {
+    font-size: 0.9rem;
+  }
+
+  .quote-icon {
+    font-size: 1.8rem;
+  }
 }
-
-

@@ -76,7 +76,7 @@ const Footer = () => {
                 className="gallery-image"
               />
               <img
-                src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212070/galeria/Pallas%20Galaxy%20Collection/a18wurfnvi9nlz2hyzbz.jpg"
+                src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212510/galeria/galeria/Pallas%20Galaxy%20Collection/2014-2015/ci8mpomeekat8xvw8i1b.gif"
                 alt="Gallery 5"
                 className="gallery-image"
               />
