@@ -50,7 +50,7 @@
 //             </div>
 //             <button type='submit'>Send your message</button>
 //         </form>
-       
+
 //       </section>
 //     </div>
 //   );
@@ -58,14 +58,14 @@
 
 // export default Contact;
 
-import React, { useState } from 'react';
-import Swal from 'sweetalert2';
+import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const Contact = () => {
   // Estados para armazenar os valores dos inputs
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -85,9 +85,9 @@ const Contact = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
+        Accept: "application/json",
       },
-      body: json
+      body: json,
     }).then((res) => res.json());
 
     // Verificar se o envio foi bem-sucedido
@@ -95,13 +95,13 @@ const Contact = () => {
       Swal.fire({
         title: "Success",
         text: "Message sent successfully!",
-        icon: "success"
+        icon: "success",
       });
 
       // Limpar os campos do formulário
-      setName('');
-      setEmail('');
-      setMessage('');
+      setName("");
+      setEmail("");
+      setMessage("");
     }
   };
 
@@ -109,44 +109,44 @@ const Contact = () => {
     <div className="contact-page">
       {/* <h1>Contact-us</h1> */}
       <section className="contact-container">
-        <form onSubmit={onSubmit} className='contact-form'>
+        <form onSubmit={onSubmit} className="contact-form">
           <h2>Contact Us</h2>
-          <div className='input-box'>
+          <div className="input-box">
             <label>Full Name</label>
             <input
-              type='text'
-              className='field'
-              placeholder='Enter your name'
-              name='name'
+              type="text"
+              className="field"
+              placeholder="Enter your name"
+              name="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
             />
           </div>
-          <div className='input-box'>
+          <div className="input-box">
             <label>Email</label>
             <input
-              type='email'
-              className='field'
-              placeholder='Enter your email'
-              name='email'
+              type="email"
+              className="field"
+              placeholder="Enter your email"
+              name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
-          <div className='input-box'>
+          <div className="input-box">
             <label>Message</label>
             <textarea
-              name='message'
-              className='mess'
-              placeholder='Enter your message'
+              name="message"
+              className="mess"
+              placeholder="Enter your message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               required
             ></textarea>
           </div>
-          <button type='submit'>Send your message</button>
+          <button type="submit">Send your message</button>
         </form>
       </section>
     </div>
