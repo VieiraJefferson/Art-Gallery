@@ -1,19 +1,34 @@
+// .contact-page {
+//     // background-image: linear-gradient(rgba(1.5, 1.5, 1.5, 2), rgba(0, 0, 0, 0.5)), url('https://res.cloudinary.com/dpilz4p6g/image/upload/v1741631163/map_z12crh.png');
+    
+//     background-image: linear-gradient(rgba(1.5, 1.5, 1.5, 2), rgba(0, 0, 0, 0.8)), url('https://res.cloudinary.com/dpilz4p6g/image/upload/v1742071843/Paulas_Muster_umgekehrte_Farben_fmu58k.jpg');
+    
+//     // background-image: linear-gradient(rgba(1.5, 1.5, 1.5, 2), rgba(0, 0, 0, 0.5)), url('https://res.cloudinary.com/dpilz4p6g/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1741708066/Background_n6y6wm.png');
+    
+//     background-size: cover; // Cobrir todo o container
+//     background-position: center; // Centralizar a imagem
+//     background-repeat: no-repeat; // Evitar repetição
+//     min-height: 100vh; // Cobrir toda a altura da viewport
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     padding: 2rem; // Espaçamento interno
+    
+// }
+
+
 .contact-page {
-    // background-image: linear-gradient(rgba(1.5, 1.5, 1.5, 2), rgba(0, 0, 0, 0.5)), url('https://res.cloudinary.com/dpilz4p6g/image/upload/v1741631163/map_z12crh.png');
-    
-    background-image: linear-gradient(rgba(1.5, 1.5, 1.5, 2), rgba(0, 0, 0, 0.8)), url('https://res.cloudinary.com/dpilz4p6g/image/upload/v1742071843/Paulas_Muster_umgekehrte_Farben_fmu58k.jpg');
-    
-    // background-image: linear-gradient(rgba(1.5, 1.5, 1.5, 2), rgba(0, 0, 0, 0.5)), url('https://res.cloudinary.com/dpilz4p6g/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1741708066/Background_n6y6wm.png');
-    
-    background-size: cover; // Cobrir todo o container
-    background-position: center; // Centralizar a imagem
-    background-repeat: no-repeat; // Evitar repetição
-    min-height: 100vh; // Cobrir toda a altura da viewport
+    background-image: url('https://res.cloudinary.com/dpilz4p6g/image/upload/v1742071843/Paulas_Muster_umgekehrte_Farben_fmu58k.jpg');
+    background-color: rgba(0, 0, 0, 0.8); /* Cor de overlay + opacidade */
+    background-blend-mode: overlay; /* Mistura a cor com a imagem */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem; // Espaçamento interno
-    
+    padding: 2rem;
 }
 
 
@@ -34,7 +49,6 @@
     max-width: 30vw;
     width: 100%;
     background-color: transparent;
-  
     padding: 1.5rem 1.5rem 2rem;
     border: 1px solid white;
     border-radius: 0.1rem;
@@ -101,3 +115,45 @@ form  button:hover{
 }
 
 
+
+
+
+/* Dispositivos móveis (480px ou menos) */
+@media (max-width: 480px) {
+    .contact-form {
+      max-width: 85vw; /* Ocupa 85% da tela */
+      padding: 1.2rem;
+    }
+    
+    .contact-form h2 {
+      font-size: 1.3rem;
+    }
+    
+    .input-box .field,
+    .mess {
+      height: auto;
+      padding: 0.8rem;
+      font-size: 0.9rem;
+    }
+    
+    form button {
+      height: 2.8rem;
+      font-size: 1rem;
+    }
+  }
+  
+  /* Dispositivos muito pequenos (360px ou menos) */
+  @media (max-width: 360px) {
+    .contact-form {
+      max-width: 90vw;
+      padding: 1rem;
+    }
+    
+    .contact-form h2 {
+      font-size: 1.2rem;
+    }
+    
+    .input-box {
+      margin-top: 1rem;
+    }
+  }

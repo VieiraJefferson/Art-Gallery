@@ -191,7 +191,8 @@
 
 @media (max-width: 768px) {
   .swiper-slide {
-    width: 40vw; /* Mais largo em dispositivos móveis */
+    margin-top: 0 auto;
+    width: 60vw; /* Mais largo em dispositivos móveis */
     height: 30vh;
   }
 }

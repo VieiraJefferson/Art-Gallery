@@ -117,27 +117,6 @@
   font-size: .8rem;
 }
 
-// @media (max-width: 768px) {
-//   .gallery {
-//     grid-template-columns: repeat(2, 1fr);
-//   }
-// }
-
-// @media (max-width: 480px) {
-//   .gallery {
-//     grid-template-columns: 1fr;
-//   }
-// }
-
-
-// @media (max-width: 768px) {
-//   .gallery-image {
-//     width: 60%; /* Reduz a largura das imagens */
-//     height: auto; /* Mantém a proporção */
-//     max-height: 80px; /* Define uma altura máxima menor */
-//   }
-// }
-
 
 
 
@@ -145,25 +124,35 @@
 @media (max-width: 768px) {
   .gallery {
     grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    width: 80%; /* Largura reduzida para centralização */
-    margin: 20px auto; /* Centraliza o grid */
+    gap: 0; /* Espaçamento entre as imagens */
+    width: 95%; /* Largura reduzida para centralização */
+    height: 60%;
+    margin:  auto; /* Centraliza o grid */
+    padding: 0 ;
   }
   
   .gallery-image {
-    max-height: 100%; /* Tamanho reduzido para mobile */
+    width: 90%; /* Tamanho reduzido para mobile */
+    gap: 3px; /* Espaçamento entre as imagens */
+   height: auto; /* Mantém a proporção */
+   aspect-ratio: 1/1; /* Garante que sejam quadradas */
+   object-fit: cover; 
   }
 }
 
 /* TELAS PEQUENAS (480px ou menos) - AJUSTES FINOS */
 @media (max-width: 480px) {
   .gallery {
-    width: 90%; /* Largura ainda menor para telas pequenas */
-    gap: 10px;
+    width: 100%; /* Largura ainda menor para telas pequenas */
+    gap: 3px; /* Espaçamento entre as imagens */
+    padding: 0 ve;
   }
   
   .gallery-image {
-    max-height: 80px; /* Tamanho ainda menor para telas pequenas */
+    width: 80%;
+    aspect-ratio: 1/1; /* Mantém quadrado */
+    object-fit: cover;
+
   }
 }
 
