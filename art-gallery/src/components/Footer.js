@@ -178,7 +178,7 @@ const Footer = () => {
           <a href="#" className="social-icon">
             <FaInstagram />
           </a>
-          <a href="#" className="social-icon">
+          {/* <a href="#" className="social-icon">
             <FaFacebookF />
           </a>
           <a href="#" className="social-icon">
@@ -186,7 +186,7 @@ const Footer = () => {
           </a>
           <a href="#" className="social-icon">
             <FaLinkedinIn />
-          </a>
+          </a> */}
         </div>
 
         {/* Bottom Section - Copyright */}

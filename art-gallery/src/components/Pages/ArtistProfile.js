@@ -32,12 +32,12 @@ const ArtistProfile = () => {
   <div className="text-container">
     <div className="text-block">
       <div className="text-content">
-        <p><FaQuoteLeft className="quote-icon" /><p><FaQuoteLeft className="quote-icon" /> 
+              <p><FaQuoteLeft className="quote-icon" /> 
                 The art of Maria Pallas is a captivating fusion of surrealism,
                 symbolism, and emotional depth. Each piece tells a story,
                 inviting viewers into a world where the boundaries between
                 reality and imagination blur.
-              </p></p>
+              </p>
               <p>
                 The compositions often juxtapose the whimsical with the
                 profound, blending dreamlike elements with stark emotional
@@ -56,7 +56,7 @@ const ArtistProfile = () => {
                 work, drawing the viewer deeper into its narrative layers.
                 Figures—both human and animal—are often placed in surreal or
                 unexpected contexts, sparking curiosity and inviting
-                interpretation. <FaQuoteRight className="quote-icon" />
+                interpretation <FaQuoteRight className="quote-icon" />
               </p>
           
       </div>
@@ -69,9 +69,7 @@ const ArtistProfile = () => {
   {/* Container 2: Texto à direita, ícone à esquerda */}
   <div className="text-container">
     <div className="text-block reverse">
-      <div className="icon-container">
-        <LuPalette className="icon" />
-      </div>
+     
       <div className="text-content">
       <p><FaQuoteLeft className="quote-icon" /> 
                 Symbolism plays a significant role in Maria Pallas’s artistic
@@ -104,7 +102,11 @@ const ArtistProfile = () => {
                 own truth within the imagery.
                 <FaQuoteRight className="quote-icon" />
               </p>
-      </div>
+              </div>
+              <div className="icon-container">
+               <LuPalette className="icon" />
+              </div>
+      
     </div>
   </div>
 
