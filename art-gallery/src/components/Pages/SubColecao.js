@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-
 const SubColecao = () => {
   const { id } = useParams(); // Pega o ID da subcoleção da URL
   const [subColecao, setSubColecao] = useState(null);
@@ -15,7 +14,9 @@ const SubColecao = () => {
     const buscarSubColecao = async () => {
       try {
         // Busca todas as coleções
-        const resposta = await axios.get("https://art-api-nine.vercel.app/collections/get-all");
+        const resposta = await axios.get(
+          "https://art-api-nine.vercel.app/collections/get-all"
+        );
         console.log("Resposta da API:", resposta.data); // Verifique os dados no console
 
         // Filtra a subcoleção desejada
@@ -94,10 +95,15 @@ const SubColecao = () => {
         })}
       </div>
       {activeImageId && (
-        <div className="expanded-overlay" onClick={() => setActiveImageId(null)}>
+        <div
+          className="expanded-overlay"
+          onClick={() => setActiveImageId(null)}
+        >
           <div className="expanded-image">
             <img
-              src={subColecao.pictures.find((pic) => pic._id === activeImageId).src}
+              src={
+                subColecao.pictures.find((pic) => pic._id === activeImageId).src
+              }
               alt="Expanded"
             />
           </div>
