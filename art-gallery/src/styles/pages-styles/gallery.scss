@@ -1,83 +1,124 @@
-/* Variáveis para cores */
+
 :root {
-  --background-color: #0f0e17; /* Fundo escuro espacial */
-  --card-bg: rgba(255, 255, 255, 0.1); /* Vidro translúcido */
-  --card-border: rgba(255, 255, 255, 0.2); /* Borda sutil */
+  --background-color: #060608; 
+  --primary-color:#ff347f; 
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --card-border: #ff347f;
   --text-color: #ffffff;
+
+}
+.gallery-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--background-color);
+  overflow: hidden;
 }
 
-/* Container principal */
-.gallery-container {
-  margin: 0;
-  padding: 40px 20px;
+.palette-svg-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vmin;
+  height: 90vmin;
+  z-index: 0;
+}
+.palette-svg {
+     width: 100%;
+     height: 100%;
+     color:   #ff5a94;
+     opacity: 0.9;
+    
+     /* Borda usando filtro - funciona com React Icons */
+     filter: 
+       drop-shadow(1px 1px 5px var(--text-color)) /* Borda fina interna */
+      drop-shadow(1px 1px 5px var(--text-color)) /* Repetir para espessura */
+       drop-shadow(1px 1px 5px var(--text-color))
+       drop-shadow(1px 1px 5px var(--text-color)); /* Borda externa */
+    
+     /* Para browsers Webkit */
+     -webkit-filter:
+       drop-shadow(0 0 1px var(--text-color))
+       drop-shadow(1px 0 1px var(--text-color))
+       drop-shadow(2px 0 1px var(--text-color))
+       drop-shadow(3px 0 2px var(--text-color));
+       transition: 
+       opacity 1.2s ease-in-out,
+       transform 1.2s ease-in-out,
+       filter 0.6s ease-in-out;
+   }
+   .palette-svg:hover {
+     opacity: 1;
+     transform: scale(1.02);
+   }
+
+.gallery-items-container {
+  position: relative;
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
+  z-index: 1;
+}
+
+.gallery-card {
+  position: absolute;
+  width: 10vmin;
+  height: 10vmin;
+  max-width: 100px !important;
+  max-height: 100px !important;
+  border-radius: 50%;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+/* Aumenta apenas o 5º card */
+.gallery-card:nth-child(5) {
+  width: 18vmin !important;  /* Tamanho maior */
+  height: 18vmin !important;
+  max-width: 160px !important;
+  max-height: 160px !important;
+  z-index: 2; /* Garante que fique acima dos outros */
+}
+
+/* Ajuste opcional para o hover */
+.gallery-card:nth-child(5):hover {
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+
+
+
+
+.gallery-card {
+  background: red !important; /* Para ver a área real */
+}
+.image-container {
+  border: 2px dashed yellow !important;
+}
+.image-container img {
+  border: 2px solid lime !important;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--background-color);
-  background-image: 
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 30px 30px, 100% 100%;
-}
-
-/* Grid de galeria - Versão otimizada */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 220px));
-  justify-content: center;
-  width: 100%;
-  max-width: 1400px; /* Aumentado para TVs */
-  padding: 20px;
-  gap: 10px;
-}
-.gallery-grid::after {
-  content: '';
-  width: calc(220px + 20px); /* Largura do card + gap */
-}
-
-/* Centralização inteligente para a segunda linha */
-.gallery-card:nth-child(n+5):nth-child(-n+7) {
-  grid-column: span 1;
-  position: relative;
-  left: 110px; /* (220px + 20px gap) / 2 */
 }
 
 
-/* Card individual - Estilo Glassmorfismo */
-.gallery-card {
-  width: 200px;
-  height: 200px;
-  margin: 10px;
-  position: relative;
-  border-radius: 3px;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  box-shadow: 
-    0 4px 20px rgba(0, 0, 0, 0.2),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
-  transition: all 0.4s ease;
-}
 
-/* Container da imagem */
-.image-card {
-  width: 100%;
-  height: 100%;
-}
-
-/* Estilo da imagem */
-.image-card img {
-  width: 100%;
-  height: 100%;
+.image-container img.alternative-fix {
+  width: 100% !important;
+  height: 100% !important;
   object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease, filter 0.4s ease;
+  object-position: center;
+  transform: none !important;
 }
-
-/* Overlay com texto */
 .overlay {
   position: absolute;
   bottom: 0;
@@ -85,27 +126,16 @@
   right: 0;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
   color: var(--text-color);
-  padding: 20px;
+  padding: 1rem;
   text-align: center;
   opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.4s ease;
+  transform: translateY(100%);
+  transition: all 1s ease;
 }
 
-/* Título no overlay */
-.overlay h3 {
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
-/* Efeitos hover */
 .gallery-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 
-    0 12px 28px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%) scale(1.1);
+  z-index: 2;
 }
 
 .gallery-card:hover .overlay {
@@ -113,50 +143,17 @@
   transform: translateY(0);
 }
 
-.gallery-card:hover img {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-}
-/* Responsividade aprimorada */
-@media (min-width: 1600px) {
-  .gallery-grid {
-    max-width: 1600px;
+/* Responsividade */
+@media (max-width: 768px) {
+  .gallery-card {
+    width: 15vmin;
+    height: 15vmin;
   }
   
-}
+  .overlay {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+}  
 
 
-@media (max-width: 1024px) {
-  .gallery-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 200px));
-    gap: 0;
-  }
-  .gallery-card {
-    width: 180px;
-    height: 180px;
-  }
-}
-
-@media (max-width: 768px) {
-  .gallery-grid {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 160px));
-    gap: 15px;
-  }
-  .gallery-card {
-    width: 140px;
-    height: 140px;
-  }
-}
-
-@media (max-width: 480px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    max-width: 300px;
-    gap: 10px;
-  }
-  .gallery-card {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1/1;
-  }
-}
