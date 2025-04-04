@@ -632,7 +632,7 @@ const SubColecao = () => {
 
   return (
     <div className="sub-colecao-container">
-      <h1>{subColecao.subCollectionName}</h1>
+      {/* <h1>{subColecao.subCollectionName}</h1> */}
       
       <div className="sub-gallery-grid">
         {subColecao.pictures.map((picture) => {
@@ -657,9 +657,9 @@ const SubColecao = () => {
                 </div>
               </div>
               {/* Novo card de informações fixo */}
-              <div className="sub-info-card">
+              {/* <div className="sub-info-card">
                 <h3>{picture.name}</h3>
-              </div>
+              </div> */}
             </div>
           );
         })}

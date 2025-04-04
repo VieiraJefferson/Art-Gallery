@@ -539,8 +539,8 @@
 }
 
 .sub-gallery-item {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
+  background: var(--background-color);
+  border-radius: 2px;
   overflow: hidden;
   transition: transform 0.3s ease;
   cursor: pointer;
@@ -567,8 +567,8 @@
 
 .image-title {
   margin: 0;
-  font-size: 1.2em;
-  font-weight: 400;
+  font-size: 1.4em;
+  font-weight: 300;
   text-align: center;
   color: #fff;
 }
