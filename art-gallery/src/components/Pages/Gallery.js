@@ -254,7 +254,7 @@ const Gallery = () => {
                     </p> */}
                     {/* Mantido o link original */}
                     <Link to={subColecao.colecaoPaiUrl} className="card-button">
-                      Ver Coleção
+                     Start Exploring
                     </Link>
                   </div>
                 );

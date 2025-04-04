@@ -284,10 +284,305 @@
 
 
 
+// import React, { useEffect, useState } from "react";
+// import { useParams } from "react-router-dom";
+// import axios from "axios";
+
+
+// const SubColecao = () => {
+//   const { id } = useParams();
+//   const [subColecao, setSubColecao] = useState(null);
+//   const [carregando, setCarregando] = useState(true);
+//   const [erro, setErro] = useState(null);
+//   const [activeImageId, setActiveImageId] = useState(null);
+
+//   const fixedToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2VlYzZmOTI5ZjEyNDIxMzY5NWEzNzgiLCJpYXQiOjE3NDM3MDE3NTMsImV4cCI6MTc0ODg4NTc1M30.UvMxJfZVY-wLSEGpZES5j3Pg_OAIKTaAiALXMR7hXAo";
+
+//   // Função de clique para imagens
+//   const handleImageClick = (imageId) => {
+//     setActiveImageId(prev => prev === imageId ? null : imageId);
+//   };
+
+//   useEffect(() => {
+//     const buscarSubColecao = async () => {
+//       try {
+//         const resposta = await axios.get(
+//           "https://art-api-nine.vercel.app/collections/get-all",
+//           { headers: { Authorization: `Bearer ${fixedToken}` } }
+//         );
+
+//         let subEncontrada = null;
+//         resposta.data.collections.forEach(colecao => {
+//           colecao.subCollections?.forEach(sub => {
+//             if (sub._id === id) subEncontrada = sub;
+//           });
+//         });
+
+//         if (subEncontrada) {
+//           setSubColecao(subEncontrada);
+//         } else {
+//           throw new Error("Subcoleção não encontrada!");
+//         }
+
+//       } catch (error) {
+//         setErro(error.message);
+//       } finally {
+//         setCarregando(false);
+//       }
+//     };
+
+//     buscarSubColecao();
+//   }, [id]);
+
+//   if (carregando) return <div>Carregando...</div>;
+//   if (erro) return <div>Erro: {erro}</div>;
+
+//   return (
+//     <div className="sub-colecao-container">
+//       <h1>{subColecao.subCollectionName}</h1>
+      
+//       <div className="sub-gallery-grid">
+//         {subColecao.pictures.map((picture) => {
+//           const isActive = activeImageId === picture._id;
+
+//           return (
+//             <div
+//               key={picture._id}
+//               className={`sub-gallery-item ${isActive ? "active" : ""}`}
+//               onClick={() => handleImageClick(picture._id)}
+//             >
+//               <div className="sub-image-wrapper">
+//                 <img
+//                   src={picture.src}
+//                   alt={picture.name}
+//                   onError={(e) => {
+//                     e.target.src = "/img/placeholder.jpg";
+//                   }}
+//                 />
+//                 <div className="sub-overlay">
+//                   <span>{picture.name}</span>
+//                 </div>
+//               </div>
+//             </div>
+//           );
+//         })}
+//       </div>
+
+//       {activeImageId && (
+//         <div className="expanded-overlay" onClick={() => setActiveImageId(null)}>
+//           <div className="expanded-image">
+//             <img
+//               src={subColecao.pictures.find(pic => pic._id === activeImageId).src}
+//               alt="Expanded"
+//             />
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default SubColecao;  
+
+
+
+// import React, { useEffect, useState } from "react";
+// import { useParams } from "react-router-dom";
+// import axios from "axios";
+
+// const SubColecao = () => {
+//   const { id } = useParams();
+//   const [subColecao, setSubColecao] = useState(null);
+//   const [carregando, setCarregando] = useState(true);
+//   const [erro, setErro] = useState(null);
+//   const [activeImageId, setActiveImageId] = useState(null);
+
+//   const fixedToken = "eyJ1c2VySWQiOiI2N2VlYzZmOTI5ZjEyNDIxMzY5NWEzNzgiLCJpYXQiOjE3NDM3MDE3NTMsImV4cCI6MTc0ODg4NTc1M30";
+
+//   const handleImageClick = (imageId) => {
+//     setActiveImageId(prev => prev === imageId ? null : imageId);
+//   };
+
+//   useEffect(() => {
+//     const buscarSubColecao = async () => {
+//       try {
+//         const resposta = await axios.get(
+//           "https://art-api-nine.vercel.app/collections/get-all",
+//           { headers: { Authorization: `Bearer ${fixedToken}` } }
+//         );
+
+//         let subEncontrada = null;
+//         resposta.data.collections.forEach(colecao => {
+//           colecao.subCollections?.forEach(sub => {
+//             if (sub._id === id) subEncontrada = sub;
+//           });
+//         });
+
+//         if (subEncontrada) {
+//           setSubColecao(subEncontrada);
+//         } else {
+//           throw new Error("Subcoleção não encontrada!");
+//         }
+//       } catch (error) {
+//         setErro(error.message);
+//       } finally {
+//         setCarregando(false);
+//       }
+//     };
+
+//     buscarSubColecao();
+//   }, [id]);
+
+//   if (carregando) return <div>Carregando...</div>;
+//   if (erro) return <div>Erro: {erro}</div>;
+
+//   return (
+//     <div className="sub-colecao-container">
+//       <h1>{subColecao.subCollectionName}</h1>
+      
+//       <div className="sub-gallery-grid">
+//         {subColecao.pictures.map((picture) => {
+//           const isActive = activeImageId === picture._id;
+
+//           return (
+//             <div
+//               key={picture._id}
+//               className={`sub-gallery-item ${isActive ? "active" : ""}`}
+//               onClick={() => handleImageClick(picture._id)}
+//             >
+//               <div className="sub-image-wrapper">
+//                 <img
+//                   src={picture.src}
+//                   alt={picture.name}
+//                   onError={(e) => {
+//                     e.target.src = "/img/placeholder.jpg";
+//                   }}
+//                 />
+//               </div>
+//               {/* Novo card de informações */}
+//               <div className="sub-info-card">
+//                 <h3 className="image-title">{picture.name}</h3>
+//               </div>
+//             </div>
+//           );
+//         })}
+//       </div>
+
+//       {activeImageId && (
+//         <div className="expanded-overlay" onClick={() => setActiveImageId(null)}>
+//           <div className="expanded-image">
+//             <img
+//               src={subColecao.pictures.find(pic => pic._id === activeImageId).src}
+//               alt="Expanded"
+//             />
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default SubColecao;  
+
+
+//04/04
+
+// import React, { useEffect, useState } from "react";
+// import { useParams } from "react-router-dom";
+// import axios from "axios";
+
+// const SubColecao = () => {
+//   const { id } = useParams();
+//   const [subColecao, setSubColecao] = useState(null);
+//   const [carregando, setCarregando] = useState(true);
+//   const [erro, setErro] = useState(null);
+//   const [activeImageId, setActiveImageId] = useState(null);
+
+//   const fixedToken = "SEU_TOKEN_AQUI";
+
+//   const handleImageClick = (imageId) => {
+//     setActiveImageId(prev => prev === imageId ? null : imageId);
+//   };
+
+//   useEffect(() => {
+//     const buscarSubColecao = async () => {
+//       try {
+//         const resposta = await axios.get(
+//           "https://art-api-nine.vercel.app/collections/get-all",
+//           { headers: { Authorization: `Bearer ${fixedToken}` } }
+//         );
+
+//         let subEncontrada = null;
+//         resposta.data.collections.forEach(colecao => {
+//           colecao.subCollections?.forEach(sub => {
+//             if (sub._id === id) subEncontrada = sub;
+//           });
+//         });
+
+//         if (subEncontrada) {
+//           setSubColecao(subEncontrada);
+//         } else {
+//           throw new Error("Subcoleção não encontrada!");
+//         }
+//       } catch (error) {
+//         setErro(error.message);
+//       } finally {
+//         setCarregando(false);
+//       }
+//     };
+
+//     buscarSubColecao();
+//   }, [id]);
+
+//   if (carregando) return <div>Carregando...</div>;
+//   if (erro) return <div>Erro: {erro}</div>;
+
+//   return (
+//     <div className="sub-colecao-container">
+//       <h1>{subColecao.subCollectionName}</h1>
+      
+//       <div className="sub-gallery-grid">
+//         {subColecao.pictures.map((picture) => (
+//           <div
+//             key={picture._id}
+//             className={`sub-gallery-item ${activeImageId === picture._id ? "active" : ""}`}
+//             onClick={() => handleImageClick(picture._id)}
+//           >
+//             <div className="sub-image-wrapper">
+//               <img
+//                 src={picture.src}
+//                 alt={picture.name}
+//                 onError={(e) => {
+//                   e.target.src = "/img/placeholder.jpg";
+//                 }}
+//               />
+//             </div>
+//             <div className="sub-info-card">
+//               <h3 className="image-title">{picture.name}</h3>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+
+//       {activeImageId && (
+//         <div className="expanded-overlay" onClick={() => setActiveImageId(null)}>
+//           <div className="expanded-image">
+//             <img
+//               src={subColecao.pictures.find(pic => pic._id === activeImageId).src}
+//               alt="Expanded"
+//             />
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default SubColecao;  
+
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-
 
 const SubColecao = () => {
   const { id } = useParams();
@@ -298,7 +593,6 @@ const SubColecao = () => {
 
   const fixedToken = "SEU_TOKEN_AQUI";
 
-  // Função de clique para imagens
   const handleImageClick = (imageId) => {
     setActiveImageId(prev => prev === imageId ? null : imageId);
   };
@@ -323,7 +617,6 @@ const SubColecao = () => {
         } else {
           throw new Error("Subcoleção não encontrada!");
         }
-
       } catch (error) {
         setErro(error.message);
       } finally {
@@ -362,6 +655,10 @@ const SubColecao = () => {
                 <div className="sub-overlay">
                   <span>{picture.name}</span>
                 </div>
+              </div>
+              {/* Novo card de informações fixo */}
+              <div className="sub-info-card">
+                <h3>{picture.name}</h3>
               </div>
             </div>
           );

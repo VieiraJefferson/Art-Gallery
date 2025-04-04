@@ -1,14 +1,53 @@
+// .pre-loader.custom_loader {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background-color: var(--background-color); // Fundo branco com opacidade
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   z-index: 9999; // Garante que o loader fique acima de tudo
+
+//   .loader-inner {
+//     text-align: center;
+
+//     .loader-text {
+//       display: block;
+//       font-size: 1.5rem;
+//       color: #333;
+//     }
+
+//     .pre_loader_image {
+//       width: 15vw;
+//       height: auto;
+//       animation: spin3D 8s linear infinite; // Animação de rotação 3D
+//     }
+//   }
+// }
+
+// @keyframes spin3D {
+//   0% {
+//     transform: rotateY(0deg);
+//   }
+//   100% {
+//     transform: rotateY(360deg);
+//   }
+// }
+
+
 .pre-loader.custom_loader {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--background-color); // Fundo branco com opacidade
+  background-color: var(--background-color);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999; // Garante que o loader fique acima de tudo
+  z-index: 9999;
 
   .loader-inner {
     text-align: center;
@@ -17,21 +56,45 @@
       display: block;
       font-size: 1.5rem;
       color: #333;
+      margin-top: 20px;
+      
+      @media (max-width: 768px) {
+        font-size: 1.8rem;
+      }
+      
+      @media (max-width: 480px) {
+        font-size: 2rem;
+      }
     }
 
     .pre_loader_image {
       width: 15vw;
+      min-width: 100px; /* Tamanho mínimo */
+      max-width: 250px; /* Tamanho máximo */
       height: auto;
-      animation: spin3D 8s linear infinite; // Animação de rotação 3D
+      animation: spin3D 8s linear infinite;
+
+      /* Tablet */
+      @media (max-width: 768px) {
+        width: 25vw;
+      }
+
+      /* Mobile Large */
+      @media (max-width: 480px) {
+        width: 35vw;
+      }
+
+      /* Mobile Small (ex: Galaxy Fold) */
+      @media (max-width: 360px) {
+        width: 45vw;
+      }
     }
   }
 }
 
 @keyframes spin3D {
-  0% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
-}
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}  
+
+
