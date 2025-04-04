@@ -243,4 +243,29 @@
     gap: 2rem;
     padding: 0 1rem;
   }
+}   
+
+
+/* Hide hero-gallery-image on smaller screens - new 04/04/2025 */
+@media (max-width: 768px) {
+  .hero-gallery-image {
+    display: none;
+  }
+  
+  .hero-gallery-section {
+    height: auto;
+    min-height: auto;
+  }
+  
+  .hero-gallery-content {
+    padding-top: 0;
+    margin-top: 80px !important;
+  }
+}
+
+/* Optional: Adjust the image height when it IS displayed */
+.hero-gallery-image img {
+  @media (min-width: 769px) {
+    height: 500px;
+  }
 }
