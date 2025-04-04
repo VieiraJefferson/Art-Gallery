@@ -8,7 +8,7 @@ function Loader() {
           <img
             className="pre_loader_image"
             alt="RedArt Elementor"
-            src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1741636238/LogoMaria_e4ba5o.png"
+            src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1742071843/Logo_mit_Hintergrund_kcvj7j.png"
           />
         </span>
       </div>
