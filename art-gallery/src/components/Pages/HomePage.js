@@ -45,9 +45,9 @@ const HomePage = () => {
         </div>
 
         <div className="content-block">
-          <h2>Curadoria de Arte Digital</h2>
+          <h2>Art in Blockchain</h2>
           <p>
-            Exposições Virtuais Interativas e Consultoria de Branding Artístico.
+          Immutable Art Under the Digital Big Top: Big Top Collection Showcases Circus Character NFTs in Blockchain Legacy
           </p>
         </div>
       </section>
