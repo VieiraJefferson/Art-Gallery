@@ -118,21 +118,21 @@ import axios from "axios";
 const MANUAL_DESCRIPTIONS = {
   "67c61483144fe266bc51bdc3": "Exploring the depths of imagination through light and shadow",
   "67c61c700f53cc65352d1079": "Bold colors, raw emotions, and surreal provocation",
-  "67c6e70f57cd6dd3670664a7": "Arte digital contemporânea e inovadora",
-  "67c6ec7757cd6dd36706823a": "Arte digital contemporânea e inovadora",
-  "67c6ed8a57cd6dd367068b40": "Arte digital contemporânea e inovadora",
+  "67c6e70f57cd6dd3670664a7": "Where colors play and reality bends",
+  "67c6ec7757cd6dd36706823a": "A new bloom: Embracing renewal and creative change",
+  "67c6ed8a57cd6dd367068b40": "An invitation to escape from the everyday",
   "67c6ee2957cd6dd36706906c": "Arte digital contemporânea e inovadora",
-  "67c6eeb457cd6dd3670693c8": "Arte digital contemporânea e inovadora",
+  "67c6eeb457cd6dd3670693c8": "Bluring the lines between real and the fake in a daring artistic game",
 };
 
 const MANUAL_TITLES = {
   "67c61483144fe266bc51bdc3": "A Dream in Black and White",
   "67c61c700f53cc65352d1079": "Vivid Delirium",
-  "67c6e70f57cd6dd3670664a7": " Playground",
-  "67c6ec7757cd6dd36706823a": "Abstract Realms",
-  "67c6ed8a57cd6dd367068b40": "Chromantic Journeys",
+  "67c6e70f57cd6dd3670664a7": "The Infinite Playground",
+  "67c6ec7757cd6dd36706823a": "Ressurrection of the Essence",
+  "67c6ed8a57cd6dd367068b40": "Reality Shift",
   "67c6ee2957cd6dd36706906c": "Urban Impressions",
-  "67c6eeb457cd6dd3670693c8": "Organic Algorithms",
+  "67c6eeb457cd6dd3670693c8": "The Stolen Masterpiece",
 };
 
 const Gallery = () => {

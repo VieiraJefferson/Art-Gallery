@@ -181,7 +181,7 @@
 
 .hero-gallery-content {
   flex: 1;
-  
+  padding-top: 40px; // Espaçamento base
   h1 {
     font-size: 2.8rem;
     line-height: 1.2;
@@ -351,7 +351,7 @@
 // Responsividade
 @media (max-width: 480px) {
   :root {
-    --section-spacing: 60px;
+    --section-spacing: 30px;
   }
 
   .hero-gallery-content h1 {
@@ -360,5 +360,43 @@
   
   .card-image {
     height: 250px !important;
+  }
+}  
+
+// Adicione estas regras
+.hero-gallery-section .hero-gallery-content{
+  margin-top: 80px; // Valor base para desktops
+
+  @media (max-width: 1024px) {
+    margin-top: 60px; // Tablet
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 50px; // Mobile Large
+  }
+
+  @media (max-width: 480px) {
+    margin-top: 40px; // Mobile Small
+  }
+
+  // Ajuste fino para iPhone 12/13 (390px)
+  @media (max-width: 390px) {
+    margin-top: 35px;
+  }
+}
+
+// Mantenha o restante do CSS existente
+.hero-gallery-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--section-spacing) 2rem;
+  display: flex;
+  gap: 5rem;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0 1rem;
   }
 }
