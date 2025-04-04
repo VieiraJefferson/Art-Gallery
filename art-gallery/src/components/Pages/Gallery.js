@@ -1,53 +1,155 @@
+// novo 04/04/2025
+
+// import React, { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
+// import axios from "axios";
+
+// const Gallery = () => {
+//   const [colecoes, setColecoes] = useState([]);
+//   const [carregando, setCarregando] = useState(true);
+//   const [erro, setErro] = useState(null);
+
+//   const fixedToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2VlYzZmOTI5ZjEyNDIxMzY5NWEzNzgiLCJpYXQiOjE3NDM3MDE3NTMsImV4cCI6MTc0ODg4NTc1M30.UvMxJfZVY-wLSEGpZES5j3Pg_OAIKTaAiALXMR7hXAo";
+
+//   useEffect(() => {
+//     const buscarColecoes = async () => {
+//       try {
+//         const resposta = await axios.get(
+//           "https://art-api-nine.vercel.app/collections/get-all",
+//           { headers: { Authorization: `Bearer ${fixedToken}` } }
+//         );
+//         setColecoes(resposta.data.collections);
+//         setCarregando(false);
+//       } catch (error) {
+//         console.error("Erro ao buscar coleções!");
+//         setErro(error.response ? error.response.data.message : error.message);
+//         setCarregando(false);
+//       }
+//     };
+//     buscarColecoes();
+//   }, []);
+
+//   if (carregando) return <div>Carregando...</div>;
+//   if (erro) return <div>Erro: {erro}</div>;
+
+//   // Dividir subcoleções em grupos de 3
+//   const chunkArray = (arr, size) =>
+//     Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
+//       arr.slice(i * size, i * size + size)
+//     );
+
+//   const todasSubColecoes = colecoes.flatMap(colecao =>
+//     colecao.subCollections?.map(sub => ({
+//       ...sub,
+//       colecaoPaiUrl: `/colecao/${colecao._id}/subcolecao/${sub._id}`
+//     })) || []
+//   );
+
+//   const groupedCollections = chunkArray(todasSubColecoes, 3);
+
+//   return (
+//     <div className="gallery-container">
+//       <section className="hero-gallery-section">
+//         <div className="hero-gallery-content">
+//           <h1>Ethereal Chronicles: The Alchemy of Visionary Narratives</h1>
+//           <p>"Where Visionary Art Meets Emotional Alchemy
+// Surreal Dreams Dance with Symbolic Truths
+// Whimsy Woven into Timeless Narratives
+// Spaces Reimagined Through Collective Soul
+// Step Into Stories That Transcend Canvas"</p>
+//           <div className="hero-gallery-actions">
+//             <Link to="/colecoes" className="hero-button">Browse Collection</Link>
+//           </div>
+//         </div>
+//         <div className="hero-gallery-image">
+//           <img
+//             src="https://res.cloudinary.com/dpilz4p6g/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1741212721/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/jlutboa4zaxhrq5wyrj2.jpg"
+//             alt="Featured Artwork"
+//             loading="lazy"
+//           />
+//         </div>
+//       </section>
+
+//       {groupedCollections.map((group, index) => (
+//         <section key={`section-${index}`} className="collection-section">
+//           <div className="collection-wrapper">
+//             <div className="collection-grid">
+//               {group.map((subColecao) => {
+//                 const imagemCapa = subColecao.pictures?.find(pic => pic.isCover);
+//                 const imagemSrc = imagemCapa?.src ||
+//                                subColecao.pictures?.[0]?.src ||
+//                                "/img/placeholder.jpg";
+
+//                 return (
+//                   <div key={subColecao._id} className="collection-card">
+//                     <Link to={subColecao.colecaoPaiUrl} className="card-image-link">
+//                       <img
+//                         src={imagemSrc}
+//                         alt={`Capa da subcoleção ${subColecao.subCollectionName}`}
+//                         className="card-image"
+//                         loading="lazy"
+//                       />
+//                     </Link>
+//                     <h3 className="card-title">{subColecao.subCollectionName || "Sem nome"}</h3>
+//                     <p className="card-description">
+//                       {subColecao.description || "Descrição não disponível"}
+//                     </p>
+//                     <Link to={subColecao.colecaoPaiUrl} className="card-button">
+//                       Ver Coleção
+//                     </Link>
+//                   </div>
+//                 );
+//               })}
+//             </div>
+//           </div>
+//         </section>
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default Gallery;
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
+// Mapeamento manual de descrições
+const MANUAL_DESCRIPTIONS = {
+  "67c61483144fe266bc51bdc3": "Exploring the depths of imagination through light and shadow",
+  "67c61c700f53cc65352d1079": "Bold colors, raw emotions, and surreal provocation",
+  "67c6e70f57cd6dd3670664a7": "Arte digital contemporânea e inovadora",
+  "67c6ec7757cd6dd36706823a": "Arte digital contemporânea e inovadora",
+  "67c6ed8a57cd6dd367068b40": "Arte digital contemporânea e inovadora",
+  "67c6ee2957cd6dd36706906c": "Arte digital contemporânea e inovadora",
+  "67c6eeb457cd6dd3670693c8": "Arte digital contemporânea e inovadora",
+};
+
+const MANUAL_TITLES = {
+  "67c61483144fe266bc51bdc3": "A Dream in Black and White",
+  "67c61c700f53cc65352d1079": "Vivid Delirium",
+  "67c6e70f57cd6dd3670664a7": " Playground",
+  "67c6ec7757cd6dd36706823a": "Abstract Realms",
+  "67c6ed8a57cd6dd367068b40": "Chromantic Journeys",
+  "67c6ee2957cd6dd36706906c": "Urban Impressions",
+  "67c6eeb457cd6dd3670693c8": "Organic Algorithms",
+};
 
 const Gallery = () => {
   const [colecoes, setColecoes] = useState([]);
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState(null);
 
-  
-useEffect(() => {
-  const cards = document.querySelectorAll('.gallery-card');
-  
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
-    e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
-  };
-
-  cards.forEach(card => {
-    card.addEventListener('mousemove', handleMouseMove);
-  });
-
-  return () => {
-    cards.forEach(card => {
-      card.removeEventListener('mousemove', handleMouseMove);
-    });
-  };
-}, []);
-
-  // Token fixo para autenticação
   const fixedToken =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJndWVzdCIsImlhdCI6MTc0MjY0OTM5MCwiZXhwIjoxNzQ1MjQxMzkwfQ.HAOUcKQLxQpZ2b4ogcUiOGtUWh96tMe1PLtl-IXkI-o"; // Substitua pelo token gerado
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2VlYzZmOTI5ZjEyNDIxMzY5NWEzNzgiLCJpYXQiOjE3NDM3MDE3NTMsImV4cCI6MTc0ODg4NTc1M30.UvMxJfZVY-wLSEGpZES5j3Pg_OAIKTaAiALXMR7hXAo";
 
-  // Função para buscar as coleções da API
   useEffect(() => {
     const buscarColecoes = async () => {
       try {
         const resposta = await axios.get(
           "https://art-api-nine.vercel.app/collections/get-all",
-          {
-            headers: {
-              Authorization: `Bearer ${fixedToken}`, // Adiciona o token fixo no header
-            },
-          }
+          { headers: { Authorization: `Bearer ${fixedToken}` } }
         );
-        console.log(resposta.data.collections);
-
         setColecoes(resposta.data.collections);
         setCarregando(false);
       } catch (error) {
@@ -56,48 +158,112 @@ useEffect(() => {
         setCarregando(false);
       }
     };
-
     buscarColecoes();
   }, []);
 
-  if (carregando) {
-    return <div>Carregando...</div>;
-  }
+  if (carregando) return <div>Carregando...</div>;
+  if (erro) return <div>Erro: {erro}</div>;
 
-  if (erro) {
-    return <div>Erro: {erro}</div>;
-  }
+  // Mantido o método de busca original que funcionava
+  const todasSubColecoes = colecoes.flatMap(
+    (colecao) =>
+      colecao.subCollections?.map((sub) => ({
+        ...sub,
+        // Alterado para usar a rota antiga que funcionava
+        colecaoPaiUrl: `/subcolecao/${sub._id}`,
+      })) || []
+  );
+
+  // Mantida a divisão em grupos de 3 para o layout
+  const chunkArray = (arr, size) =>
+    Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
+      arr.slice(i * size, i * size + size)
+    );
+
+  const groupedCollections = chunkArray(todasSubColecoes, 3);
 
   return (
     <div className="gallery-container">
-      <div className="gallery-grid">
-        {colecoes.map((colecao) =>
-          colecao.subCollections.map((subColecao) => (
-            <div key={subColecao._id} className="gallery-card">
-              <Link to={`/subcolecao/${subColecao._id}`}>
-                <div className="image-card">
-                  <img
-                    src={
-                      subColecao.pictures && subColecao.pictures.length > 0
-                        ? subColecao.pictures[1].src
-                        : "/img/placeholder.jpg"
-                    }
-                    alt={`Capa da subcoleção ${subColecao.subCollectionName}`}
-                    onError={(e) => {
-                      e.target.src = "/img/placeholder.jpg"; // Fallback para imagens quebradas
-                    }}
-                  />
-                </div>
-                <div className="overlay">
-                  <span>{subColecao.subCollectionName}</span>
-                </div>
-              </Link>
+      <section className="hero-gallery-section">
+        <div className="hero-gallery-content">
+          <h1>Ethereal Chronicles: The Alchemy of Visionary Narratives</h1>
+          <p>
+            Where Visionary Art Meets Emotional Alchemy
+            <br />
+            Surreal Dreams Dance with Symbolic Truths
+            <br />
+            Whimsy Woven into Timeless Narratives
+            <br />
+            Spaces Reimagined Through Collective Soul
+            <br />
+            Step Into Stories That Transcend Canvas
+          </p>
+          {/* <div className="hero-gallery-actions">
+            <Link to="/colecoes" className="hero-button">Browse Collection</Link>
+          </div> */}
+        </div>
+        <div className="hero-gallery-image">
+          <img
+            src="https://res.cloudinary.com/dpilz4p6g/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1741212721/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/jlutboa4zaxhrq5wyrj2.jpg"
+            alt="Featured Artwork"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+      {groupedCollections.map((group, index) => (
+        <section key={`section-${index}`} className="collection-section">
+          <div className="collection-wrapper">
+            <div className="collection-grid">
+              {group.map((subColecao) => {
+                // Mantido o método original de busca de imagens
+                const imagemCapa = subColecao.pictures?.find(
+                  (pic) => pic.isCover
+                );
+                const imagemSrc =
+                  imagemCapa?.src ||
+                  subColecao.pictures?.[0]?.src ||
+                  "/img/placeholder.jpg";
+
+                return (
+                  <div key={subColecao._id} className="collection-card">
+                    <Link
+                      to={subColecao.colecaoPaiUrl}
+                      className="card-image-link"
+                    >
+                      <img
+                        src={imagemSrc}
+                        alt={`Capa da subcoleção ${subColecao.subCollectionName}`}
+                        className="card-image"
+                        loading="lazy"
+                      />
+                    </Link>
+                    {/* <h3 className="card-title">{subColecao.subCollectionName || "Sem nome"}</h3> */}
+                    <h3 className="card-title">
+                      {MANUAL_TITLES[subColecao._id] ||
+                        subColecao.subCollectionName ||
+                        "Sem nome"}
+                    </h3>
+                    <p className="card-description">
+                      {MANUAL_DESCRIPTIONS[subColecao._id] ||
+                        subColecao.description ||
+                        "Descrição não disponível"}
+                    </p>
+                    {/* <p className="card-description">
+                      {subColecao.description || "Descrição não disponível"}
+                    </p> */}
+                    {/* Mantido o link original */}
+                    <Link to={subColecao.colecaoPaiUrl} className="card-button">
+                      Ver Coleção
+                    </Link>
+                  </div>
+                );
+              })}
             </div>
-          ))
-        )}
-      </div>
+          </div>
+        </section>
+      ))}
     </div>
- 
   );
 };
 

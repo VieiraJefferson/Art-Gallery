@@ -45,6 +45,8 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/subcolecao/:id" element={<SubColecao />} />
+          <Route path="/colecao/:colecaoId/subcolecao/:subId" element={<SubColecao />} 
+/>
         </Routes>
       </div>
       <Footer />
