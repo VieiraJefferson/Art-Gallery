@@ -6,6 +6,10 @@ import Gallery from "./components/Pages/Gallery";
 import ArtistProfile from "./components/Pages/ArtistProfile";
 import SubColecao from "./components/Pages/SubColecao";
 import Loader from "./components/Pages/SpecificPages/Loader";
+import ScrollToTop from "./components/Pages/SpecificPages/ScrollToTop";
+
+
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -37,6 +41,7 @@ function App() {
   return (
     <>
       {loading && <Loader />} {/* Exibe o loader enquanto loading for true */}
+      <ScrollToTop />
       <NavBar />
       <div className="container main">
         <Routes>
