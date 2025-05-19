@@ -5,6 +5,8 @@ import {
   FaTwitter,
   FaLinkedinIn,
 } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { BiLogoGmail } from "react-icons/bi";
 
 const Footer = () => {
   return (
@@ -175,18 +177,18 @@ const Footer = () => {
 
         {/* Bottom Section - Social Icons */}
         <div className="footer-social">
-          <a href="#" className="social-icon">
-            <FaInstagram />
+          <a href="maria.vantie@gmail.com" className="social-icon">
+            <BiLogoGmail />
           </a>
-          <a href="#" className="social-icon">
+          {/* <a href="#" className="social-icon">
             <FaFacebookF />
+          </a> */}
+          <a href="https://x.com/MareiPallas" className="social-icon">
+            <FaXTwitter/>
           </a>
-          <a href="#" className="social-icon">
-            <FaTwitter />
-          </a>
-          <a href="#" className="social-icon">
+          {/* <a href="#" className="social-icon">
             <FaLinkedinIn />
-          </a>
+          </a> */}
         </div>
 
         {/* Bottom Section - Copyright */}

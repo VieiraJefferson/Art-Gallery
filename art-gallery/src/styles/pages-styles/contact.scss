@@ -159,6 +159,9 @@
 //   }  
 
 
+@import "../pages-styles/mixins";
+@import "../pages-styles/variables";
+
 .contact-page {
   background-image: url('https://res.cloudinary.com/dpilz4p6g/image/upload/v1742071843/Paulas_Muster_umgekehrte_Farben_fmu58k.jpg');
   background-color: rgba(0, 0, 0, 0.8); // Overlay para escurecer
