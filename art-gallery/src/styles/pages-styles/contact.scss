@@ -1,159 +1,269 @@
+// // .contact-page {
+// //     // background-image: linear-gradient(rgba(1.5, 1.5, 1.5, 2), rgba(0, 0, 0, 0.5)), url('https://res.cloudinary.com/dpilz4p6g/image/upload/v1741631163/map_z12crh.png');
+    
+// //     background-image: linear-gradient(rgba(1.5, 1.5, 1.5, 2), rgba(0, 0, 0, 0.8)), url('https://res.cloudinary.com/dpilz4p6g/image/upload/v1742071843/Paulas_Muster_umgekehrte_Farben_fmu58k.jpg');
+    
+// //     // background-image: linear-gradient(rgba(1.5, 1.5, 1.5, 2), rgba(0, 0, 0, 0.5)), url('https://res.cloudinary.com/dpilz4p6g/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1741708066/Background_n6y6wm.png');
+    
+// //     background-size: cover; // Cobrir todo o container
+// //     background-position: center; // Centralizar a imagem
+// //     background-repeat: no-repeat; // Evitar repetição
+// //     min-height: 100vh; // Cobrir toda a altura da viewport
+// //     display: flex;
+// //     justify-content: center;
+// //     align-items: center;
+// //     padding: 2rem; // Espaçamento interno
+    
+// // }
+
+
 // .contact-page {
-//     // background-image: linear-gradient(rgba(1.5, 1.5, 1.5, 2), rgba(0, 0, 0, 0.5)), url('https://res.cloudinary.com/dpilz4p6g/image/upload/v1741631163/map_z12crh.png');
-    
-//     background-image: linear-gradient(rgba(1.5, 1.5, 1.5, 2), rgba(0, 0, 0, 0.8)), url('https://res.cloudinary.com/dpilz4p6g/image/upload/v1742071843/Paulas_Muster_umgekehrte_Farben_fmu58k.jpg');
-    
-//     // background-image: linear-gradient(rgba(1.5, 1.5, 1.5, 2), rgba(0, 0, 0, 0.5)), url('https://res.cloudinary.com/dpilz4p6g/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1741708066/Background_n6y6wm.png');
-    
-//     background-size: cover; // Cobrir todo o container
-//     background-position: center; // Centralizar a imagem
-//     background-repeat: no-repeat; // Evitar repetição
-//     min-height: 100vh; // Cobrir toda a altura da viewport
+//     background-image: url('https://res.cloudinary.com/dpilz4p6g/image/upload/v1742071843/Paulas_Muster_umgekehrte_Farben_fmu58k.jpg');
+//     background-color: rgba(0, 0, 0, 0.8); /* Cor de overlay + opacidade */
+//     background-blend-mode: overlay; /* Mistura a cor com a imagem */
+//     background-size: cover;
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     min-height: 100vh;
 //     display: flex;
 //     justify-content: center;
 //     align-items: center;
-//     padding: 2rem; // Espaçamento interno
+//     padding: 2rem;
+// }
+
+
+
+// .contact-container{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     min-height: 20vh;
+//     // background-color: var(--background-color);
+   
+//     background-color: transparent;
+//     backdrop-filter: blur(5px);
+   
+// }
+
+// .contact-form{
+//     max-width: 30vw;
+//     width: 100%;
+//     background-color: transparent;
+//     padding: 1.5rem 1.5rem 2rem;
+//     border: 1px solid white;
+//     border-radius: 0.1rem;
+//     box-shadow: 0 0 0.3rem rgba(177, 173, 173, 0.692);
+//     color: #fffbfb;
+//     h2{
+//         font-size: 1.5rem;
+//         text-align: center;
+//         color: var(--text-color);
+//     }
+// }
+
+// .input-box{
+//     margin-top: 1.25rem;
+//     color: white; 
+// }
+
+// .input-box .field{
+//     width: 100%;
+//     height: 1.8rem;
+//     background: transparent;
+   
+//     border: .05rem solid rgb(255, 254, 254);
+//     border-color:  var(--text-color); 
+//     outline: none;
+//     border-radius: 0.1rem; 
+//     padding: 0.9375rem;
+//     font-size: 0.8rem;
+//     color: white; 
+//     margin-top: 0.5rem;
+    
+ 
+    
+// }
+
+//  .mess{
+//         width: 100%;
+//         height: 3.5rem;
+//         resize: none;
+//         background: transparent;
+//         color: var(--text-color);
+//         border: .05rem solid rgb(255, 254, 254); 
     
 // }
 
 
-.contact-page {
-    background-image: url('https://res.cloudinary.com/dpilz4p6g/image/upload/v1742071843/Paulas_Muster_umgekehrte_Farben_fmu58k.jpg');
-    background-color: rgba(0, 0, 0, 0.8); /* Cor de overlay + opacidade */
-    background-blend-mode: overlay; /* Mistura a cor com a imagem */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-}
+// form  button{
+//     width: 100%;
+//     height: 2.5rem;
+//     background: var(--primary-color);
+//     border: none;
+//     border-radius: 0.1875rem;
+//     box-shadow: 0 0 10px rgba(0, 0, 0, .1) ;
+//     cursor: pointer;
+//     font-size: 0.875rem;
+//     color: aquamarine;
+//     margin-top: 1.5625rem;
+//     margin-top: 25px;
+//     transform: .5s;
+// }
+
+// form  button:hover{
+//     background-color: var(--background-light);
+// }
 
 
 
-.contact-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 20vh;
-    // background-color: var(--background-color);
-   
-    background-color: transparent;
-    backdrop-filter: blur(5px);
-   
-}
 
-.contact-form{
-    max-width: 30vw;
-    width: 100%;
-    background-color: transparent;
-    padding: 1.5rem 1.5rem 2rem;
-    border: 1px solid white;
-    border-radius: 0.1rem;
-    box-shadow: 0 0 0.3rem rgba(177, 173, 173, 0.692);
-    color: #fffbfb;
-    h2{
-        font-size: 1.5rem;
-        text-align: center;
-        color: var(--text-color);
-    }
-}
 
-.input-box{
-    margin-top: 1.25rem;
-    color: white; 
-}
-
-.input-box .field{
-    width: 100%;
-    height: 1.8rem;
-    background: transparent;
-   
-    border: .05rem solid rgb(255, 254, 254);
-    border-color:  var(--text-color); 
-    outline: none;
-    border-radius: 0.1rem; 
-    padding: 0.9375rem;
-    font-size: 0.8rem;
-    color: white; 
-    margin-top: 0.5rem;
+// /* Dispositivos móveis (480px ou menos) */
+// @media (max-width: 480px) {
+//     .contact-form {
+//       max-width: 85vw; /* Ocupa 85% da tela */
+//       padding: 1.2rem;
+//     }
     
- 
+//     .contact-form h2 {
+//       font-size: 1.3rem;
+//     }
     
-}
-
- .mess{
-        width: 100%;
-        height: 3.5rem;
-        resize: none;
-        background: transparent;
-        color: var(--text-color);
-        border: .05rem solid rgb(255, 254, 254); 
+//     .input-box .field,
+//     .mess {
+//       height: auto;
+//       padding: 0.8rem;
+//       font-size: 0.9rem;
+//     }
     
-}
-
-
-form  button{
-    width: 100%;
-    height: 2.5rem;
-    background: var(--primary-color);
-    border: none;
-    border-radius: 0.1875rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1) ;
-    cursor: pointer;
-    font-size: 0.875rem;
-    color: aquamarine;
-    margin-top: 1.5625rem;
-    margin-top: 25px;
-    transform: .5s;
-}
-
-form  button:hover{
-    background-color: var(--background-light);
-}
-
-
-
-
-
-/* Dispositivos móveis (480px ou menos) */
-@media (max-width: 480px) {
-    .contact-form {
-      max-width: 85vw; /* Ocupa 85% da tela */
-      padding: 1.2rem;
-    }
-    
-    .contact-form h2 {
-      font-size: 1.3rem;
-    }
-    
-    .input-box .field,
-    .mess {
-      height: auto;
-      padding: 0.8rem;
-      font-size: 0.9rem;
-    }
-    
-    form button {
-      height: 2.8rem;
-      font-size: 1rem;
-    }
-  }
+//     form button {
+//       height: 2.8rem;
+//       font-size: 1rem;
+//     }
+//   }
   
-  /* Dispositivos muito pequenos (360px ou menos) */
-  @media (max-width: 360px) {
-    .contact-form {
-      max-width: 90vw;
-      padding: 1rem;
-    }
+//   /* Dispositivos muito pequenos (360px ou menos) */
+//   @media (max-width: 360px) {
+//     .contact-form {
+//       max-width: 90vw;
+//       padding: 1rem;
+//     }
     
-    .contact-form h2 {
-      font-size: 1.2rem;
-    }
+//     .contact-form h2 {
+//       font-size: 1.2rem;
+//     }
     
-    .input-box {
-      margin-top: 1rem;
+//     .input-box {
+//       margin-top: 1rem;
+//     }
+//   }  
+
+
+.contact-page {
+  background-image: url('https://res.cloudinary.com/dpilz4p6g/image/upload/v1742071843/Paulas_Muster_umgekehrte_Farben_fmu58k.jpg');
+  background-color: rgba(0, 0, 0, 0.8); // Overlay para escurecer
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $space-lg;
+}
+
+.contact-container {
+  @include glass-card(24px);
+  padding: $space-md;
+  max-width: 480px;
+  width: 100%;
+  margin: auto;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  color: #FFF;
+
+  h2 {
+    font-family: $font-heading;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: $space-sm;
+  }
+
+  .input-box {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-family: $font-base;
+      margin-bottom: 0.25rem;
+      color: #FFF;
+    }
+
+    .field, .mess {
+      width: 100%;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-family: $font-base;
+      font-size: 0.9rem;
+      color: #FFF;
+      outline: none;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        border-color: $primary-gradient;
+      }
+    }
+
+    .mess {
+      resize: vertical;
+      min-height: 5rem;
     }
   }
+
+  button {
+    width: 100%;
+    padding: 0.75rem;
+    background: $primary-gradient;
+    border: none;
+    border-radius: 8px;
+    font-family: $font-heading;
+    font-size: 1rem;
+    color: #FFF;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+// Responsividade
+@media (max-width: 768px) {
+  .contact-container {
+    margin: $space-md;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-form h2 {
+    font-size: 1.3rem;
+  }
+
+  .input-box .field,
+  .input-box .mess {
+    font-size: 0.85rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+  }
+}

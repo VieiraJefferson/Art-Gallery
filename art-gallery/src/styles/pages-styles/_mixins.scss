@@ -1,0 +1,8 @@
+@mixin glass-card($radius: 16px) {
+  background: $glass-bg;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid $glass-border;
+  box-shadow: $glass-shadow;
+  border-radius: $radius;
+}
