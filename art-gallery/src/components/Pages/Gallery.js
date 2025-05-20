@@ -116,12 +116,12 @@ import axios from "axios";
 
 // Mapeamento manual de descrições
 const MANUAL_DESCRIPTIONS = {
-  "67c61483144fe266bc51bdc3": "Exploring the depths of imagination through light and shadow",
-  "67c61c700f53cc65352d1079": "Bold colors, raw emotions, and surreal provocation",
+  "67c61483144fe266bc51bdc3": "Exploring the Depths of Imagination through Light and Shadow",
+  "67c61c700f53cc65352d1079": "Bold colors, raw Emotions, and Surreal Provocation",
   "67c6e70f57cd6dd3670664a7": "A Glimpse into Human Nature",
   "67c6ec7757cd6dd36706823a": "Raw, Real, and Uncomfortable",
   "67c6ed8a57cd6dd367068b40": "Simple Things, Subtle Stories",
-  "67c6ee2957cd6dd36706906c": "Arte digital contemporânea e inovadora",
+  "67c6eeb457cd6dd3670693c8": "An Invitation to Escape from the Everyday",
 };
 
 const MANUAL_TITLES = {
