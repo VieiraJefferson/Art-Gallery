@@ -120,9 +120,8 @@ const MANUAL_DESCRIPTIONS = {
   "67c61c700f53cc65352d1079": "Bold colors, raw emotions, and surreal provocation",
   "67c6e70f57cd6dd3670664a7": "A Glimpse into Human Nature",
   "67c6ec7757cd6dd36706823a": "Raw, Real, and Uncomfortable",
-  "67c6ed8a57cd6dd367068b40": "An invitation to escape from the everyday - Simple Things, Subtle Stories",
+  "67c6ed8a57cd6dd367068b40": "Simple Things, Subtle Stories",
   "67c6ee2957cd6dd36706906c": "Arte digital contemporânea e inovadora",
-  "67c6eeb457cd6dd3670693c8": "Interrupting the Everyday with Small Revolutions",
 };
 
 const MANUAL_TITLES = {
@@ -131,8 +130,8 @@ const MANUAL_TITLES = {
   "67c6e70f57cd6dd3670664a7": "Moments in Paint",
   "67c6ec7757cd6dd36706823a": "Signs of the Times",
   "67c6ed8a57cd6dd367068b40": "The Ordinary Seen Anew ",
-  "67c6ee2957cd6dd36706906c": "Art in Action",
-  "67c6eeb457cd6dd3670693c8": "The Stolen Masterpiece",
+  "67c6eeb457cd6dd3670693c8": "Art in Action",
+  
 };
 
 const Gallery = () => {
