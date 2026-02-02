@@ -84,7 +84,7 @@ const NFTs = () => {
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed mb-8">
             Explore the <span className="text-foreground font-medium">{COLLECTION_NAME}</span> collection 
-            — unique Bitcoin Ordinals by Marei Pallas inscribed forever on the blockchain.
+             unique Bitcoin Ordinals by Marei Pallas inscribed forever on the blockchain.
           </p>
           
           {/* CTA Principal */}
