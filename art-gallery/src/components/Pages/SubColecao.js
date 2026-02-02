@@ -243,6 +243,98 @@ const SubColecao = () => {
         )}
       </section>
 
+      {/* Kunstraub Story Section */}
+      {isKunstraub && (
+        <section className="container-custom pb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl mx-auto"
+          >
+            <h2 className="text-3xl md:text-4xl font-display mb-8">
+              Art Prank: A Stolen <span className="text-accent-italic">Masterpiece?</span>
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6 italic">
+              My Fictional Art Heist at the Kunsthalle Bremen
+            </p>
+            
+            <div className="prose prose-lg max-w-none space-y-6 text-muted-foreground">
+              <p className="leading-relaxed">
+                What is art? What is reality? And how easily can people be deceived? With my art prank, 
+                an orchestrated art heist, I aimed to explore these very questions, leading Bremen on 
+                a playful yet thought-provoking wild chase.
+              </p>
+
+              <h3 className="text-xl font-display text-foreground mt-10 mb-4">
+                Crime Scene: Kunsthalle Bremen – A Painting Disappears
+              </h3>
+              <p className="leading-relaxed">
+                On September 18, 2020, at exactly 5:37 PM, a spectacular art heist was said to have 
+                taken place at the Kunsthalle Bremen. The stolen artwork? My piece "I still have my 
+                red shoes in Virginia." At least, that's what mysterious posters appearing all over 
+                Bremen suggested. The "Cultural Senator" and the "Bremen Criminal Investigation Office" 
+                urged the public to assist in solving the case, offering a reward of up to €5,000 for 
+                any useful information.
+              </p>
+              <p className="leading-relaxed">
+                The posters looked astonishingly real: a shadowy figure, unidentifiable, carrying a 
+                painting out of the Kunsthalle. The police were in pursuit, or were they?
+              </p>
+
+              <h3 className="text-xl font-display text-foreground mt-10 mb-4">
+                A Game with Reality
+              </h3>
+              <p className="leading-relaxed">
+                The posters alone would have been enough to spark curiosity. But I wanted to take it 
+                further: a fabricated article in the Weser Kurier reported on the alleged art theft. 
+                People started speculating, was this an actual scandal or a brilliant artistic stunt? 
+                And who was the elusive thief?
+              </p>
+              <p className="leading-relaxed">
+                Then, the inevitable happened: the real Weser Kurier caught wind of the project and 
+                eventually published their own report:
+              </p>
+              <blockquote className="border-l-2 border-accent pl-6 py-2 my-6 italic text-foreground/80">
+                "Those walking attentively through the Viertel these days may come across a poster 
+                warning of something alarming at the Kunsthalle. The official-looking notice calls 
+                on the public, on behalf of the 'Cultural Senator' and the 'Bremen Criminal Investigation 
+                Office,' to help solve an art heist. Allegedly, the piece 'I still have my red shoes 
+                in Virginia' by the artist collective 'Pallasgalaxy' was stolen from the Kunsthalle 
+                in September. A €5,000 reward is being offered for useful tips. Before anyone takes 
+                up detective work: the poster campaign is a prank. There was no break-in at the 
+                Kunsthalle, and no one is missing the mentioned artwork, because it simply does not 
+                exist. The cultural institution assures the WESER-KURIER of this, cross their hearts."
+              </blockquote>
+              <p className="leading-relaxed">
+                With that, the game reached its peak: the boundaries between fiction and reality 
+                blurred until reality itself became part of the narrative.
+              </p>
+
+              <h3 className="text-xl font-display text-foreground mt-10 mb-4">
+                An Art Heist as a Social Experiment
+              </h3>
+              <p className="leading-relaxed">
+                This project was more than just a harmless prank. It raised questions about the power 
+                of images, our willingness to believe what appears official, and the fine line between 
+                fact and fabrication. How much do we trust what looks legitimate? When do we begin to 
+                doubt? And what happens when art seamlessly embeds itself into reality?
+              </p>
+              <p className="leading-relaxed">
+                I thank everyone who played along: the passersby who stopped to stare, the readers 
+                who wondered, and the Weser Kurier, who unintentionally became a participant.
+              </p>
+              <p className="leading-relaxed text-foreground">
+                Perhaps nothing was stolen here, perhaps a moment of wonder was created instead. 
+                A playful challenge to our perceptions and realities, reminding us how thrilling 
+                it can be to question the world around us.
+              </p>
+            </div>
+          </motion.div>
+        </section>
+      )}
+
       {/* Modal */}
       <AnimatePresence>
         {selectedIndex !== null && images[selectedIndex] && (
