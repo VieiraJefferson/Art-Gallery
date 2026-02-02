@@ -14,6 +14,7 @@ require('./db');
 const authRoutes = require('./routes/auth');
 const collectionsRouter = require('./routes/collections');
 const pictureRouter = require('./routes/pictureRoutes');
+const magicedenRouter = require('./routes/magiceden');
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -48,6 +49,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/auth', authRoutes);
 app.use('/collections', collectionsRouter);
 app.use('/pictures', pictureRouter);
+app.use('/magiceden', magicedenRouter);
 
 // Rota raiz
 app.get('/', (req, res) => res.json({ 

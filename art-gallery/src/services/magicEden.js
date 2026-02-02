@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const BASE_URL = "https://api-mainnet.magiceden.dev/v2/ord/btc";
+// Usa o proxy do backend para evitar CORS
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+const BASE_URL = `${API_BASE_URL}/magiceden`;
 
 // Cache simples em memória
 const cache = {
@@ -69,6 +71,7 @@ export async function fetchCollectionTokens({
     params.append("listed", listed.toString());
   }
 
+  // Usa o proxy do backend
   const url = `${BASE_URL}/tokens?${params.toString()}`;
 
   try {
@@ -103,7 +106,7 @@ export async function fetchAllTokensCached(collectionSymbol, forceRefresh = fals
   }
 
   // Busca dados frescos
-  console.log("Buscando dados da API Magic Eden...");
+  console.log("Buscando dados da API Magic Eden via proxy...");
   const tokens = await fetchCollectionTokens({
     collectionSymbol,
     limit: 100,
