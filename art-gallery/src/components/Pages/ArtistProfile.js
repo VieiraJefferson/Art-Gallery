@@ -43,9 +43,9 @@ const ArtistProfile = () => {
                 Marei <span className="text-accent-italic">Pallas.</span>
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                A boundary-crossing artist, Marei Pallas blends contemporary surrealism 
-                with symbolism shaped by real encounters. Her work invites viewers into 
-                worlds where reality and imagination meet—an invitation to communicate 
+                A boundary-crossing artist, Marei Pallas blends contemporary surrealism
+                with symbolism shaped by real encounters. Her work invites viewers into
+                worlds where reality and imagination meet,an invitation to communicate
                 beyond words, through the language of the soul.
               </p>
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -73,44 +73,44 @@ const ArtistProfile = () => {
               <h2 className="text-4xl md:text-5xl font-display mb-12 text-center">
                 The <span className="text-accent-italic">Journey.</span>
               </h2>
-              
+
               <div className="space-y-8">
                 <p className="text-muted-foreground leading-relaxed">
-                  Born in Germany, Marei Pallas has always followed art as a red thread 
-                  through her life. In 2015, she left her job and spent three years abroad 
+                  Born in Germany, Marei Pallas has always followed art as a red thread
+                  through her life. In 2015, she left her job and spent three years abroad
                   to paint, draw, and search for her own visual language.
                 </p>
-                
+
                 <p className="text-muted-foreground leading-relaxed">
-                  She spent half a year in Varna on a quiet, self-led retreat—painting daily 
+                  She spent half a year in Varna on a quiet, self-led retreat,painting daily
                   and working intensely on developing her own artistic style.
                 </p>
-                
+
                 <p className="text-muted-foreground leading-relaxed">
-                  Later, in Istanbul, her practice moved into public space. She created 
-                  street-based art actions that invited real contact, like painting a chalk 
-                  artwork with people beneath Galata Tower, and brought surreal moments into 
-                  everyday life. It was never only about the image, but about presence: art 
+                  Later, in Istanbul, her practice moved into public space. She created
+                  street-based art actions that invited real contact, like painting a chalk
+                  artwork with people beneath Galata Tower, and brought surreal moments into
+                  everyday life. It was never only about the image, but about presence: art
                   as something shared.
                 </p>
-                
+
                 <p className="text-muted-foreground leading-relaxed">
-                  After Istanbul, she returned to Germany and continued with direct interventions 
-                  in the street, including her "Hug a Terrorist / Love is stronger than hate" 
-                  action or "Sunflowers on Sunday", an intervention to give more intention to 
+                  After Istanbul, she returned to Germany and continued with direct interventions
+                  in the street, including her "Hug a Terrorist / Love is stronger than hate"
+                  action or "Sunflowers on Sunday", an intervention to give more intention to
                   drivers of the public transport.
                 </p>
-                
+
                 <p className="text-muted-foreground leading-relaxed">
-                  In 2025, she released her first NFT collection on the blockchain, selling out 
-                  within 24 hours and reaching the Top 20 on Magic Eden, with strong attention 
-                  on X. Later in Portugal, she hung her latest NFT collection outdoors and showed 
-                  it directly to people on the street, because for her, art should be visible and 
+                  In 2025, she released her first NFT collection on the blockchain, selling out
+                  within 24 hours and reaching the Top 20 on Magic Eden, with strong attention
+                  on X. Later in Portugal, she hung her latest NFT collection outdoors and showed
+                  it directly to people on the street, because for her, art should be visible and
                   accessible beyond galleries.
                 </p>
-                
+
                 <p className="text-muted-foreground leading-relaxed">
-                  In October 2025, she joined a school for realistic painting and drawing to 
+                  In October 2025, she joined a school for realistic painting and drawing to
                   sharpen her technique further, while staying true to her own surrealist direction.
                 </p>
               </div>
@@ -133,13 +133,13 @@ const ArtistProfile = () => {
                 Artistic <span className="text-accent-italic">Philosophy.</span>
               </h2>
               <blockquote className="text-2xl md:text-3xl font-display text-foreground leading-relaxed mb-8 italic">
-                "Art is crossing boundaries, stepping out of the ordinary and into the unknown. 
-                It's the language of the soul: an invitation to communicate with ourselves 
+                "Art is crossing boundaries, stepping out of the ordinary and into the unknown.
+                It's the language of the soul: an invitation to communicate with ourselves
                 and with others."
               </blockquote>
               <p className="text-muted-foreground leading-relaxed">
-                At the core of her work is a simple belief: art crosses boundaries, steps 
-                out of the ordinary into the unknown, and belongs to everyone. I believe 
+                At the core of her work is a simple belief: art crosses boundaries, steps
+                out of the ordinary into the unknown, and belongs to everyone. I believe
                 art should be for everybody: tangible, accessible, and easy to understand.
               </p>
             </motion.div>
@@ -153,14 +153,14 @@ const ArtistProfile = () => {
             >
               <div className="aspect-[3/4] rounded-sm overflow-hidden">
                 <img
-                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212695/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/y6pwsm02rgvr8tdgxfsw.jpg"
+                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212813/galeria/galeria/Pallas%20Galaxy%20Collection/Till%20Today/biv2s3v9ij8tnljzyjo8.jpg"
                   alt="Artwork sample"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="aspect-[3/4] rounded-sm overflow-hidden mt-8">
                 <img
-                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212774/galeria/galeria/Pallas%20Galaxy%20Collection/Till%20Today/pkus7hs7foydedh85s81.jpg"
+                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212763/galeria/galeria/Pallas%20Galaxy%20Collection/Till%20Today/zp57zd5jpyobzl2njlhq.jpg"
                   alt="Artwork sample"
                   className="w-full h-full object-cover"
                 />
@@ -183,7 +183,7 @@ const ArtistProfile = () => {
               Explore the <span className="text-accent-italic">Collection.</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed">
-              Explore more than a decade of work through curated collections, 
+              Explore more than a decade of work through curated collections,
               each marking a chapter in Marei's creative path.
             </p>
             <Link
