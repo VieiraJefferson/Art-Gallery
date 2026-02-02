@@ -16,7 +16,7 @@ const galleryImages = [
     size: "medium",
   },
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212429/galeria/galeria/Pallas%20Galaxy%20Collection/2014-2015/qvrtsahxelvxtfcff9au.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1770070727/galeria/galeria/Pallas%20Galaxy%20Collection/2014-2015/qvrtsahxelvxtfcff9au.jpg",
     size: "medium",
   },
   {
