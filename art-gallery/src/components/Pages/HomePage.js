@@ -262,17 +262,16 @@ const HomePage = () => {
                 transition={{ delay: index * 0.1, duration: 0.6 }}
               >
                 <Link to="/gallery" className="group block">
-                  <div className="aspect-[4/5] rounded-sm overflow-hidden mb-6">
+                  <div className="aspect-[4/5] rounded-sm overflow-hidden mb-4">
                     <img
                       src={collection.image}
                       alt={collection.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="text-xl font-display mb-2 group-hover:text-accent transition-colors">
+                  <h3 className="text-xl font-display group-hover:text-accent transition-colors">
                     {collection.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground">{collection.year}</p>
                 </Link>
               </motion.div>
             ))}
