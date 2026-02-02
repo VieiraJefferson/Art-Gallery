@@ -12,7 +12,7 @@ const galleryImages = [
     size: "large",
   },
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212695/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/y6pwsm02rgvr8tdgxfsw.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212592/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/qcjqnbdu3h7paiuocz4f.jpg",
     size: "medium",
   },
   {
