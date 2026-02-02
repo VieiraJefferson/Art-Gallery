@@ -1,0 +1,11 @@
+node_modules/
+.env
+.vercel
+uploads/
+migrate*.js
+explore*.js
+fetch*.js
+insert*.js
+cleanup*.js
+setCoverImages.js
+scripts/

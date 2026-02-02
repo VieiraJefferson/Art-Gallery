@@ -1,5 +1,6 @@
 // API Service para conectar ao backend
-const API_BASE_URL = "https://art-api-nine.vercel.app";
+// URL da API - mude para produção quando fizer deploy no Render
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:3001";
 
 // Buscar todas as coleções com subcoleções
 export async function fetchAllCollections() {
@@ -9,7 +10,8 @@ export async function fetchAllCollections() {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    return data;
+    // A API retorna { collections: [...] }, então retornamos o array de coleções
+    return data.collections || data;
   } catch (error) {
     console.error("Erro ao buscar coleções:", error);
     throw error;
@@ -19,13 +21,29 @@ export async function fetchAllCollections() {
 // Buscar uma subcoleção específica pelo ID
 export async function fetchSubCollection(subCollectionId) {
   try {
+    // Tenta primeiro usar o endpoint direto da API
+    try {
+      const response = await fetch(`${API_BASE_URL}/subcollections/${subCollectionId}`);
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      }
+    } catch (apiError) {
+      console.log("Endpoint direto não disponível, buscando em todas as coleções...");
+    }
+    
+    // Fallback: busca em todas as coleções
     const collections = await fetchAllCollections();
     
+    // Garante que collections é um array
+    const collectionsArray = Array.isArray(collections) ? collections : [];
+    
     // Procurar a subcoleção em todas as coleções
-    for (const collection of collections) {
-      if (collection.subCollections) {
-        const subCollection = collection.subCollections.find(
-          (sub) => sub._id === subCollectionId || sub.name === subCollectionId
+    for (const collection of collectionsArray) {
+      const subs = collection.subCollections || collection.subcollections || [];
+      if (Array.isArray(subs) && subs.length > 0) {
+        const subCollection = subs.find(
+          (sub) => sub._id === subCollectionId || sub.id === subCollectionId || sub.name === subCollectionId || sub.subCollectionName === subCollectionId
         );
         if (subCollection) {
           return subCollection;
@@ -44,17 +62,23 @@ export async function fetchSubCollection(subCollectionId) {
 export function extractSubCollections(collections) {
   const subCollections = [];
   
-  if (!collections || !Array.isArray(collections)) {
+  if (!collections) {
     return subCollections;
   }
   
-  collections.forEach((collection) => {
-    if (collection.subCollections && Array.isArray(collection.subCollections)) {
-      collection.subCollections.forEach((sub) => {
+  // Garante que collections é um array
+  const collectionsArray = Array.isArray(collections) ? collections : [];
+  
+  collectionsArray.forEach((collection) => {
+    // Verifica tanto subCollections quanto subcollections (case insensitive)
+    const subs = collection.subCollections || collection.subcollections || [];
+    
+    if (Array.isArray(subs) && subs.length > 0) {
+      subs.forEach((sub) => {
         subCollections.push({
           ...sub,
-          parentCollectionId: collection._id,
-          parentCollectionName: collection.name,
+          parentCollectionId: collection._id || collection.id,
+          parentCollectionName: collection.name || collection.collectionName,
         });
       });
     }

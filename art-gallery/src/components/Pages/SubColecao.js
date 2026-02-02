@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, ArrowLeft, Loader2 } from "lucide-react";
 import { cn } from "../../lib/utils";
-import { fetchAllCollections } from "../../services/api";
+import { fetchSubCollection } from "../../services/api";
 
 // Skeleton component
 const Skeleton = ({ className }) => (
@@ -92,22 +92,7 @@ const SubColecao = () => {
     const loadSubCollection = async () => {
       try {
         setLoading(true);
-        const collections = await fetchAllCollections();
-        
-        // Procurar a subcoleção pelo ID ou nome
-        let foundSubCollection = null;
-        
-        for (const collection of collections) {
-          if (collection.subCollections) {
-            const sub = collection.subCollections.find(
-              (s) => s._id === collectionId || s.name === collectionId
-            );
-            if (sub) {
-              foundSubCollection = sub;
-              break;
-            }
-          }
-        }
+        const foundSubCollection = await fetchSubCollection(collectionId);
         
         if (foundSubCollection) {
           setSubCollection(foundSubCollection);
@@ -182,7 +167,7 @@ const SubColecao = () => {
           </Link>
 
           <h1 className="text-5xl md:text-6xl font-display mb-4">
-            {subCollection?.name || "Collection"}
+            {subCollection?.name || subCollection?.subCollectionName || "Collection"}
           </h1>
           <p className="text-muted-foreground">
             {images.length} works
@@ -198,9 +183,11 @@ const SubColecao = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {images.map((image, index) => (
+            {images.map((image, index) => {
+              const imageId = image._id || image.id || index;
+              return (
               <motion.div
-                key={image._id || index}
+                key={imageId}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.08, duration: 0.5 }}
@@ -210,7 +197,7 @@ const SubColecao = () => {
                   className="group block w-full text-left"
                 >
                   <div className="relative aspect-[4/5] rounded-sm overflow-hidden">
-                    {!loadedImages[image._id || index] && (
+                    {!loadedImages[imageId] && (
                       <Skeleton className="absolute inset-0" />
                     )}
                     <img
@@ -218,10 +205,10 @@ const SubColecao = () => {
                       alt={image.name}
                       className={cn(
                         "w-full h-full object-cover transition-all duration-500",
-                        loadedImages[image._id || index] ? "opacity-100" : "opacity-0",
+                        loadedImages[imageId] ? "opacity-100" : "opacity-0",
                         "group-hover:scale-105"
                       )}
-                      onLoad={() => handleImageLoad(image._id || index)}
+                      onLoad={() => handleImageLoad(imageId)}
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
                   </div>
@@ -230,7 +217,8 @@ const SubColecao = () => {
                   </p>
                 </button>
               </motion.div>
-            ))}
+            );
+            })}
           </div>
         )}
       </section>

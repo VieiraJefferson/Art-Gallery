@@ -115,9 +115,11 @@ const Gallery = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-            {subCollections.map((subCollection, index) => (
+            {subCollections.map((subCollection, index) => {
+              const subId = subCollection._id || subCollection.id;
+              return (
               <motion.div
-                key={subCollection._id}
+                key={subId}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
@@ -125,23 +127,23 @@ const Gallery = () => {
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <Link
-                  to={`/gallery/${subCollection._id}`}
+                  to={`/gallery/${subId}`}
                   className="group block"
                 >
                   {/* Image Container */}
                   <div className="relative aspect-[3/4] rounded-sm overflow-hidden mb-6">
-                    {!loadedImages[subCollection._id] && (
+                    {!loadedImages[subId] && (
                       <Skeleton className="absolute inset-0" />
                     )}
                     <img
                       src={getCoverImage(subCollection)}
-                      alt={subCollection.name}
+                      alt={subCollection.name || subCollection.subCollectionName}
                       className={cn(
                         "w-full h-full object-cover transition-all duration-700",
-                        loadedImages[subCollection._id] ? "opacity-100" : "opacity-0",
+                        loadedImages[subId] ? "opacity-100" : "opacity-0",
                         hoveredIndex === index ? "scale-105" : "scale-100"
                       )}
-                      onLoad={() => handleImageLoad(subCollection._id)}
+                      onLoad={() => handleImageLoad(subId)}
                     />
                     
                     {/* Hover Overlay */}
@@ -165,7 +167,7 @@ const Gallery = () => {
                   <div className="flex justify-between items-start">
                     <div>
                       <h2 className="text-xl font-display mb-1 group-hover:text-accent transition-colors">
-                        {subCollection.name}
+                        {subCollection.name || subCollection.subCollectionName}
                       </h2>
                       <p className="text-sm text-muted-foreground">
                         {subCollection.pictures?.length || 0} works
@@ -174,7 +176,8 @@ const Gallery = () => {
                   </div>
                 </Link>
               </motion.div>
-            ))}
+            );
+            })}
           </div>
         )}
       </section>

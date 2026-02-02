@@ -1,0 +1,39 @@
+{
+  "name": "pallas-galaxy-api",
+  "version": "2.0.0",
+  "description": "API para Pallas Galaxy Art Gallery - Supabase",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"No tests\" && exit 0"
+  },
+  "keywords": [
+    "art",
+    "gallery",
+    "supabase",
+    "cloudinary"
+  ],
+  "author": "VieiraDev",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "bcrypt": "^5.1.1",
+    "cloudinary": "^2.5.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.22.0",
+    "multer": "^1.4.5-lts.1",
+    "node-cache": "^5.1.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.7",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.9"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
