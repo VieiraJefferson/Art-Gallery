@@ -1,7 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
 const images = [
   "/img/Blume.jpg",
@@ -24,25 +24,37 @@ const images = [
 
 const ImageSlider = () => {
   return (
-    <div className="slider-container">
+    <div className="w-full overflow-hidden py-4">
       <Swiper
         slidesPerView="auto"
-        spaceBetween={10}
+        spaceBetween={16}
         modules={[Autoplay]}
         autoplay={{
           delay: 0,
           disableOnInteraction: false,
           pauseOnMouseEnter: false,
         }}
-        speed={6000} // Ajuste a velocidade para um movimento contínuo
+        speed={6000}
         loop={true}
         freeMode={true}
         freeModeMomentum={false}
+        className="!overflow-visible"
       >
-        {/* Duplicando as imagens para efeito de loop contínuo */}
         {images.concat(images).map((img, index) => (
-          <SwiperSlide key={index} className="swiper-slide">
-            <img src={img} alt={`Slide ${index + 1}`} className="slide-image" />
+          <SwiperSlide
+            key={index}
+            className="!w-auto"
+          >
+            <div className="relative h-48 md:h-64 lg:h-72 aspect-[4/3] overflow-hidden rounded-xl group">
+              <img
+                src={img}
+                alt={`Artwork ${index + 1}`}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+              />
+              {/* Subtle overlay on hover */}
+              <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300" />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

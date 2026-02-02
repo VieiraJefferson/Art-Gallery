@@ -1,0 +1,641 @@
+// NFTs Page Styles
+// ================
+
+.nfts-container {
+  min-height: 100vh;
+  background-color: var(--background-color);
+  padding-bottom: 80px;
+}
+
+// Loading State
+.nfts-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 24px;
+
+  .nfts-loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 3px solid rgba(255, 52, 127, 0.1);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Error State
+.nfts-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 20px;
+  text-align: center;
+  padding: 20px;
+
+  .error-icon {
+    font-size: 3rem;
+  }
+
+  p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    max-width: 400px;
+  }
+
+  .retry-btn {
+    background: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 12px 32px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: var(--primary-color-dark);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Hero Section
+.nfts-hero {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 60px 2rem 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px 1rem 30px;
+    gap: 30px;
+  }
+}
+
+.nfts-hero-content {
+  h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--text-color);
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+    background: linear-gradient(135deg, var(--text-color) 0%, var(--primary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    @media (max-width: 768px) {
+      font-size: 2.2rem;
+    }
+  }
+
+  .nfts-hero-subtitle {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    opacity: 0.8;
+
+    .highlight {
+      color: var(--primary-color);
+      font-weight: 500;
+    }
+  }
+}
+
+.nfts-hero-stats {
+  display: flex;
+  gap: 40px;
+
+  @media (max-width: 768px) {
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--primary-color);
+      font-family: "JetBrains Mono", "Fira Code", monospace;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      opacity: 0.6;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+  }
+}
+
+// Filters Section
+.nfts-filters {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 30px 2rem;
+
+  @media (max-width: 768px) {
+    padding: 20px 1rem;
+  }
+}
+
+.filters-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  &.search-group {
+    flex: 1;
+    min-width: 280px;
+  }
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .search-icon {
+    position: absolute;
+    left: 16px;
+    width: 18px;
+    height: 18px;
+    color: var(--text-light);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 14px 40px 14px 48px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+
+    &::placeholder {
+      color: var(--text-light);
+      opacity: 0.4;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      background: rgba(255, 52, 127, 0.05);
+    }
+  }
+
+  .clear-search {
+    position: absolute;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: var(--text-light);
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: var(--primary-color);
+      color: var(--text-color);
+    }
+  }
+}
+
+.filter-select {
+  padding: 14px 40px 14px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: var(--text-color);
+  font-size: 0.95rem;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2.5 4.5L6 8L9.5 4.5' stroke='%23fcefed' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color);
+  }
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  option {
+    background: #0a0a0c;
+    color: var(--text-color);
+  }
+}
+
+.filter-group.price-range {
+  .price-inputs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .price-input {
+    width: 100px;
+    padding: 14px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+
+    &::placeholder {
+      color: var(--text-light);
+      opacity: 0.4;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  .price-separator {
+    color: var(--text-light);
+    opacity: 0.4;
+  }
+}
+
+.results-info {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  span {
+    color: var(--text-light);
+    opacity: 0.6;
+    font-size: 0.9rem;
+  }
+
+  .search-term-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 52, 127, 0.15);
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    opacity: 1;
+
+    button {
+      background: none;
+      border: none;
+      color: var(--primary-color);
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+      padding: 0;
+      margin-left: 4px;
+
+      &:hover {
+        color: var(--text-color);
+      }
+    }
+  }
+}
+
+// Grid Section
+.nfts-grid-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+}
+
+.no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+  gap: 20px;
+
+  .no-results-icon {
+    font-size: 4rem;
+    opacity: 0.5;
+  }
+
+  p {
+    color: var(--text-light);
+    opacity: 0.7;
+    font-size: 1.1rem;
+    max-width: 400px;
+  }
+
+  .clear-filters-btn {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 12px 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: var(--primary-color);
+      color: var(--text-color);
+    }
+  }
+}
+
+.nfts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+// NFT Card
+.nft-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+
+  &:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color);
+    box-shadow: 0 20px 40px rgba(255, 52, 127, 0.15);
+
+    .nft-overlay {
+      opacity: 1;
+    }
+
+    .nft-image-wrapper img {
+      transform: scale(1.05);
+    }
+  }
+
+  &.listed {
+    border-color: rgba(255, 52, 127, 0.3);
+  }
+}
+
+.nft-image-wrapper {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a0a0c 0%, #141418 100%);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .listed-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--primary-color);
+    color: var(--text-color);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 12px rgba(255, 52, 127, 0.4);
+  }
+}
+
+.nft-info {
+  padding: 16px;
+
+  .nft-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nft-inscription {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    opacity: 0.5;
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    margin-bottom: 8px;
+  }
+
+  .nft-price {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+
+    &.unlisted {
+      color: var(--text-light);
+      opacity: 0.4;
+      font-weight: 400;
+    }
+  }
+}
+
+.nft-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 6, 8, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  .view-btn {
+    background: var(--primary-color);
+    color: var(--text-color);
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transform: translateY(10px);
+    transition: transform 0.3s ease;
+  }
+
+  &:hover .view-btn {
+    transform: translateY(0);
+  }
+}
+
+// Pagination
+.nfts-pagination {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 50px 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    padding: 40px 1rem 0;
+    gap: 8px;
+  }
+}
+
+.pagination-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-color);
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+
+  &:hover:not(:disabled) {
+    border-color: var(--primary-color);
+    background: rgba(255, 52, 127, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 640px) {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+.pagination-numbers {
+  display: flex;
+  gap: 6px;
+
+  @media (max-width: 640px) {
+    display: none;
+  }
+}
+
+.pagination-num {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-color);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    border-color: var(--primary-color);
+  }
+
+  &.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+    font-weight: 500;
+  }
+}
+
+.pagination-info {
+  color: var(--text-light);
+  opacity: 0.5;
+  font-size: 0.85rem;
+  margin-left: 12px;
+
+  @media (max-width: 640px) {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 12px 0 0 0;
+  }
+}
