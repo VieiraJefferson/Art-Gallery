@@ -24,7 +24,7 @@ const CUSTOM_COVERS = {
 // Imagens da seção Artistic Philosophy
 const PHILOSOPHY_IMAGES = [
   "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212830/galeria/galeria/Pallas%20Galaxy%20Collection/Street-art%20things/yyvc5ayyybe9sgc706dx.jpg",
-  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212352/galeria/galeria/Pallas%20Galaxy%20Collection/2013/wt5gygwcvi31b0kyh7nb.jpg",
+  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212750/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/jontsz12spmxakjtmpyd.jpg",
 ];
 
 const Gallery = () => {
