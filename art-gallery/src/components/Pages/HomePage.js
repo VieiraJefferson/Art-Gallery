@@ -6,25 +6,25 @@ import { ArrowRight } from "lucide-react";
 // Imagens da galeria para o grid assimétrico
 const galleryImages = [
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212695/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/y6pwsm02rgvr8tdgxfsw.jpg",
-    artist: "Maria Pallas",
-    year: "2021",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212429/galeria/galeria/Pallas%20Galaxy%20Collection/2014-2015/qvrtsahxelvxtfcff9au.jpg",
+    artist: "Marei Pallas",
+    year: "2014",
     size: "large",
   },
   {
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212695/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/y6pwsm02rgvr8tdgxfsw.jpg",
+    size: "medium",
+  },
+  {
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212355/galeria/galeria/Pallas%20Galaxy%20Collection/2013/wiwxpssttlku7nc0pp9l.jpg",
+    size: "medium",
+  },
+  {
     src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212774/galeria/galeria/Pallas%20Galaxy%20Collection/Till%20Today/pkus7hs7foydedh85s81.jpg",
-    size: "medium",
-  },
-  {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212770/galeria/galeria/Pallas%20Galaxy%20Collection/Till%20Today/iij4gg9pjmhh6q79bojf.jpg",
-    size: "medium",
-  },
-  {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212075/galeria/Pallas%20Galaxy%20Collection/yhahyrurr7gtkccfcfv3.jpg",
     size: "small",
   },
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212362/galeria/galeria/Pallas%20Galaxy%20Collection/2013/ekp8soassh5wssrlyhcs.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212774/galeria/galeria/Pallas%20Galaxy%20Collection/Till%20Today/pkus7hs7foydedh85s81.jpg",
     size: "medium",
   },
 ];
@@ -250,9 +250,9 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Surreal Dreams", year: "2019-2022", image: galleryImages[0].src },
-              { title: "Emotional Depths", year: "2021", image: galleryImages[1].src },
-              { title: "Abstract Visions", year: "2023", image: galleryImages[2].src },
+              { title: "Surreal Dreams", year: "2019-2022", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212593/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/ncopingbcthzo2zhv9kn.jpg" },
+              { title: "Emotional Depths", year: "2013", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212345/galeria/galeria/Pallas%20Galaxy%20Collection/2013/nwvewa6sw4koc7yfgyjs.jpg" },
+              { title: "Abstract Visions", year: "2019-2022", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212649/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/jmwcqnwculp5pb7p9ii3.jpg" },
             ].map((collection, index) => (
               <motion.div
                 key={collection.title}

@@ -15,6 +15,18 @@ const Skeleton = ({ className }) => (
   />
 );
 
+// Capas personalizadas por índice (0-based)
+const CUSTOM_COVERS = {
+  1: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741213061/galeria/galeria/Pallas%20Galaxy%20Collection/Kunstraub/ypxcf7udzqnot5fgycsa.jpg",
+  5: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212767/galeria/galeria/Pallas%20Galaxy%20Collection/Till%20Today/fbcyb4ftfpvkrwripdbl.jpg",
+};
+
+// Imagens da seção Artistic Philosophy
+const PHILOSOPHY_IMAGES = [
+  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212830/galeria/galeria/Pallas%20Galaxy%20Collection/Street-art%20things/yyvc5ayyybe9sgc706dx.jpg",
+  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212352/galeria/galeria/Pallas%20Galaxy%20Collection/2013/wt5gygwcvi31b0kyh7nb.jpg",
+];
+
 const Gallery = () => {
   const [subCollections, setSubCollections] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -45,7 +57,11 @@ const Gallery = () => {
   }, []);
 
   // Função para obter a imagem de capa
-  const getCoverImage = (subCollection) => {
+  const getCoverImage = (subCollection, index) => {
+    // Verifica se tem capa personalizada por índice
+    if (CUSTOM_COVERS[index]) {
+      return CUSTOM_COVERS[index];
+    }
     // Primeiro, verifica se tem coverPicture definida
     if (subCollection.coverPicture && subCollection.coverPicture.src) {
       return subCollection.coverPicture.src;
@@ -136,7 +152,7 @@ const Gallery = () => {
                       <Skeleton className="absolute inset-0" />
                     )}
                     <img
-                      src={getCoverImage(subCollection)}
+                      src={getCoverImage(subCollection, index)}
                       alt={subCollection.name || subCollection.subCollectionName}
                       className={cn(
                         "w-full h-full object-cover transition-all duration-700",
@@ -180,6 +196,58 @@ const Gallery = () => {
             })}
           </div>
         )}
+      </section>
+
+      {/* Artistic Philosophy Section */}
+      <section className="border-t border-border">
+        <div className="container-custom section-padding">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            {/* Text */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-display mb-8">
+                Artistic <span className="text-accent-italic">Philosophy.</span>
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Each collection represents a unique exploration of form, color, and emotion.
+                Through surrealist imagery and bold compositions, these works invite viewers
+                to discover new perspectives on reality.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                From street art influences to classical techniques, the diversity of styles
+                reflects a continuous evolution and experimentation with artistic expression.
+              </p>
+            </motion.div>
+
+            {/* Images */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-2 gap-4"
+            >
+              <div className="aspect-[3/4] rounded-sm overflow-hidden">
+                <img
+                  src={PHILOSOPHY_IMAGES[0]}
+                  alt="Artistic Philosophy"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div className="aspect-[3/4] rounded-sm overflow-hidden mt-8">
+                <img
+                  src={PHILOSOPHY_IMAGES[1]}
+                  alt="Artistic Philosophy"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </section>
     </div>
   );
