@@ -169,6 +169,238 @@ const SubColecao = () => {
     );
   }
 
+  // Render clickable image
+  const renderImage = (image, index, className = "") => {
+    const imageId = image._id || image.id || index;
+    return (
+      <motion.div
+        key={imageId}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className={className}
+      >
+        <button
+          onClick={() => setSelectedIndex(index)}
+          className="group block w-full text-left"
+        >
+          <div className="relative aspect-[4/5] rounded-sm overflow-hidden">
+            {!loadedImages[imageId] && (
+              <Skeleton className="absolute inset-0" />
+            )}
+            <img
+              src={image.src}
+              alt={image.name}
+              className={cn(
+                "w-full h-full object-cover transition-all duration-500",
+                loadedImages[imageId] ? "opacity-100" : "opacity-0",
+                "group-hover:scale-105"
+              )}
+              onLoad={() => handleImageLoad(imageId)}
+            />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
+          </div>
+          <p className="mt-4 text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+            {getImageTitle(image, index)}
+          </p>
+        </button>
+      </motion.div>
+    );
+  };
+
+  // Kunstraub special layout with images mixed with text
+  if (isKunstraub && images.length >= 5) {
+    return (
+      <div className="min-h-screen bg-background pt-24 md:pt-32">
+        {/* Header */}
+        <section className="container-custom mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Link
+              to="/gallery"
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span className="text-sm tracking-[0.1em] uppercase">Back to Collections</span>
+            </Link>
+
+            <h1 className="text-5xl md:text-6xl font-display mb-4">
+              Art Prank: A Stolen <span className="text-accent-italic">Masterpiece?</span>
+            </h1>
+            <p className="text-lg text-muted-foreground italic">
+              My Fictional Art Heist at the Kunsthalle Bremen
+            </p>
+          </motion.div>
+        </section>
+
+        {/* Intro + First Image */}
+        <section className="container-custom pb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                What is art? What is reality? And how easily can people be deceived? With my art prank, 
+                an orchestrated art heist, I aimed to explore these very questions, leading Bremen on 
+                a playful yet thought-provoking wild chase.
+              </p>
+              <h3 className="text-2xl font-display text-foreground mb-4">
+                Crime Scene: Kunsthalle Bremen
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                On September 18, 2020, at exactly 5:37 PM, a spectacular art heist was said to have 
+                taken place at the Kunsthalle Bremen. The stolen artwork? My piece "I still have my 
+                red shoes in Virginia."
+              </p>
+            </motion.div>
+            {images[0] && renderImage(images[0], 0)}
+          </div>
+        </section>
+
+        {/* Second Image + Text */}
+        <section className="container-custom pb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {images[1] && renderImage(images[1], 1, "order-2 lg:order-1")}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-1 lg:order-2"
+            >
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                At least, that's what mysterious posters appearing all over Bremen suggested. 
+                The "Cultural Senator" and the "Bremen Criminal Investigation Office" urged the 
+                public to assist in solving the case, offering a reward of up to €5,000 for 
+                any useful information.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                The posters looked astonishingly real: a shadowy figure, unidentifiable, carrying a 
+                painting out of the Kunsthalle. The police were in pursuit, or were they?
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* A Game with Reality + Third Image */}
+        <section className="container-custom pb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h3 className="text-2xl font-display text-foreground mb-6">
+                A Game with <span className="text-accent-italic">Reality</span>
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                The posters alone would have been enough to spark curiosity. But I wanted to take it 
+                further: a fabricated article in the Weser Kurier reported on the alleged art theft. 
+                People started speculating, was this an actual scandal or a brilliant artistic stunt? 
+                And who was the elusive thief?
+              </p>
+            </motion.div>
+            {images[2] && renderImage(images[2], 2)}
+          </div>
+        </section>
+
+        {/* Fourth Image + Police Notice */}
+        <section className="container-custom pb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {images[3] && renderImage(images[3], 3, "order-2 lg:order-1")}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-1 lg:order-2"
+            >
+              <p className="text-muted-foreground leading-relaxed">
+                Then, the inevitable happened: the real Weser Kurier caught wind of the project and 
+                eventually published their own report. With that, the game reached its peak: the 
+                boundaries between fiction and reality blurred until reality itself became part 
+                of the narrative.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Blockquote + Fifth Image */}
+        <section className="container-custom pb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <blockquote className="border-l-2 border-accent pl-6 py-2 italic text-foreground/80 text-sm leading-relaxed">
+                "Those walking attentively through the Viertel these days may come across a poster 
+                warning of something alarming at the Kunsthalle. The official-looking notice calls 
+                on the public to help solve an art heist. Before anyone takes up detective work: 
+                the poster campaign is a prank. There was no break-in at the Kunsthalle, and no one 
+                is missing the mentioned artwork, because it simply does not exist."
+                <span className="block mt-2 text-muted-foreground not-italic">— Weser Kurier</span>
+              </blockquote>
+            </motion.div>
+            {images[4] && renderImage(images[4], 4)}
+          </div>
+        </section>
+
+        {/* Conclusion */}
+        <section className="container-custom pb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <h3 className="text-2xl font-display text-foreground mb-6">
+              An Art Heist as a <span className="text-accent-italic">Social Experiment</span>
+            </h3>
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              This project was more than just a harmless prank. It raised questions about the power 
+              of images, our willingness to believe what appears official, and the fine line between 
+              fact and fabrication.
+            </p>
+            <p className="text-foreground leading-relaxed text-lg">
+              Perhaps nothing was stolen here, perhaps a moment of wonder was created instead. 
+              A playful challenge to our perceptions and realities, reminding us how thrilling 
+              it can be to question the world around us.
+            </p>
+          </motion.div>
+        </section>
+
+        {/* Modal */}
+        <AnimatePresence>
+          {selectedIndex !== null && images[selectedIndex] && (
+            <ImageModal
+              image={{
+                ...images[selectedIndex],
+                name: getImageTitle(images[selectedIndex], selectedIndex)
+              }}
+              onClose={() => setSelectedIndex(null)}
+              onNext={() => setSelectedIndex((prev) => Math.min(prev + 1, images.length - 1))}
+              onPrev={() => setSelectedIndex((prev) => Math.max(prev - 1, 0))}
+              hasNext={selectedIndex < images.length - 1}
+              hasPrev={selectedIndex > 0}
+            />
+          )}
+        </AnimatePresence>
+      </div>
+    );
+  }
+
+  // Default layout for other collections
   return (
     <div className="min-h-screen bg-background pt-24 md:pt-32">
       {/* Header */}
@@ -203,137 +435,10 @@ const SubColecao = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {images.map((image, index) => {
-              const imageId = image._id || image.id || index;
-              return (
-              <motion.div
-                key={imageId}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.08, duration: 0.5 }}
-              >
-                <button
-                  onClick={() => setSelectedIndex(index)}
-                  className="group block w-full text-left"
-                >
-                  <div className="relative aspect-[4/5] rounded-sm overflow-hidden">
-                    {!loadedImages[imageId] && (
-                      <Skeleton className="absolute inset-0" />
-                    )}
-                    <img
-                      src={image.src}
-                      alt={image.name}
-                      className={cn(
-                        "w-full h-full object-cover transition-all duration-500",
-                        loadedImages[imageId] ? "opacity-100" : "opacity-0",
-                        "group-hover:scale-105"
-                      )}
-                      onLoad={() => handleImageLoad(imageId)}
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-                  </div>
-                  <p className="mt-4 text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-                    {getImageTitle(image, index)}
-                  </p>
-                </button>
-              </motion.div>
-            );
-            })}
+            {images.map((image, index) => renderImage(image, index))}
           </div>
         )}
       </section>
-
-      {/* Kunstraub Story Section */}
-      {isKunstraub && (
-        <section className="container-custom pb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="text-3xl md:text-4xl font-display mb-8">
-              Art Prank: A Stolen <span className="text-accent-italic">Masterpiece?</span>
-            </h2>
-            <p className="text-lg text-muted-foreground mb-6 italic">
-              My Fictional Art Heist at the Kunsthalle Bremen
-            </p>
-            
-            <div className="prose prose-lg max-w-none space-y-6 text-muted-foreground">
-              <p className="leading-relaxed">
-                What is art? What is reality? And how easily can people be deceived? With my art prank, 
-                an orchestrated art heist, I aimed to explore these very questions, leading Bremen on 
-                a playful yet thought-provoking wild chase.
-              </p>
-
-              <h3 className="text-xl font-display text-foreground mt-10 mb-4">
-                Crime Scene: Kunsthalle Bremen – A Painting Disappears
-              </h3>
-              <p className="leading-relaxed">
-                On September 18, 2020, at exactly 5:37 PM, a spectacular art heist was said to have 
-                taken place at the Kunsthalle Bremen. The stolen artwork? My piece "I still have my 
-                red shoes in Virginia." At least, that's what mysterious posters appearing all over 
-                Bremen suggested. The "Cultural Senator" and the "Bremen Criminal Investigation Office" 
-                urged the public to assist in solving the case, offering a reward of up to €5,000 for 
-                any useful information.
-              </p>
-              <p className="leading-relaxed">
-                The posters looked astonishingly real: a shadowy figure, unidentifiable, carrying a 
-                painting out of the Kunsthalle. The police were in pursuit, or were they?
-              </p>
-
-              <h3 className="text-xl font-display text-foreground mt-10 mb-4">
-                A Game with Reality
-              </h3>
-              <p className="leading-relaxed">
-                The posters alone would have been enough to spark curiosity. But I wanted to take it 
-                further: a fabricated article in the Weser Kurier reported on the alleged art theft. 
-                People started speculating, was this an actual scandal or a brilliant artistic stunt? 
-                And who was the elusive thief?
-              </p>
-              <p className="leading-relaxed">
-                Then, the inevitable happened: the real Weser Kurier caught wind of the project and 
-                eventually published their own report:
-              </p>
-              <blockquote className="border-l-2 border-accent pl-6 py-2 my-6 italic text-foreground/80">
-                "Those walking attentively through the Viertel these days may come across a poster 
-                warning of something alarming at the Kunsthalle. The official-looking notice calls 
-                on the public, on behalf of the 'Cultural Senator' and the 'Bremen Criminal Investigation 
-                Office,' to help solve an art heist. Allegedly, the piece 'I still have my red shoes 
-                in Virginia' by the artist collective 'Pallasgalaxy' was stolen from the Kunsthalle 
-                in September. A €5,000 reward is being offered for useful tips. Before anyone takes 
-                up detective work: the poster campaign is a prank. There was no break-in at the 
-                Kunsthalle, and no one is missing the mentioned artwork, because it simply does not 
-                exist. The cultural institution assures the WESER-KURIER of this, cross their hearts."
-              </blockquote>
-              <p className="leading-relaxed">
-                With that, the game reached its peak: the boundaries between fiction and reality 
-                blurred until reality itself became part of the narrative.
-              </p>
-
-              <h3 className="text-xl font-display text-foreground mt-10 mb-4">
-                An Art Heist as a Social Experiment
-              </h3>
-              <p className="leading-relaxed">
-                This project was more than just a harmless prank. It raised questions about the power 
-                of images, our willingness to believe what appears official, and the fine line between 
-                fact and fabrication. How much do we trust what looks legitimate? When do we begin to 
-                doubt? And what happens when art seamlessly embeds itself into reality?
-              </p>
-              <p className="leading-relaxed">
-                I thank everyone who played along: the passersby who stopped to stare, the readers 
-                who wondered, and the Weser Kurier, who unintentionally became a participant.
-              </p>
-              <p className="leading-relaxed text-foreground">
-                Perhaps nothing was stolen here, perhaps a moment of wonder was created instead. 
-                A playful challenge to our perceptions and realities, reminding us how thrilling 
-                it can be to question the world around us.
-              </p>
-            </div>
-          </motion.div>
-        </section>
-      )}
 
       {/* Modal */}
       <AnimatePresence>
