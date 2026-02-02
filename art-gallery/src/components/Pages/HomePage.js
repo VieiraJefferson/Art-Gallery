@@ -291,21 +291,36 @@ const HomePage = () => {
               transition={{ duration: 0.8 }}
               className="order-2 lg:order-1"
             >
-              <div className="aspect-square rounded-sm overflow-hidden bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent/10 flex items-center justify-center">
-                    <svg className="w-10 h-10 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                    </svg>
+              <a
+                href="https://magiceden.io/ordinals/marketplace/circuskinder"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block relative aspect-square rounded-sm overflow-hidden group"
+              >
+                {/* Background Image */}
+                <img
+                  src="https://ordinals.com/content/c7d553f78e5709e8795e8c0b60fc7049ee32debbc5921172a3729bfbdde2fe76i2"
+                  alt="Circus Kinder - Bitcoin Ordinal"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                {/* Content */}
+                <div className="absolute inset-0 flex flex-col justify-end p-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
+                      <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                      </svg>
+                    </div>
+                    <span className="text-white/80 text-sm font-medium">Bitcoin Ordinals</span>
                   </div>
-                  <p className="text-lg text-muted-foreground font-display">
-                    Bitcoin Ordinals Collection
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    Circus Kinder on Magic Eden
+                  <h3 className="text-2xl text-white font-display mb-2">Circus Kinder</h3>
+                  <p className="text-white/70 text-sm mb-4">
+                    View collection on Magic Eden →
                   </p>
                 </div>
-              </div>
+              </a>
             </motion.div>
 
             <motion.div

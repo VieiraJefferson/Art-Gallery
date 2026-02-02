@@ -1,17 +1,55 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, ArrowRight } from "lucide-react";
-import {
-  fetchCollectionTokens,
-  formatPrice,
-  formatInscriptionNumber,
-} from "../../services/magicEden";
 import { cn } from "../../lib/utils";
 
 // Coleção da artista
-const COLLECTION_SYMBOL = "circuskinder";
 const COLLECTION_NAME = "Circus Kinder";
-const MAGIC_EDEN_URL = `https://magiceden.io/ordinals/marketplace/${COLLECTION_SYMBOL}`;
+const MAGIC_EDEN_URL = "https://magiceden.io/ordinals/marketplace/circuskinder";
+
+// Dados estáticos dos 10 Ordinals
+const ORDINALS = [
+  {
+    id: "c7d553f78e5709e8795e8c0b60fc7049ee32debbc5921172a3729bfbdde2fe76i2",
+    name: "Circus Kinder #1",
+  },
+  {
+    id: "52c9ec8ae27d8d21a9dc6cbed3857ef5e0a24145efe48c1e8bb4526c538f2e9ei1",
+    name: "Circus Kinder #2",
+  },
+  {
+    id: "02786ea9c1bf57b0e802fd31c3409cc9ae48c5d80ace75b22d94836493c8ff03i4",
+    name: "Circus Kinder #3",
+  },
+  {
+    id: "7eb316b681bf7374ba30a384b9690f621379587d52d400e8d20f1a29bcfb3333i8",
+    name: "Circus Kinder #4",
+  },
+  {
+    id: "7b9944626c82ff3e962c85cb28b840d1a6068c6968ee8c2891fd51986241787di3",
+    name: "Circus Kinder #5",
+  },
+  {
+    id: "52c9ec8ae27d8d21a9dc6cbed3857ef5e0a24145efe48c1e8bb4526c538f2e9ei5",
+    name: "Circus Kinder #6",
+  },
+  {
+    id: "af0b39866e7c55cf524a847bb85b2c0564e78fc01ad0c257c0e5fbe3de916924i4",
+    name: "Circus Kinder #7",
+  },
+  {
+    id: "af0b39866e7c55cf524a847bb85b2c0564e78fc01ad0c257c0e5fbe3de916924i5",
+    name: "Circus Kinder #8",
+  },
+  {
+    id: "b01b5d28b3c7629691946363b19f9a232cd441af4a49c3fd20d45fd941bd9787i0",
+    name: "Circus Kinder #9",
+  },
+  {
+    id: "f8d4d15b9dc5f5843aeb6f1ad3e814f99cc829cc664ac1a0d6ab354f61922383i9",
+    name: "Circus Kinder #10",
+  },
+];
 
 // Skeleton loading component
 const Skeleton = ({ className }) => (
@@ -19,51 +57,17 @@ const Skeleton = ({ className }) => (
 );
 
 const NFTs = () => {
-  const [tokens, setTokens] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [loadedImages, setLoadedImages] = useState({});
-
-  // Buscar apenas 10 tokens
-  const fetchTokens = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const data = await fetchCollectionTokens({
-        collectionSymbol: COLLECTION_SYMBOL,
-        limit: 10,
-        offset: 0,
-        sortBy: "inscriptionNumberAsc",
-      });
-      setTokens(data);
-    } catch (err) {
-      console.error("Erro ao carregar Ordinals:", err);
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchTokens();
-  }, [fetchTokens]);
-
-  // Gerar URL da imagem do ordinal
-  const getImageUrl = (token) => {
-    if (token.contentURI) return token.contentURI;
-    if (token.id) return `https://ordinals.com/content/${token.id}`;
-    return "/img/placeholder.jpg";
-  };
-
-  // Abrir no Magic Eden
-  const openOnMagicEden = (token) => {
-    const url = `https://magiceden.io/ordinals/item-details/${token.id}`;
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
 
   const handleImageLoad = useCallback((id) => {
     setLoadedImages((prev) => ({ ...prev, [id]: true }));
   }, []);
+
+  // Gerar URL da imagem do ordinal
+  const getImageUrl = (id) => `https://ordinals.com/content/${id}`;
+
+  // Gerar URL do Magic Eden
+  const getMagicEdenUrl = (id) => `https://magiceden.io/ordinals/item-details/${id}`;
 
   return (
     <div className="min-h-screen bg-background pt-24 md:pt-32">
@@ -105,7 +109,7 @@ const NFTs = () => {
         >
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-display">
-              Preview <span className="text-muted-foreground font-normal">({COLLECTION_NAME})</span>
+              Collection <span className="text-muted-foreground font-normal">Preview</span>
             </h2>
             <a
               href={MAGIC_EDEN_URL}
@@ -113,96 +117,60 @@ const NFTs = () => {
               rel="noopener noreferrer"
               className="text-sm text-muted-foreground hover:text-accent transition-colors flex items-center gap-1"
             >
-              See all <ExternalLink className="w-3 h-3" />
+              See all on Magic Eden <ExternalLink className="w-3 h-3" />
             </a>
           </div>
 
-          {loading ? (
-            // Loading Skeleton
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {Array.from({ length: 10 }).map((_, i) => (
-                <div key={i}>
-                  <Skeleton className="aspect-square mb-3" />
-                  <Skeleton className="h-4 w-3/4 mb-2" />
-                  <Skeleton className="h-3 w-1/2" />
-                </div>
-              ))}
-            </div>
-          ) : error ? (
-            // Error state - mostra CTA direto para Magic Eden
-            <div className="text-center py-16 bg-card rounded-sm border border-border">
-              <p className="text-muted-foreground mb-6">
-                Não foi possível carregar a prévia. Visite a coleção completa no Magic Eden.
-              </p>
-              <a
-                href={MAGIC_EDEN_URL}
+          {/* Ordinals Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {ORDINALS.map((ordinal, index) => (
+              <motion.a
+                key={ordinal.id}
+                href={getMagicEdenUrl(ordinal.id)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-sm hover:bg-accent/90 transition-colors"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05, duration: 0.4 }}
+                className="group cursor-pointer block"
               >
-                <ExternalLink className="w-4 h-4" />
-                Ver no Magic Eden
-              </a>
-            </div>
-          ) : (
-            // NFT Grid
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {tokens.map((token, index) => (
-                <motion.div
-                  key={token.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05, duration: 0.4 }}
-                  className="group cursor-pointer"
-                  onClick={() => openOnMagicEden(token)}
-                >
-                  <div className="relative aspect-square rounded-sm overflow-hidden bg-muted mb-3">
-                    {!loadedImages[token.id] && (
-                      <Skeleton className="absolute inset-0" />
+                <div className="relative aspect-square rounded-sm overflow-hidden bg-muted mb-3">
+                  {!loadedImages[ordinal.id] && (
+                    <Skeleton className="absolute inset-0" />
+                  )}
+                  <img
+                    src={getImageUrl(ordinal.id)}
+                    alt={ordinal.name}
+                    className={cn(
+                      "w-full h-full object-cover transition-all duration-500",
+                      loadedImages[ordinal.id] ? "opacity-100" : "opacity-0",
+                      "group-hover:scale-105"
                     )}
-                    <img
-                      src={getImageUrl(token)}
-                      alt={token.meta?.name || `Ordinal #${token.inscriptionNumber}`}
-                      className={cn(
-                        "w-full h-full object-cover transition-all duration-500",
-                        loadedImages[token.id] ? "opacity-100" : "opacity-0",
-                        "group-hover:scale-105"
-                      )}
-                      onLoad={() => handleImageLoad(token.id)}
-                      onError={(e) => {
-                        e.target.src = "/img/placeholder.jpg";
-                        handleImageLoad(token.id);
-                      }}
-                      loading="lazy"
-                    />
-                    
-                    {/* Listed Badge */}
-                    {token.listed && (
-                      <span className="absolute top-2 left-2 px-2 py-0.5 bg-accent text-white text-xs font-medium rounded-sm">
-                        For Sale
-                      </span>
-                    )}
+                    onLoad={() => handleImageLoad(ordinal.id)}
+                    onError={(e) => {
+                      e.target.src = "/img/placeholder.jpg";
+                      handleImageLoad(ordinal.id);
+                    }}
+                    loading="lazy"
+                  />
 
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                      <ExternalLink className="w-5 h-5 text-white" />
-                    </div>
+                  {/* Hover Overlay */}
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <ExternalLink className="w-5 h-5 text-white" />
                   </div>
+                </div>
 
-                  <div>
-                    <h3 className="font-medium text-sm mb-1 group-hover:text-accent transition-colors truncate">
-                      {token.meta?.name || formatInscriptionNumber(token.inscriptionNumber)}
-                    </h3>
-                    {token.listedPrice ? (
-                      <p className="text-accent text-sm">{formatPrice(token.listedPrice)}</p>
-                    ) : (
-                      <p className="text-muted-foreground text-xs">Not Listed</p>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          )}
+                <div>
+                  <h3 className="font-medium text-sm group-hover:text-accent transition-colors truncate">
+                    {ordinal.name}
+                  </h3>
+                  <p className="text-muted-foreground text-xs">
+                    View on Magic Eden →
+                  </p>
+                </div>
+              </motion.a>
+            ))}
+          </div>
         </motion.div>
       </section>
 
