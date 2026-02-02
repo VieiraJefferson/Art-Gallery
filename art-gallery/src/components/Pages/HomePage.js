@@ -6,9 +6,9 @@ import { ArrowRight } from "lucide-react";
 // Imagens da galeria para o grid assimétrico
 const galleryImages = [
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212355/galeria/galeria/Pallas%20Galaxy%20Collection/2013/wiwxpssttlku7nc0pp9l.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212774/galeria/galeria/Pallas%20Galaxy%20Collection/Till%20Today/pkus7hs7foydedh85s81.jpg",
     artist: "Marei Pallas",
-    year: "2013",
+    year: "2024",
     size: "large",
   },
   {
@@ -24,7 +24,7 @@ const galleryImages = [
     size: "small",
   },
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212774/galeria/galeria/Pallas%20Galaxy%20Collection/Till%20Today/pkus7hs7foydedh85s81.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212355/galeria/galeria/Pallas%20Galaxy%20Collection/2013/wiwxpssttlku7nc0pp9l.jpg",
     size: "medium",
   },
 ];
