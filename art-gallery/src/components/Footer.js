@@ -93,9 +93,9 @@ const Footer = () => {
           </p>
           <p className="text-sm text-muted-foreground">
             Developed by{" "}
-            <a href="#" className="hover:text-accent transition-colors">
+            <span className="hover:text-accent transition-colors cursor-pointer">
               VieiraDev
-            </a>
+            </span>
           </p>
         </div>
       </div>

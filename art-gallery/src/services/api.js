@@ -87,9 +87,11 @@ export function extractSubCollections(collections) {
   return subCollections;
 }
 
-export default {
+const apiService = {
   fetchAllCollections,
   fetchSubCollection,
   extractSubCollections,
   API_BASE_URL,
 };
+
+export default apiService;
