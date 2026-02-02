@@ -3,10 +3,37 @@ const router = express.Router();
 const axios = require('axios');
 const NodeCache = require('node-cache');
 
-// Cache de 5 minutos
-const cache = new NodeCache({ stdTTL: 300 });
+// Cache de 24 horas para evitar rate limiting
+const cache = new NodeCache({ stdTTL: 86400 });
 
 const MAGIC_EDEN_BASE_URL = 'https://api-mainnet.magiceden.dev/v2/ord/btc';
+
+// Sleep helper
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+// Fetch with retry and exponential backoff
+async function fetchWithRetry(url, params, retries = 5, initialDelay = 2000) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const response = await axios.get(url, {
+        params,
+        headers: {
+          'Accept': 'application/json',
+        },
+        timeout: 30000
+      });
+      return response.data;
+    } catch (error) {
+      if (error.response?.status === 429 && i < retries - 1) {
+        const delay = initialDelay * Math.pow(2, i);
+        console.log(`Rate limited. Waiting ${delay}ms before retry ${i + 1}/${retries}...`);
+        await sleep(delay);
+        continue;
+      }
+      throw error;
+    }
+  }
+}
 
 // Proxy para buscar tokens de uma coleção
 router.get('/tokens', async (req, res) => {
@@ -20,37 +47,43 @@ router.get('/tokens', async (req, res) => {
     // Chave do cache
     const cacheKey = `tokens_${collectionSymbol}_${limit}_${offset}_${sortBy}`;
     
-    // Verifica cache
+    // Verifica cache primeiro
     const cachedData = cache.get(cacheKey);
     if (cachedData) {
-      console.log('Returning cached Magic Eden data');
+      console.log('Returning cached Magic Eden data for:', collectionSymbol);
       return res.json(cachedData);
     }
 
-    // Faz a requisição para Magic Eden
-    const url = `${MAGIC_EDEN_BASE_URL}/tokens`;
-    const response = await axios.get(url, {
-      params: {
-        collectionSymbol,
-        limit,
-        offset,
-        sortBy
-      },
-      headers: {
-        'Accept': 'application/json',
-      },
-      timeout: 30000
+    console.log('Fetching fresh data from Magic Eden for:', collectionSymbol);
+    
+    // Faz a requisição para Magic Eden com retry
+    const data = await fetchWithRetry(`${MAGIC_EDEN_BASE_URL}/tokens`, {
+      collectionSymbol,
+      limit,
+      offset,
+      sortBy
     });
 
-    // Armazena no cache
-    cache.set(cacheKey, response.data);
+    // Armazena no cache (24h)
+    cache.set(cacheKey, data);
 
-    res.json(response.data);
+    res.json(data);
   } catch (error) {
     console.error('Magic Eden API Error:', error.message);
     
+    // Tenta retornar dados em cache mesmo se expirados
+    const cacheKey = `tokens_${req.query.collectionSymbol}_${req.query.limit || 100}_${req.query.offset || 0}_${req.query.sortBy || 'inscriptionNumberAsc'}`;
+    const staleData = cache.get(cacheKey);
+    if (staleData) {
+      console.log('Returning stale cache due to API error');
+      return res.json(staleData);
+    }
+    
     if (error.response?.status === 429) {
-      return res.status(429).json({ error: 'Rate limited. Please try again later.' });
+      return res.status(429).json({ 
+        error: 'Rate limited by Magic Eden. Please try again in a few minutes.',
+        retryAfter: 60
+      });
     }
     
     res.status(error.response?.status || 500).json({ 

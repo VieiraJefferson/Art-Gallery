@@ -188,7 +188,7 @@ const HomePage = () => {
                 About the <span className="text-accent-italic">Artist.</span>
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Maria Pallas is a visionary artist whose work transcends conventional
+                Marei Pallas is a visionary artist whose work transcends conventional
                 boundaries, blending surrealism with evocative symbolism. Each piece
                 tells a story, inviting viewers into worlds where reality and imagination
                 intertwine seamlessly.
@@ -276,6 +276,66 @@ const HomePage = () => {
                 </Link>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Blockchain Art Section */}
+      <section className="section-padding border-t border-border">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-2 lg:order-1"
+            >
+              <div className="aspect-square rounded-sm overflow-hidden bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
+                <div className="text-center p-8">
+                  <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent/10 flex items-center justify-center">
+                    <svg className="w-10 h-10 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
+                  </div>
+                  <p className="text-lg text-muted-foreground font-display">
+                    Bitcoin Ordinals Collection
+                  </p>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    Circus Kinder on Magic Eden
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-1 lg:order-2"
+            >
+              <h2 className="text-4xl md:text-5xl font-display mb-8">
+                Blockchain <span className="text-accent-italic">Art.</span>
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Discover unique digital artworks inscribed forever on the Bitcoin blockchain.
+                The <span className="text-foreground font-medium">Circus Kinder</span> collection
+                represents a new chapter in Maria Pallas's artistic journey, bringing her
+                surrealist vision to the world of Bitcoin Ordinals.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-8">
+                Each piece is a one-of-a-kind inscription, permanently stored on the
+                most secure and decentralized network in the world.
+              </p>
+              <Link
+                to="/blockchain-art"
+                className="inline-flex items-center gap-4 text-sm font-medium tracking-[0.2em] uppercase hover:text-accent transition-colors group"
+              >
+                Explore Collection
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>

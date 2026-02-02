@@ -15,7 +15,7 @@ const cache = {
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // Função com retry e exponential backoff para rate limit
-async function fetchWithRetry(url, options = {}, retries = 3, delay = 1000) {
+async function fetchWithRetry(url, options = {}, retries = 3, delay = 3000) {
   for (let i = 0; i < retries; i++) {
     try {
       const response = await axios.get(url, {
@@ -24,6 +24,7 @@ async function fetchWithRetry(url, options = {}, retries = 3, delay = 1000) {
           Accept: "application/json",
           ...options.headers,
         },
+        timeout: 30000,
       });
       return response.data;
     } catch (error) {
@@ -34,8 +35,13 @@ async function fetchWithRetry(url, options = {}, retries = 3, delay = 1000) {
         await sleep(waitTime);
         continue;
       }
-      // Se for último retry ou outro erro, lança
+      // Se for último retry ou outro erro, lança com mensagem clara
       if (i === retries - 1) {
+        if (error.response?.status === 429) {
+          const err = new Error("Rate limit exceeded (429). Please try again in a few minutes.");
+          err.isRateLimited = true;
+          throw err;
+        }
         throw error;
       }
     }

@@ -45,7 +45,11 @@ const NFTs = () => {
       setTokens(data);
     } catch (err) {
       console.error("Erro ao carregar Ordinals:", err);
-      setError("Erro ao carregar Ordinals. Tente novamente mais tarde.");
+      if (err.isRateLimited || err.response?.status === 429 || err.message?.includes("429")) {
+        setError("Rate limit - 429. A API está temporariamente indisponível.");
+      } else {
+        setError("Erro ao carregar Ordinals. Tente novamente mais tarde.");
+      }
     } finally {
       setLoading(false);
     }
@@ -152,16 +156,35 @@ const NFTs = () => {
   }
 
   if (error) {
+    const isRateLimited = error.includes("429") || error.includes("Rate");
     return (
       <div className="min-h-screen bg-background pt-24 md:pt-32">
         <div className="container-custom text-center py-20">
-          <p className="text-muted-foreground mb-4">{error}</p>
-          <button
-            onClick={fetchTokens}
-            className="px-6 py-2 bg-primary text-primary-foreground rounded-sm hover:bg-accent transition-colors"
-          >
-            Tentar Novamente
-          </button>
+          <h2 className="text-2xl font-display mb-4">
+            {isRateLimited ? "Magic Eden API está ocupada" : "Erro ao carregar"}
+          </h2>
+          <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+            {isRateLimited 
+              ? "A API da Magic Eden está temporariamente limitando requisições. Por favor, aguarde alguns minutos e tente novamente." 
+              : error}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onClick={fetchTokens}
+              className="px-6 py-3 bg-accent text-white rounded-sm hover:bg-accent/90 transition-colors"
+            >
+              Tentar Novamente
+            </button>
+            <a
+              href={`https://magiceden.io/ordinals/marketplace/${COLLECTION_SYMBOL}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 border border-border rounded-sm hover:border-accent transition-colors inline-flex items-center justify-center gap-2"
+            >
+              <ExternalLink className="w-4 h-4" />
+              Ver no Magic Eden
+            </a>
+          </div>
         </div>
       </div>
     );
