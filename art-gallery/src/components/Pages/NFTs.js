@@ -1,18 +1,17 @@
-import React, { useEffect, useState, useMemo, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Loader2, Search, ExternalLink, X, Filter } from "lucide-react";
+import React, { useEffect, useState, useCallback } from "react";
+import { motion } from "framer-motion";
+import { Loader2, ExternalLink, ArrowRight } from "lucide-react";
 import {
-  fetchAllTokensCached,
+  fetchCollectionTokens,
   formatPrice,
   formatInscriptionNumber,
-  SORT_OPTIONS,
-  LISTING_FILTERS,
 } from "../../services/magicEden";
 import { cn } from "../../lib/utils";
 
-// Coleção da artista Maria Pallas
+// Coleção da artista
 const COLLECTION_SYMBOL = "circuskinder";
 const COLLECTION_NAME = "Circus Kinder";
+const MAGIC_EDEN_URL = `https://magiceden.io/ordinals/marketplace/${COLLECTION_SYMBOL}`;
 
 // Skeleton loading component
 const Skeleton = ({ className }) => (
@@ -20,36 +19,26 @@ const Skeleton = ({ className }) => (
 );
 
 const NFTs = () => {
-  // Estado dos dados
   const [tokens, setTokens] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [loadedImages, setLoadedImages] = useState({});
 
-  // Estado dos filtros/busca
-  const [searchTerm, setSearchTerm] = useState("");
-  const [sortBy, setSortBy] = useState("inscriptionNumberAsc");
-  const [listingFilter, setListingFilter] = useState("all");
-  const [showFilters, setShowFilters] = useState(false);
-
-  // Paginação
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
-
-  // Buscar tokens da API
+  // Buscar apenas 10 tokens
   const fetchTokens = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      const data = await fetchAllTokensCached(COLLECTION_SYMBOL);
+      const data = await fetchCollectionTokens({
+        collectionSymbol: COLLECTION_SYMBOL,
+        limit: 10,
+        offset: 0,
+        sortBy: "inscriptionNumberAsc",
+      });
       setTokens(data);
     } catch (err) {
       console.error("Erro ao carregar Ordinals:", err);
-      if (err.isRateLimited || err.response?.status === 429 || err.message?.includes("429")) {
-        setError("Rate limit - 429. A API está temporariamente indisponível.");
-      } else {
-        setError("Erro ao carregar Ordinals. Tente novamente mais tarde.");
-      }
+      setError(true);
     } finally {
       setLoading(false);
     }
@@ -58,67 +47,6 @@ const NFTs = () => {
   useEffect(() => {
     fetchTokens();
   }, [fetchTokens]);
-
-  // Filtrar e ordenar tokens
-  const filteredTokens = useMemo(() => {
-    let result = [...tokens];
-
-    // Filtro de busca
-    if (searchTerm) {
-      const term = searchTerm.toLowerCase();
-      result = result.filter((token) => {
-        const name = token.meta?.name?.toLowerCase() || "";
-        const inscriptionNumber = token.inscriptionNumber?.toString() || "";
-        const id = token.id?.toLowerCase() || "";
-        return (
-          name.includes(term) ||
-          inscriptionNumber.includes(term) ||
-          id.includes(term)
-        );
-      });
-    }
-
-    // Filtro de listagem
-    if (listingFilter === "listed") {
-      result = result.filter((token) => token.listed);
-    } else if (listingFilter === "unlisted") {
-      result = result.filter((token) => !token.listed);
-    }
-
-    // Ordenação
-    result.sort((a, b) => {
-      switch (sortBy) {
-        case "inscriptionNumberAsc":
-          return (a.inscriptionNumber || 0) - (b.inscriptionNumber || 0);
-        case "inscriptionNumberDesc":
-          return (b.inscriptionNumber || 0) - (a.inscriptionNumber || 0);
-        case "priceAsc":
-          if (!a.listedPrice) return 1;
-          if (!b.listedPrice) return -1;
-          return a.listedPrice - b.listedPrice;
-        case "priceDesc":
-          if (!a.listedPrice) return 1;
-          if (!b.listedPrice) return -1;
-          return b.listedPrice - a.listedPrice;
-        default:
-          return 0;
-      }
-    });
-
-    return result;
-  }, [tokens, searchTerm, sortBy, listingFilter]);
-
-  // Paginação
-  const totalPages = Math.ceil(filteredTokens.length / itemsPerPage);
-  const paginatedTokens = useMemo(() => {
-    const start = (currentPage - 1) * itemsPerPage;
-    return filteredTokens.slice(start, start + itemsPerPage);
-  }, [filteredTokens, currentPage]);
-
-  // Reset página quando filtros mudam
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [searchTerm, sortBy, listingFilter]);
 
   // Gerar URL da imagem do ordinal
   const getImageUrl = (token) => {
@@ -137,321 +65,172 @@ const NFTs = () => {
     setLoadedImages((prev) => ({ ...prev, [id]: true }));
   }, []);
 
-  // Floor price calculation
-  const floorPrice = useMemo(() => {
-    const listedTokens = tokens.filter((t) => t.listedPrice);
-    if (listedTokens.length === 0) return null;
-    return Math.min(...listedTokens.map((t) => t.listedPrice));
-  }, [tokens]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-background pt-24 md:pt-32 flex items-center justify-center">
-        <div className="text-center">
-          <Loader2 className="w-8 h-8 animate-spin text-accent mx-auto mb-4" />
-          <p className="text-muted-foreground">Carregando Ordinals...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    const isRateLimited = error.includes("429") || error.includes("Rate");
-    return (
-      <div className="min-h-screen bg-background pt-24 md:pt-32">
-        <div className="container-custom text-center py-20">
-          <h2 className="text-2xl font-display mb-4">
-            {isRateLimited ? "Magic Eden API está ocupada" : "Erro ao carregar"}
-          </h2>
-          <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-            {isRateLimited 
-              ? "A API da Magic Eden está temporariamente limitando requisições. Por favor, aguarde alguns minutos e tente novamente." 
-              : error}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={fetchTokens}
-              className="px-6 py-3 bg-accent text-white rounded-sm hover:bg-accent/90 transition-colors"
-            >
-              Tentar Novamente
-            </button>
-            <a
-              href={`https://magiceden.io/ordinals/marketplace/${COLLECTION_SYMBOL}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 border border-border rounded-sm hover:border-accent transition-colors inline-flex items-center justify-center gap-2"
-            >
-              <ExternalLink className="w-4 h-4" />
-              Ver no Magic Eden
-            </a>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-background pt-24 md:pt-32">
       {/* Hero Section */}
-      <section className="container-custom mb-12">
+      <section className="container-custom mb-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+          className="max-w-3xl"
         >
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-display mb-6">
             Blockchain <span className="text-accent italic">Art.</span>
           </h1>
-          <p className="text-muted-foreground max-w-xl leading-relaxed mb-8">
+          <p className="text-lg text-muted-foreground leading-relaxed mb-8">
             Explore the <span className="text-foreground font-medium">{COLLECTION_NAME}</span> collection 
-            — unique Bitcoin Ordinals by Maria Pallas inscribed forever on the blockchain.
+            — unique Bitcoin Ordinals by Marei Pallas inscribed forever on the blockchain.
           </p>
-
-          {/* Stats */}
-          <div className="flex flex-wrap gap-8 md:gap-12">
-            <div>
-              <p className="text-3xl md:text-4xl font-display">{tokens.length}</p>
-              <p className="text-sm text-muted-foreground uppercase tracking-wider">Total Items</p>
-            </div>
-            <div>
-              <p className="text-3xl md:text-4xl font-display">
-                {tokens.filter((t) => t.listed).length}
-              </p>
-              <p className="text-sm text-muted-foreground uppercase tracking-wider">Listed</p>
-            </div>
-            {floorPrice && (
-              <div>
-                <p className="text-3xl md:text-4xl font-display">{formatPrice(floorPrice)}</p>
-                <p className="text-sm text-muted-foreground uppercase tracking-wider">Floor Price</p>
-              </div>
-            )}
-          </div>
+          
+          {/* CTA Principal */}
+          <a
+            href={MAGIC_EDEN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-sm hover:bg-accent/90 transition-colors text-lg font-medium group"
+          >
+            View Full Collection on Magic Eden
+            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </a>
         </motion.div>
       </section>
 
-      {/* Filters Section */}
-      <section className="container-custom mb-8">
-        <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-          {/* Search */}
-          <div className="relative w-full md:w-96">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <input
-              type="text"
-              placeholder="Search by name or inscription #..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-10 py-3 bg-card border border-border rounded-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors"
-            />
-            {searchTerm && (
-              <button
-                onClick={() => setSearchTerm("")}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            )}
-          </div>
-
-          {/* Filter Toggle (Mobile) */}
-          <button
-            onClick={() => setShowFilters(!showFilters)}
-            className="md:hidden flex items-center gap-2 px-4 py-2 border border-border rounded-sm"
-          >
-            <Filter className="w-4 h-4" />
-            Filters
-          </button>
-
-          {/* Desktop Filters */}
-          <div className={cn(
-            "flex flex-col md:flex-row gap-4 w-full md:w-auto",
-            showFilters ? "flex" : "hidden md:flex"
-          )}>
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="px-4 py-3 bg-card border border-border rounded-sm text-foreground focus:outline-none focus:border-accent transition-colors cursor-pointer"
-            >
-              {SORT_OPTIONS.map((opt) => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
-
-            <select
-              value={listingFilter}
-              onChange={(e) => setListingFilter(e.target.value)}
-              className="px-4 py-3 bg-card border border-border rounded-sm text-foreground focus:outline-none focus:border-accent transition-colors cursor-pointer"
-            >
-              {LISTING_FILTERS.map((opt) => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        {/* Results count */}
-        <p className="text-sm text-muted-foreground mt-4">
-          Showing {paginatedTokens.length} of {filteredTokens.length} items
-          {searchTerm && (
-            <span className="ml-2">
-              for "<span className="text-foreground">{searchTerm}</span>"
-            </span>
-          )}
-        </p>
-      </section>
-
-      {/* NFT Grid */}
+      {/* Preview Grid */}
       <section className="container-custom pb-24">
-        {filteredTokens.length === 0 ? (
-          <div className="text-center py-20">
-            <p className="text-muted-foreground mb-4">No Ordinals found with the selected filters.</p>
-            <button
-              onClick={() => {
-                setSearchTerm("");
-                setListingFilter("all");
-              }}
-              className="px-6 py-2 border border-border rounded-sm hover:border-accent transition-colors"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl font-display">
+              Preview <span className="text-muted-foreground font-normal">({COLLECTION_NAME})</span>
+            </h2>
+            <a
+              href={MAGIC_EDEN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground hover:text-accent transition-colors flex items-center gap-1"
             >
-              Clear Filters
-            </button>
+              See all <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
-        ) : (
-          <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              <AnimatePresence mode="popLayout">
-                {paginatedTokens.map((token, index) => (
-                  <motion.div
-                    key={token.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ delay: index * 0.05, duration: 0.4 }}
-                    className="group cursor-pointer"
-                    onClick={() => openOnMagicEden(token)}
-                  >
-                    <div className="relative aspect-square rounded-sm overflow-hidden bg-muted mb-4">
-                      {!loadedImages[token.id] && (
-                        <Skeleton className="absolute inset-0" />
-                      )}
-                      <img
-                        src={getImageUrl(token)}
-                        alt={token.meta?.name || `Ordinal #${token.inscriptionNumber}`}
-                        className={cn(
-                          "w-full h-full object-cover transition-all duration-500",
-                          loadedImages[token.id] ? "opacity-100" : "opacity-0",
-                          "group-hover:scale-105"
-                        )}
-                        onLoad={() => handleImageLoad(token.id)}
-                        onError={(e) => {
-                          e.target.src = "/img/placeholder.jpg";
-                          handleImageLoad(token.id);
-                        }}
-                        loading="lazy"
-                      />
-                      
-                      {/* Listed Badge */}
-                      {token.listed && (
-                        <span className="absolute top-3 left-3 px-2 py-1 bg-accent text-white text-xs font-medium rounded-sm">
-                          For Sale
-                        </span>
-                      )}
 
-                      {/* Hover Overlay */}
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                        <span className="flex items-center gap-2 text-white text-sm font-medium">
-                          <ExternalLink className="w-4 h-4" />
-                          View on Magic Eden
-                        </span>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 className="font-display text-lg mb-1 group-hover:text-accent transition-colors truncate">
-                        {token.meta?.name || `Ordinal ${formatInscriptionNumber(token.inscriptionNumber)}`}
-                      </h3>
-                      <p className="text-sm text-muted-foreground mb-2">
-                        {formatInscriptionNumber(token.inscriptionNumber)}
-                      </p>
-                      {token.listedPrice ? (
-                        <p className="text-accent font-medium">{formatPrice(token.listedPrice)}</p>
-                      ) : (
-                        <p className="text-muted-foreground text-sm">Not Listed</p>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </div>
-
-            {/* Pagination */}
-            {totalPages > 1 && (
-              <div className="flex items-center justify-center gap-2 mt-12">
-                <button
-                  disabled={currentPage === 1}
-                  onClick={() => setCurrentPage((p) => p - 1)}
-                  className="px-4 py-2 border border-border rounded-sm disabled:opacity-50 disabled:cursor-not-allowed hover:border-accent transition-colors"
-                >
-                  Previous
-                </button>
-
-                <div className="flex items-center gap-1">
-                  {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-                    let pageNum;
-                    if (totalPages <= 5) {
-                      pageNum = i + 1;
-                    } else if (currentPage <= 3) {
-                      pageNum = i + 1;
-                    } else if (currentPage >= totalPages - 2) {
-                      pageNum = totalPages - 4 + i;
-                    } else {
-                      pageNum = currentPage - 2 + i;
-                    }
-
-                    return (
-                      <button
-                        key={pageNum}
-                        onClick={() => setCurrentPage(pageNum)}
-                        className={cn(
-                          "w-10 h-10 rounded-sm transition-colors",
-                          currentPage === pageNum
-                            ? "bg-accent text-white"
-                            : "border border-border hover:border-accent"
-                        )}
-                      >
-                        {pageNum}
-                      </button>
-                    );
-                  })}
+          {loading ? (
+            // Loading Skeleton
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <div key={i}>
+                  <Skeleton className="aspect-square mb-3" />
+                  <Skeleton className="h-4 w-3/4 mb-2" />
+                  <Skeleton className="h-3 w-1/2" />
                 </div>
-
-                <button
-                  disabled={currentPage === totalPages}
-                  onClick={() => setCurrentPage((p) => p + 1)}
-                  className="px-4 py-2 border border-border rounded-sm disabled:opacity-50 disabled:cursor-not-allowed hover:border-accent transition-colors"
+              ))}
+            </div>
+          ) : error ? (
+            // Error state - mostra CTA direto para Magic Eden
+            <div className="text-center py-16 bg-card rounded-sm border border-border">
+              <p className="text-muted-foreground mb-6">
+                Não foi possível carregar a prévia. Visite a coleção completa no Magic Eden.
+              </p>
+              <a
+                href={MAGIC_EDEN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-sm hover:bg-accent/90 transition-colors"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Ver no Magic Eden
+              </a>
+            </div>
+          ) : (
+            // NFT Grid
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              {tokens.map((token, index) => (
+                <motion.div
+                  key={token.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05, duration: 0.4 }}
+                  className="group cursor-pointer"
+                  onClick={() => openOnMagicEden(token)}
                 >
-                  Next
-                </button>
-              </div>
-            )}
-          </>
-        )}
+                  <div className="relative aspect-square rounded-sm overflow-hidden bg-muted mb-3">
+                    {!loadedImages[token.id] && (
+                      <Skeleton className="absolute inset-0" />
+                    )}
+                    <img
+                      src={getImageUrl(token)}
+                      alt={token.meta?.name || `Ordinal #${token.inscriptionNumber}`}
+                      className={cn(
+                        "w-full h-full object-cover transition-all duration-500",
+                        loadedImages[token.id] ? "opacity-100" : "opacity-0",
+                        "group-hover:scale-105"
+                      )}
+                      onLoad={() => handleImageLoad(token.id)}
+                      onError={(e) => {
+                        e.target.src = "/img/placeholder.jpg";
+                        handleImageLoad(token.id);
+                      }}
+                      loading="lazy"
+                    />
+                    
+                    {/* Listed Badge */}
+                    {token.listed && (
+                      <span className="absolute top-2 left-2 px-2 py-0.5 bg-accent text-white text-xs font-medium rounded-sm">
+                        For Sale
+                      </span>
+                    )}
+
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <ExternalLink className="w-5 h-5 text-white" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="font-medium text-sm mb-1 group-hover:text-accent transition-colors truncate">
+                      {token.meta?.name || formatInscriptionNumber(token.inscriptionNumber)}
+                    </h3>
+                    {token.listedPrice ? (
+                      <p className="text-accent text-sm">{formatPrice(token.listedPrice)}</p>
+                    ) : (
+                      <p className="text-muted-foreground text-xs">Not Listed</p>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </motion.div>
       </section>
 
-      {/* Magic Eden Link */}
-      <section className="container-custom pb-16">
-        <div className="text-center">
-          <a
-            href={`https://magiceden.io/ordinals/marketplace/${COLLECTION_SYMBOL}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-white rounded-sm hover:bg-accent/90 transition-colors"
+      {/* Bottom CTA */}
+      <section className="border-t border-border">
+        <div className="container-custom py-16 md:py-24 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            <ExternalLink className="w-4 h-4" />
-            View Full Collection on Magic Eden
-          </a>
+            <h2 className="text-3xl md:text-4xl font-display mb-4">
+              Explore the Full <span className="text-accent italic">Collection.</span>
+            </h2>
+            <p className="text-muted-foreground mb-8 max-w-md mx-auto">
+              View all Ordinals, check prices, and make purchases directly on Magic Eden.
+            </p>
+            <a
+              href={MAGIC_EDEN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-foreground text-background rounded-sm hover:bg-accent hover:text-white transition-colors text-lg font-medium group"
+            >
+              <ExternalLink className="w-5 h-5" />
+              Visit Magic Eden
+            </a>
+          </motion.div>
         </div>
       </section>
     </div>
