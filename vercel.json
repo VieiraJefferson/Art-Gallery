@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "buildCommand": "cd art-gallery && npm install && npm run build",
+  "outputDirectory": "art-gallery/build",
+  "installCommand": "cd art-gallery && npm install",
+  "framework": "create-react-app"
+}
