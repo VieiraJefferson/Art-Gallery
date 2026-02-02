@@ -10,6 +10,17 @@ const Skeleton = ({ className }) => (
   <div className={cn("animate-pulse bg-muted rounded-sm", className)} />
 );
 
+// Custom titles for Kunstraub collection
+const KUNSTRAUB_TITLES = [
+  '"I still have my red shoes" in Virginia is stolen from the Kunsthalle',
+  'Camera footage of the theft',
+  'The Weserkurier releases a breaking news story',
+  'The police publish a search notice',
+  'The real Weserkurier writes an article about the art action',
+];
+
+const KUNSTRAUB_COLLECTION_ID = '33819d67-1811-41c2-9b5d-40e28fdf3483';
+
 // Modal component
 const ImageModal = ({ image, onClose, onNext, onPrev, hasNext, hasPrev }) => {
   useEffect(() => {
@@ -115,6 +126,15 @@ const SubColecao = () => {
   }, []);
 
   const images = subCollection?.pictures || [];
+  const isKunstraub = collectionId === KUNSTRAUB_COLLECTION_ID;
+
+  // Get display name for image
+  const getImageTitle = (image, index) => {
+    if (isKunstraub && KUNSTRAUB_TITLES[index]) {
+      return KUNSTRAUB_TITLES[index];
+    }
+    return image.name;
+  };
 
   if (loading) {
     return (
@@ -213,7 +233,7 @@ const SubColecao = () => {
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
                   </div>
                   <p className="mt-4 text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-                    {image.name}
+                    {getImageTitle(image, index)}
                   </p>
                 </button>
               </motion.div>
@@ -227,7 +247,10 @@ const SubColecao = () => {
       <AnimatePresence>
         {selectedIndex !== null && images[selectedIndex] && (
           <ImageModal
-            image={images[selectedIndex]}
+            image={{
+              ...images[selectedIndex],
+              name: getImageTitle(images[selectedIndex], selectedIndex)
+            }}
             onClose={() => setSelectedIndex(null)}
             onNext={() => setSelectedIndex((prev) => Math.min(prev + 1, images.length - 1))}
             onPrev={() => setSelectedIndex((prev) => Math.max(prev - 1, 0))}
