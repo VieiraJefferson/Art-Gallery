@@ -252,7 +252,7 @@ const HomePage = () => {
             {[
               { title: "Surreal Dreams", year: "2019-2022", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212593/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/ncopingbcthzo2zhv9kn.jpg" },
               { title: "Emotional Depths", year: "2013", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212345/galeria/galeria/Pallas%20Galaxy%20Collection/2013/nwvewa6sw4koc7yfgyjs.jpg" },
-              { title: "Abstract Visions", year: "2019-2022", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212649/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/jmwcqnwculp5pb7p9ii3.jpg" },
+              { title: "Abstract Visions", year: "2019-2022", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1770067216/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/jmwcqnwculp5pb7p9ii3.jpg" },
             ].map((collection, index) => (
               <motion.div
                 key={collection.title}
