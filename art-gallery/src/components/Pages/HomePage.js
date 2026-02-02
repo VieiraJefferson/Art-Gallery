@@ -24,7 +24,7 @@ const galleryImages = [
     size: "small",
   },
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212355/galeria/galeria/Pallas%20Galaxy%20Collection/2013/wiwxpssttlku7nc0pp9l.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212813/galeria/galeria/Pallas%20Galaxy%20Collection/Till%20Today/biv2s3v9ij8tnljzyjo8.jpg",
     size: "medium",
   },
 ];
