@@ -27,8 +27,8 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-muted-foreground leading-relaxed max-w-sm">
-              Contemporary surrealist art gallery presenting works that blur 
-              the boundaries between reality and imagination.
+              Through contemporary surrealism, Marei Pallas explores the space 
+              where reality dissolves into imagination.
             </p>
           </div>
 

@@ -116,9 +116,8 @@ const Gallery = () => {
             Art <span className="text-accent-italic">Collections.</span>
           </h1>
           <p className="text-muted-foreground max-w-xl leading-relaxed">
-            Explore our curated collections spanning over a decade of artistic 
-            evolution. Each collection represents a unique chapter in the 
-            artistic journey.
+            Explore more than a decade of work through curated collections, 
+            each marking a chapter in Marei's creative path.
           </p>
         </motion.div>
       </section>
@@ -212,14 +211,12 @@ const Gallery = () => {
               <h2 className="text-4xl md:text-5xl font-display mb-8">
                 Artistic <span className="text-accent-italic">Philosophy.</span>
               </h2>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                Each collection represents a unique exploration of form, color, and emotion.
-                Through surrealist imagery and bold compositions, these works invite viewers
-                to discover new perspectives on reality.
+              <p className="text-foreground leading-relaxed mb-6 text-lg italic">
+                "Art is crossing boundaries, stepping out of the ordinary and into the unknown. 
+                It's the language of the soul: an invitation to communicate with ourselves and with others."
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                From street art influences to classical techniques, the diversity of styles
-                reflects a continuous evolution and experimentation with artistic expression.
+                I believe art should be for everybody: tangible, accessible, and easy to understand.
               </p>
             </motion.div>
 

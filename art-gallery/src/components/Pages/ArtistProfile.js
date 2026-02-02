@@ -20,7 +20,7 @@ const ArtistProfile = () => {
               <div className="aspect-[3/4] rounded-sm overflow-hidden">
                 <img
                   src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212413/galeria/galeria/Pallas%20Galaxy%20Collection/2014-2015/xhwaz6awcjnmgw4ytoaw.gif"
-                  alt="Maria Pallas - Artist"
+                  alt="Marei Pallas - Artist"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -40,18 +40,18 @@ const ArtistProfile = () => {
                 About the Artist
               </span>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-display mb-8">
-                Maria <span className="text-accent-italic">Pallas.</span>
+                Marei <span className="text-accent-italic">Pallas.</span>
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                A visionary artist whose work transcends conventional boundaries, 
-                blending surrealism with evocative symbolism. Each piece tells a 
-                story, inviting viewers into worlds where reality and imagination 
-                intertwine seamlessly.
+                A boundary-crossing artist, Marei Pallas blends contemporary surrealism 
+                with symbolism shaped by real encounters. Her work invites viewers into 
+                worlds where reality and imagination meet—an invitation to communicate 
+                beyond words, through the language of the soul.
               </p>
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <span>Brazilian</span>
+                <span>German</span>
                 <span className="w-1 h-1 bg-muted-foreground rounded-full" />
-                <span>Since 2010</span>
+                <span>Since 2015</span>
                 <span className="w-1 h-1 bg-muted-foreground rounded-full" />
                 <span>Surrealist</span>
               </div>
@@ -74,34 +74,45 @@ const ArtistProfile = () => {
                 The <span className="text-accent-italic">Journey.</span>
               </h2>
               
-              <div className="grid md:grid-cols-2 gap-8 md:gap-16">
-                <div>
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    Born in Brazil, Maria Pallas discovered her passion for art at 
-                    an early age. Her journey into surrealism began as a way to 
-                    express the complexities of human emotion and the mysteries 
-                    of the subconscious mind.
-                  </p>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Through masterful use of color and composition, her artwork 
-                    explores themes of solitude, love, identity, and the passage 
-                    of time. Each canvas becomes a window into alternate realities 
-                    where the impossible becomes tangible.
-                  </p>
-                </div>
-                <div>
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    Her work has been exhibited in galleries across Europe and 
-                    South America, earning recognition for its unique blend of 
-                    technical precision and emotional depth.
-                  </p>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Today, Maria continues to push the boundaries of her craft, 
-                    experimenting with new techniques while staying true to her 
-                    surrealist roots. Her latest collections explore digital 
-                    mediums alongside traditional painting.
-                  </p>
-                </div>
+              <div className="space-y-8">
+                <p className="text-muted-foreground leading-relaxed">
+                  Born in Germany, Marei Pallas has always followed art as a red thread 
+                  through her life. In 2015, she left her job and spent three years abroad 
+                  to paint, draw, and search for her own visual language.
+                </p>
+                
+                <p className="text-muted-foreground leading-relaxed">
+                  She spent half a year in Varna on a quiet, self-led retreat—painting daily 
+                  and working intensely on developing her own artistic style.
+                </p>
+                
+                <p className="text-muted-foreground leading-relaxed">
+                  Later, in Istanbul, her practice moved into public space. She created 
+                  street-based art actions that invited real contact, like painting a chalk 
+                  artwork with people beneath Galata Tower, and brought surreal moments into 
+                  everyday life. It was never only about the image, but about presence: art 
+                  as something shared.
+                </p>
+                
+                <p className="text-muted-foreground leading-relaxed">
+                  After Istanbul, she returned to Germany and continued with direct interventions 
+                  in the street, including her "Hug a Terrorist / Love is stronger than hate" 
+                  action or "Sunflowers on Sunday", an intervention to give more intention to 
+                  drivers of the public transport.
+                </p>
+                
+                <p className="text-muted-foreground leading-relaxed">
+                  In 2025, she released her first NFT collection on the blockchain, selling out 
+                  within 24 hours and reaching the Top 20 on Magic Eden, with strong attention 
+                  on X. Later in Portugal, she hung her latest NFT collection outdoors and showed 
+                  it directly to people on the street, because for her, art should be visible and 
+                  accessible beyond galleries.
+                </p>
+                
+                <p className="text-muted-foreground leading-relaxed">
+                  In October 2025, she joined a school for realistic painting and drawing to 
+                  sharpen her technique further, while staying true to her own surrealist direction.
+                </p>
               </div>
             </motion.div>
           </div>
@@ -121,15 +132,15 @@ const ArtistProfile = () => {
               <h2 className="text-4xl md:text-5xl font-display mb-8">
                 Artistic <span className="text-accent-italic">Philosophy.</span>
               </h2>
-              <blockquote className="text-2xl md:text-3xl font-display text-muted-foreground leading-relaxed mb-8">
-                "Art is the bridge between what we see and what we feel. 
-                It transforms the invisible into the visible, giving form 
-                to our deepest emotions."
+              <blockquote className="text-2xl md:text-3xl font-display text-foreground leading-relaxed mb-8 italic">
+                "Art is crossing boundaries, stepping out of the ordinary and into the unknown. 
+                It's the language of the soul: an invitation to communicate with ourselves 
+                and with others."
               </blockquote>
               <p className="text-muted-foreground leading-relaxed">
-                Maria believes that true art should challenge perception 
-                and evoke emotion. Her work invites viewers to look beyond 
-                the surface and discover personal meaning within each piece.
+                At the core of her work is a simple belief: art crosses boundaries, steps 
+                out of the ordinary into the unknown, and belongs to everyone. I believe 
+                art should be for everybody: tangible, accessible, and easy to understand.
               </p>
             </motion.div>
 
@@ -172,9 +183,8 @@ const ArtistProfile = () => {
               Explore the <span className="text-accent-italic">Collection.</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed">
-              Discover over a decade of artistic evolution through our 
-              curated collections, each representing a unique chapter 
-              in Maria's creative journey.
+              Explore more than a decade of work through curated collections, 
+              each marking a chapter in Marei's creative path.
             </p>
             <Link
               to="/gallery"

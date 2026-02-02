@@ -6,9 +6,9 @@ import { ArrowRight } from "lucide-react";
 // Imagens da galeria para o grid assimétrico
 const galleryImages = [
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212429/galeria/galeria/Pallas%20Galaxy%20Collection/2014-2015/qvrtsahxelvxtfcff9au.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212355/galeria/galeria/Pallas%20Galaxy%20Collection/2013/wiwxpssttlku7nc0pp9l.jpg",
     artist: "Marei Pallas",
-    year: "2014",
+    year: "2013",
     size: "large",
   },
   {
@@ -16,11 +16,11 @@ const galleryImages = [
     size: "medium",
   },
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212355/galeria/galeria/Pallas%20Galaxy%20Collection/2013/wiwxpssttlku7nc0pp9l.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212429/galeria/galeria/Pallas%20Galaxy%20Collection/2014-2015/qvrtsahxelvxtfcff9au.jpg",
     size: "medium",
   },
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212774/galeria/galeria/Pallas%20Galaxy%20Collection/Till%20Today/pkus7hs7foydedh85s81.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212658/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/kvdll4lxoerxjbdbvhky.jpg",
     size: "small",
   },
   {
@@ -188,14 +188,14 @@ const HomePage = () => {
                 About the <span className="text-accent-italic">Artist.</span>
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Marei Pallas is a visionary artist whose work transcends conventional
-                boundaries, blending surrealism with evocative symbolism. Each piece
-                tells a story, inviting viewers into worlds where reality and imagination
-                intertwine seamlessly.
+                A boundary-crossing artist, Marei Pallas blends contemporary surrealism
+                with symbolism shaped by real encounters. Her work invites viewers into
+                worlds where reality and imagination meet—an invitation to communicate
+                beyond words, through the language of the soul.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-8">
-                Through masterful use of color and composition, her artwork explores
-                themes of solitude, love, identity, and the passage of time.
+                Born in Germany, she left her job in 2015 to paint, draw, and search
+                for her own visual language across Europe and beyond.
               </p>
               <Link
                 to="/artistProfile"
@@ -216,7 +216,7 @@ const HomePage = () => {
               <div className="aspect-[3/4] rounded-sm overflow-hidden">
                 <img
                   src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212413/galeria/galeria/Pallas%20Galaxy%20Collection/2014-2015/xhwaz6awcjnmgw4ytoaw.gif"
-                  alt="Maria Pallas"
+                  alt="Marei Pallas"
                   className="w-full h-full object-cover"
                 />
               </div>
