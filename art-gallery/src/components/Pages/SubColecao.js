@@ -125,7 +125,22 @@ const SubColecao = () => {
     setLoadedImages((prev) => ({ ...prev, [id]: true }));
   }, []);
 
-  const images = subCollection?.pictures || [];
+  // Imagens a serem removidas da subcoleção "Vivid Delirium"
+  const IMAGES_TO_REMOVE = [
+    "bpfyi35zoyfdnrovy8oz",
+    "rjtzi3gcv8dynxaq2d3e"
+  ];
+
+  // Filtrar imagens removidas da subcoleção "Vivid Delirium"
+  let images = subCollection?.pictures || [];
+  const collectionName = subCollection?.name || subCollection?.subCollectionName || "";
+  if (collectionName.toLowerCase().includes("vivid delirium")) {
+    images = images.filter(image => {
+      const imageSrc = image.src || "";
+      return !IMAGES_TO_REMOVE.some(id => imageSrc.includes(id));
+    });
+  }
+
   const isKunstraub = collectionId === KUNSTRAUB_COLLECTION_ID;
 
   // Get display name for image
@@ -137,7 +152,7 @@ const SubColecao = () => {
   };
 
   if (loading) {
-    return (
+  return (
       <div className="min-h-screen bg-background pt-24 md:pt-32 flex items-center justify-center">
         <Loader2 className="w-8 h-8 animate-spin text-accent" />
       </div>
@@ -145,7 +160,7 @@ const SubColecao = () => {
   }
 
   if (error) {
-    return (
+          return (
       <div className="min-h-screen bg-background pt-24 md:pt-32">
         <div className="container-custom">
           <Link
@@ -163,10 +178,10 @@ const SubColecao = () => {
             >
               Tentar Novamente
             </button>
-          </div>
-        </div>
-      </div>
-    );
+                </div>
+              </div>
+            </div>
+          );
   }
 
   // Render clickable image
@@ -352,7 +367,7 @@ const SubColecao = () => {
               </blockquote>
             </motion.div>
             {images[4] && renderImage(images[4], 4)}
-          </div>
+      </div>
         </section>
 
         {/* Conclusion */}
@@ -436,8 +451,8 @@ const SubColecao = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {images.map((image, index) => renderImage(image, index))}
-          </div>
-        )}
+        </div>
+      )}
       </section>
 
       {/* Modal */}

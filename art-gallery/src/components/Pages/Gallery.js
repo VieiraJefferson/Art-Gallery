@@ -18,7 +18,6 @@ const Skeleton = ({ className }) => (
 // Capas personalizadas por índice (0-based)
 const CUSTOM_COVERS = {
   1: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741213061/galeria/galeria/Pallas%20Galaxy%20Collection/Kunstraub/ypxcf7udzqnot5fgycsa.jpg",
-  5: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212767/galeria/galeria/Pallas%20Galaxy%20Collection/Till%20Today/fbcyb4ftfpvkrwripdbl.jpg",
 };
 
 // Imagens da seção Artistic Philosophy
@@ -40,7 +39,12 @@ const Gallery = () => {
         setLoading(true);
         const collections = await fetchAllCollections();
         const subs = extractSubCollections(collections);
-        setSubCollections(subs);
+        // Filtrar subcoleção "Till Today" para não aparecer no frontend
+        const filteredSubs = subs.filter(sub => {
+          const name = sub.name || sub.subCollectionName || "";
+          return !name.toLowerCase().includes("till today");
+        });
+        setSubCollections(filteredSubs);
       } catch (err) {
         console.error("Erro ao carregar coleções:", err);
         setError("Erro ao carregar coleções. Tente novamente.");
