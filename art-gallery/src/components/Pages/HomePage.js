@@ -73,10 +73,10 @@ const HomePage = () => {
                 </h1>
 
                 <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-md">
-                Since 2015, Marei Pallas has been presenting contemporary surrealist work through independent exhibitions and public art actions.
-                 Rather than building a traditional gallery profile,
+                  Since 2015, Marei Pallas has been presenting contemporary surrealist work through independent exhibitions and public art actions.
+                  Rather than building a traditional gallery profile,
                   she has focused on creating direct, accessible encounters,
-                   bringing art into shared spaces and showing it to people beyond the usual art circles.  
+                  bringing art into shared spaces and showing it to people beyond the usual art circles.
                 </p>
 
                 <Link
@@ -252,7 +252,7 @@ const HomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { title: "Surreal Dreams", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212593/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/ncopingbcthzo2zhv9kn.jpg" },
-              { title: "Emotional Depths", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1770067429/galeria/galeria/Pallas%20Galaxy%20Collection/2013/nwvewa6sw4koc7yfgyjs.jpg" },
+              { title: "Emotional Depths", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v17700753300/galeria/undefined/dgahd9k0njb51oglz6wx.jpg" },
               { title: "Political Art", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1770067216/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/jmwcqnwculp5pb7p9ii3.jpg" },
             ].map((collection, index) => (
               <motion.div
