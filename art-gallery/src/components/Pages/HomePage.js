@@ -73,9 +73,10 @@ const HomePage = () => {
                 </h1>
 
                 <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-md">
-                  Since 2015, Maria Pallas has presented contemporary art exhibitions
-                  showcasing the work of emerging surrealist artists. The Gallery acquired
-                  a strong reputation for introducing artists who would later gain worldwide recognition.
+                Since 2015, Marei Pallas has been presenting contemporary surrealist work through independent exhibitions and public art actions.
+                 Rather than building a traditional gallery profile,
+                  she has focused on creating direct, accessible encounters,
+                   bringing art into shared spaces and showing it to people beyond the usual art circles.  
                 </p>
 
                 <Link
