@@ -6,21 +6,21 @@ import { ArrowRight } from "lucide-react";
 // Imagens da galeria para o grid assimétrico
 const galleryImages = [
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735974/galeria/undefined/prjybmsfldza06km2lmy.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735624/galeria/undefined/dohkw8dz5kxv5mdu8qis.jpg",
     artist: "Marei Pallas",
     year: "2024",
     size: "large",
   },
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747758570/galeria/undefined/qnuggnzpg0mswfdqtxib.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747758329/galeria/undefined/xpfxv15kvzbspubq0rsw.jpg",
     size: "medium",
   },
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747734403/galeria/undefined/rg3jdlnjky2m2bnlpsfx.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735578/galeria/undefined/hm4pdd4efgymhsgboupc.jpg",
     size: "medium",
   },
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1774285052/Fight_Racism_kakfpy.png",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747758553/galeria/undefined/a7pysumlzavzasgbl1n9.jpg",
     size: "small",
   },
   {
@@ -216,7 +216,7 @@ const HomePage = () => {
             >
               <div className="aspect-[3/4] rounded-sm overflow-hidden">
                 <img
-                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1747734447/galeria/undefined/ykdh6vhdqsoodhyfn3m9.jpg"
+                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1747758226/galeria/undefined/e4mvlpv7uni3pg7fkuro.jpg"
                   alt="Marei Pallas"
                   className="w-full h-full object-cover"
                 />
@@ -251,9 +251,9 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Surreal Dreams", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735996/galeria/undefined/xpd8aibqzfacwxdsqsjm.jpg" },
+              { title: "Surreal Dreams", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735304/galeria/undefined/qh6yq34t2ltqj6g4iqft.jpg" },
               { title: "The Ordinary", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747758553/galeria/undefined/a7pysumlzavzasgbl1n9.jpg" },
-              { title: "Political Art", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747755618/galeria/undefined/wpryfe9utghov7sjqoqe.jpg" },
+              { title: "Political Art", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747756775/galeria/undefined/kfvebnxjosb1jwwp8w6m.jpg" },
             ].map((collection, index) => (
               <motion.div
                 key={collection.title}

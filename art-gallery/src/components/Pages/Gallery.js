@@ -15,9 +15,16 @@ const Skeleton = ({ className }) => (
   />
 );
 
-// Capas personalizadas por índice (0-based)
+// Capas personalizadas por índice (0-based, ordem alfabética das subcoleções)
+// 0: A Dream in Black and White | 1: Kunstraub | 2: Political Art
+// 3: Street Art Actions | 4: Surreal Dreams | 5: The Ordinary
 const CUSTOM_COVERS = {
+  0: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747733496/galeria/undefined/xz6lx4ildpogciduwyno.jpg",
   1: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741213061/galeria/galeria/Pallas%20Galaxy%20Collection/Kunstraub/ypxcf7udzqnot5fgycsa.jpg",
+  2: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747756775/galeria/undefined/kfvebnxjosb1jwwp8w6m.jpg",
+  3: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212818/galeria/galeria/Pallas%20Galaxy%20Collection/Street-art%20things/ehdza5vzxskisjdm4sg3.jpg",
+  4: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735996/galeria/undefined/xpd8aibqzfacwxdsqsjm.jpg",
+  5: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747758422/galeria/undefined/lmct3zkympwp1mrm4mip.jpg",
 };
 
 // Imagens da seção Artistic Philosophy

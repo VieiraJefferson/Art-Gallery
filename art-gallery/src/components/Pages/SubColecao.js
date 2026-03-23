@@ -20,6 +20,30 @@ const KUNSTRAUB_TITLES = [
 ];
 
 const KUNSTRAUB_COLLECTION_ID = '33819d67-1811-41c2-9b5d-40e28fdf3483';
+const STREET_ART_ACTIONS_ID = '86e4e5ba-b3a1-44e2-9f24-025b5cbc56cd';
+
+// Desired display order for Street Art Actions (filename patterns)
+const STREET_ART_ORDER = [
+  'Sunflowers_at_Sunday_pexjby',
+  'Sundflowers_at_Sunday_py5whi',
+  'Sign_of_Peace_u8ayty',
+  'Fight_Racism_kakfpy',
+  'Fight_Racism_2_msgxe6',
+  'ocjwxdmdzmsxeiqzqdbu',
+  'Chalk_paints_for_peace4_lfjzfi',
+  'Chalk_paints_for_peace2_s91yhq',
+  'Chalk_paints_for_peace_mjoeac',
+  'breakfast_in_the_country3_rjyxue',
+  'Breakfast_in_the_country2_nvvogm',
+  'Breakfast_in_the_country_ynvpkb',
+  'ehdza5vzxskisjdm4sg3',
+  'Breakfast_in_Fur2_fqd7qo',
+  'Breakfast_in_Fur_ftsiov',
+  'yjr0trxcqyggi66gm7x0',
+  'oqkmrq7yjb4lfvb3pbnp',
+  'yyvc5ayyybe9sgc706dx',
+  'eagjs18f0whucdxj9anq',
+];
 
 // Modal component
 const ImageModal = ({ image, onClose, onNext, onPrev, hasNext, hasPrev }) => {
@@ -142,6 +166,14 @@ const SubColecao = () => {
   }
 
   const isKunstraub = collectionId === KUNSTRAUB_COLLECTION_ID;
+  const isStreetArt = collectionId === STREET_ART_ACTIONS_ID;
+
+  // Sort Street Art Actions images into the defined order
+  const sortedStreetArt = isStreetArt
+    ? STREET_ART_ORDER
+        .map(pattern => images.find(img => img.src.includes(pattern)))
+        .filter(Boolean)
+    : images;
 
   // Get display name for image
   const getImageTitle = (image, index) => {
@@ -407,6 +439,247 @@ const SubColecao = () => {
               onNext={() => setSelectedIndex((prev) => Math.min(prev + 1, images.length - 1))}
               onPrev={() => setSelectedIndex((prev) => Math.max(prev - 1, 0))}
               hasNext={selectedIndex < images.length - 1}
+              hasPrev={selectedIndex > 0}
+            />
+          )}
+        </AnimatePresence>
+      </div>
+    );
+  }
+
+  // Street Art Actions special layout
+  if (isStreetArt) {
+    const sa = sortedStreetArt;
+    return (
+      <div className="min-h-screen bg-background pt-24 md:pt-32">
+        {/* Header */}
+        <section className="container-custom mb-16">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <Link to="/gallery" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8">
+              <ArrowLeft className="w-4 h-4" />
+              <span className="text-sm tracking-[0.1em] uppercase">Back to Collections</span>
+            </Link>
+            <h1 className="text-5xl md:text-6xl font-display mb-4">
+              Street Art <span className="text-accent-italic">Actions.</span>
+            </h1>
+          </motion.div>
+        </section>
+
+        {/* 1 — Sunflowers on Sunday */}
+        <section className="container-custom pb-16 md:pb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+              <h2 className="text-3xl md:text-4xl font-display mb-6">Sunflowers on <span className="text-accent-italic">Sunday</span></h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                With the Sunflowers on Sunday campaign, we wanted to give tram drivers more recognition. They carry great responsibility in our society and do important work every day. Countless passengers rely on them to reach their destinations safely and on time.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Because drivers are often tucked away in their cabins, they can easily be overlooked. That is why we loved the idea of knocking on the driver's cabin door and handing over a sunflower.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Of course, sunflowers are no substitute for what is truly needed, better pay and better working conditions. But we still wanted to offer a small gesture of appreciation and a heartfelt thank you.
+              </p>
+            </motion.div>
+            <div className="grid grid-cols-2 gap-4">
+              {sa[0] && renderImage(sa[0], 0)}
+              {sa[1] && renderImage(sa[1], 1)}
+            </div>
+          </div>
+        </section>
+
+        {/* 2 — Sign of Peace */}
+        <section className="container-custom pb-16 md:pb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {sa[2] && renderImage(sa[2], 2, "order-2 lg:order-1")}
+            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="order-1 lg:order-2">
+              <h2 className="text-3xl md:text-4xl font-display mb-6">Sign of <span className="text-accent-italic">Peace</span></h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                As part of this action, we handed white flowers to police officers as a symbol of peace. In Istanbul, there have repeatedly been tensions and confrontations between police and demonstrators. Sign of Peace is a symbolic gesture that imagines a different kind of encounter, one grounded in restraint, dignity, and mutual recognition.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                At the same time, it acknowledges a difficult reality. Police are often deployed by state authorities to control or disperse protests, and symbolic acts alone cannot resolve structural political conflict. Flowers are not a solution to repression, nor a substitute for rights, accountability, and justice.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Still, we wanted to make a small gesture for peace, because peace begins with individuals, in our own hearts, in the hearts of those who protest, and in the hearts of those in uniform.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* 3 — Fight Racism */}
+        <section className="container-custom pb-16 md:pb-24">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="mb-12">
+            <h2 className="text-3xl md:text-4xl font-display mb-6">Fight <span className="text-accent-italic">Racism</span></h2>
+            <p className="text-muted-foreground leading-relaxed max-w-3xl mb-4">
+              Fight Racism translated the well known symbol of a little figure throwing a swastika into a trash bin into a participatory art action. At a tram stop, a trash bin was placed as the central element of the installation. Around it, swastikas were scattered across the ground.
+            </p>
+            <p className="text-muted-foreground leading-relaxed max-w-3xl mb-4">
+              Passersby were invited to take part. They could step forward, pick up a swastika, and throw it into the bin. And they did. People quickly collected all of them and threw them away.
+            </p>
+            <p className="text-muted-foreground leading-relaxed max-w-3xl">
+              The action transformed a simple symbol into a shared public gesture, a clear and active statement against hate and in support of civic courage in everyday life.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {sa[3] && renderImage(sa[3], 3)}
+            {sa[4] && renderImage(sa[4], 4)}
+            {sa[5] && renderImage(sa[5], 5)}
+          </div>
+        </section>
+
+        {/* 4 — Chalk Paint for Peace */}
+        <section className="container-custom pb-16 md:pb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <div className="grid grid-cols-1 gap-4">
+              <div className="grid grid-cols-2 gap-4">
+                {sa[6] && renderImage(sa[6], 6)}
+                {sa[7] && renderImage(sa[7], 7)}
+              </div>
+              {sa[8] && renderImage(sa[8], 8)}
+            </div>
+            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+              <h2 className="text-3xl md:text-4xl font-display mb-6">Chalk Paint <span className="text-accent-italic">for Peace</span></h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                In front of Istanbul's Galata Tower, we create a participatory chalk artwork together with people from the city. Participants become co creators, shaping the piece alongside artist Marei Pallas in a shared artistic act for peace.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                The atmosphere is lively. People arrive and leave, and anyone who feels inspired can contribute to the artwork. This creates an international, open setting in which strangers meet, exchange ideas, and create something together.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                At its heart, the project reflects a simple and universal message. The desire for peace lives in every human heart. That is the core statement of the artwork and what makes it so deeply connective.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* 5 — Breakfast in the Country */}
+        <section className="container-custom pb-16 md:pb-24">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="mb-12">
+            <h2 className="text-3xl md:text-4xl font-display mb-6">Breakfast in <span className="text-accent-italic">the Country</span></h2>
+            <p className="text-muted-foreground leading-relaxed max-w-3xl mb-4">
+              With Breakfast in the Country, we wanted to create an unusual and unexpected moment in public space, an artistic interruption of everyday life. A soft wool blanket meets the bare stone ground, bringing intimacy and warmth into a place usually defined by movement and routine.
+            </p>
+            <p className="text-muted-foreground leading-relaxed max-w-3xl mb-4">
+              The work also has a participatory dimension. Passersby are not just observers, but become part of the artwork itself. As they enter the scene, they seem to rise like flowers from the earth, fragile, present, and alive.
+            </p>
+            <p className="text-muted-foreground leading-relaxed max-w-3xl">
+              In this way, the piece transforms an ordinary location into a shared poetic space, where encounter, imagination, and human presence become the central artistic material.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {sa[9]  && renderImage(sa[9],  9)}
+            {sa[10] && renderImage(sa[10], 10)}
+            {sa[11] && renderImage(sa[11], 11)}
+            {sa[12] && renderImage(sa[12], 12)}
+          </div>
+        </section>
+
+        {/* 6 — Breakfast in Fur */}
+        <section className="container-custom pb-16 md:pb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+              <h2 className="text-3xl md:text-4xl font-display mb-6">Breakfast <span className="text-accent-italic">in Fur</span></h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Breakfast in Fur is a tribute to artist Meret Oppenheim, who, around 90 years earlier, created the still iconic work Breakfast in Fur (Object: a fur covered cup, saucer, and spoon).
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                In our contemporary interpretation, we stage breakfast in fur coats inside a tram. A fully set breakfast table is arranged with eggs, cheese, bread rolls, cold cuts, coffee, and tea.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                The action is conceived as a disruption of everyday routine. A tram ride is usually part of a fixed rhythm, commuting, repetition, the same patterns every day. By placing an unexpected breakfast scene in this space, we interrupt the ordinary and challenge habitual ways of seeing.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                The moment is meant to create surprise. What is happening here? What are we looking at? Suddenly, someone in a fur coat is sitting at a carefully laid table in public transport, eating bread rolls and boiled eggs. The familiar becomes strange, and the ordinary turns into art.
+              </p>
+            </motion.div>
+            <div className="grid grid-cols-2 gap-4">
+              {sa[13] && renderImage(sa[13], 13)}
+              {sa[14] && renderImage(sa[14], 14)}
+            </div>
+          </div>
+        </section>
+
+        {/* 7 — Istanbul Modern Outside Version */}
+        <section className="container-custom pb-16 md:pb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {sa[15] && renderImage(sa[15], 15, "order-2 lg:order-1")}
+            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="order-1 lg:order-2">
+              <h2 className="text-3xl md:text-4xl font-display mb-6">Istanbul Modern <span className="text-accent-italic">Outside Version</span></h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                What we get to see as art is often shaped by galleries, institutions, and curatorial gatekeeping. Artists who are not part of these elite circles usually have very limited opportunities to exhibit their work beyond the internet.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                With Istanbul Modern Outside Version, we open up another possibility, presenting art in public space, under the open sky, where everyone can encounter it. No ticket, no invitation, no institutional barrier, just direct access.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                The project reclaims the street as a cultural space and makes visibility more democratic. By bringing artworks into everyday urban life, it invites spontaneous dialogue between artists, passersby, and the city itself.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* 8 — Do it at your city */}
+        <section className="container-custom pb-16 md:pb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+              <h2 className="text-3xl md:text-4xl font-display mb-6">Do it at <span className="text-accent-italic">your city</span></h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                We cooked food and distributed it outdoors to people experiencing homelessness. Inspired by a video from France that invited others to do the same, we decided to take on the challenge and bring the idea into our own city.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                The act itself was simple, but the atmosphere carried something deeper. Sharing a warm meal created moments of connection, dignity, and humanity. It was not only about food, but about presence, care, and the reminder that no one should feel invisible.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                At its heart, the project carries a message that can travel far beyond one place. A small act of solidarity can inspire others to do the same. By sharing the video and encouraging people in other cities to join, the action becomes more than a single gesture — it becomes an invitation to spread compassion from one community to the next.
+              </p>
+            </motion.div>
+            {sa[16] && renderImage(sa[16], 16)}
+          </div>
+        </section>
+
+        {/* 9 — I'm Hungry */}
+        <section className="container-custom pb-16 md:pb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {sa[17] && renderImage(sa[17], 17, "order-2 lg:order-1")}
+            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="order-1 lg:order-2">
+              <h2 className="text-3xl md:text-4xl font-display mb-6">I'm <span className="text-accent-italic">Hungry</span></h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                I'm Hungry is an interactive artwork that invites public engagement. It features a life size cardboard figure of a nurse wearing a mask, seated on the ground like a beggar, with a cardboard cup and a sign reading: "I'm Hungry."
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                The piece is a sharp critique of the chronic underpayment and structural undervaluation of care workers. It highlights a social contradiction. People in nursing and caregiving professions are essential to public health and social stability, yet many are paid so little that dignified living becomes difficult.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                By placing this figure in public space, the work makes systemic injustice visible. It asks who carries care in our societies, who profits from it, and why those who sustain life are so often denied economic security, recognition, and political priority.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                At its core, the artwork is a call for fair wages, better working conditions, and a rethinking of care as a public good rather than cheap labor.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* 10 — Hug a terrorist */}
+        {sa[18] && (
+          <section className="container-custom pb-24">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="mb-8">
+              <h2 className="text-3xl md:text-4xl font-display">Hug a <span className="text-accent-italic">terrorist</span></h2>
+            </motion.div>
+            <div className="max-w-sm">
+              {renderImage(sa[18], 18)}
+            </div>
+          </section>
+        )}
+
+        {/* Modal */}
+        <AnimatePresence>
+          {selectedIndex !== null && sortedStreetArt[selectedIndex] && (
+            <ImageModal
+              image={sortedStreetArt[selectedIndex]}
+              onClose={() => setSelectedIndex(null)}
+              onNext={() => setSelectedIndex((prev) => Math.min(prev + 1, sortedStreetArt.length - 1))}
+              onPrev={() => setSelectedIndex((prev) => Math.max(prev - 1, 0))}
+              hasNext={selectedIndex < sortedStreetArt.length - 1}
               hasPrev={selectedIndex > 0}
             />
           )}
