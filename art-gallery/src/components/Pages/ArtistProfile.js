@@ -19,7 +19,7 @@ const ArtistProfile = () => {
             >
               <div className="aspect-[3/4] rounded-sm overflow-hidden">
                 <img
-                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212413/galeria/galeria/Pallas%20Galaxy%20Collection/2014-2015/xhwaz6awcjnmgw4ytoaw.gif"
+                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1747734534/galeria/undefined/xo1mqmiiapwdyytxzhss.jpg"
                   alt="Marei Pallas - Artist"
                   className="w-full h-full object-cover"
                 />
@@ -153,14 +153,14 @@ const ArtistProfile = () => {
             >
               <div className="aspect-[3/4] rounded-sm overflow-hidden">
                 <img
-                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212813/galeria/galeria/Pallas%20Galaxy%20Collection/Till%20Today/biv2s3v9ij8tnljzyjo8.jpg"
+                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1747758422/galeria/undefined/lmct3zkympwp1mrm4mip.jpg"
                   alt="Artwork sample"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="aspect-[3/4] rounded-sm overflow-hidden mt-8">
                 <img
-                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212763/galeria/galeria/Pallas%20Galaxy%20Collection/Till%20Today/zp57zd5jpyobzl2njlhq.jpg"
+                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735812/galeria/undefined/y21kjxbajse55omudght.jpg"
                   alt="Artwork sample"
                   className="w-full h-full object-cover"
                 />

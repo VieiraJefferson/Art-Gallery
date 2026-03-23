@@ -6,25 +6,25 @@ import { ArrowRight } from "lucide-react";
 // Imagens da galeria para o grid assimétrico
 const galleryImages = [
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212774/galeria/galeria/Pallas%20Galaxy%20Collection/Till%20Today/pkus7hs7foydedh85s81.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735974/galeria/undefined/prjybmsfldza06km2lmy.jpg",
     artist: "Marei Pallas",
     year: "2024",
     size: "large",
   },
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212592/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/qcjqnbdu3h7paiuocz4f.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747758570/galeria/undefined/qnuggnzpg0mswfdqtxib.jpg",
     size: "medium",
   },
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1770070727/galeria/galeria/Pallas%20Galaxy%20Collection/2014-2015/qvrtsahxelvxtfcff9au.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747734403/galeria/undefined/rg3jdlnjky2m2bnlpsfx.jpg",
     size: "medium",
   },
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212658/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/kvdll4lxoerxjbdbvhky.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1774285052/Fight_Racism_kakfpy.png",
     size: "small",
   },
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212813/galeria/galeria/Pallas%20Galaxy%20Collection/Till%20Today/biv2s3v9ij8tnljzyjo8.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747755298/galeria/undefined/ewaibwjcvwealtrbqhpk.jpg",
     size: "medium",
   },
 ];
@@ -216,7 +216,7 @@ const HomePage = () => {
             >
               <div className="aspect-[3/4] rounded-sm overflow-hidden">
                 <img
-                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212413/galeria/galeria/Pallas%20Galaxy%20Collection/2014-2015/xhwaz6awcjnmgw4ytoaw.gif"
+                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1747734447/galeria/undefined/ykdh6vhdqsoodhyfn3m9.jpg"
                   alt="Marei Pallas"
                   className="w-full h-full object-cover"
                 />
@@ -251,9 +251,9 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Surreal Dreams", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212593/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/ncopingbcthzo2zhv9kn.jpg" },
-              { title: "Emotional Depths", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v17700753300/galeria/undefined/dgahd9k0njb51oglz6wx.jpg" },
-              { title: "Political Art", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1770067216/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/jmwcqnwculp5pb7p9ii3.jpg" },
+              { title: "Surreal Dreams", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735996/galeria/undefined/xpd8aibqzfacwxdsqsjm.jpg" },
+              { title: "The Ordinary", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747758553/galeria/undefined/a7pysumlzavzasgbl1n9.jpg" },
+              { title: "Political Art", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747755618/galeria/undefined/wpryfe9utghov7sjqoqe.jpg" },
             ].map((collection, index) => (
               <motion.div
                 key={collection.title}

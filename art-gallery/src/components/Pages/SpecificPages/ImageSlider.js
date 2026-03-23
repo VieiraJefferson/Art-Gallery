@@ -5,21 +5,21 @@ import "swiper/css";
 
 const images = [
   "/img/Blume.jpg",
-  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212695/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/y6pwsm02rgvr8tdgxfsw.jpg",
+  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1774285059/Sign_of_Peace_u8ayty.png",
   "/img/Blumen.jpg",
   "/img/Blumenstrauß.jpg",
-  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212075/galeria/Pallas%20Galaxy%20Collection/yhahyrurr7gtkccfcfv3.jpg",
+  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747734341/galeria/undefined/qxylzm0bxrwiudl1bbjk.jpg",
   "/img/Afrikakreis.jpg",
   "/img/Schnee.jpg",
-  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212362/galeria/galeria/Pallas%20Galaxy%20Collection/2013/ekp8soassh5wssrlyhcs.jpg",
+  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741213083/galeria/galeria/Pallas%20Galaxy%20Collection/Kunstraub/f0jmbbvkcfej1p0ofsoo.jpg",
   "/img/Stolz.jpg",
-  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212666/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/schjzl01spocb68d9f05.jpg",
+  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747758400/galeria/undefined/r9x7ehpmowhoerj39ot8.jpg",
   "/img/Pferd.jpg",
   "/img/Muster.jpg",
-  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212063/galeria/Pallas%20Galaxy%20Collection/lbp9onud38upck3uy2ol.jpg",
+  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747755324/galeria/undefined/ruvl2dx1ie9gc9u3iclh.jpg",
   "/img/Mannes.jpg",
-  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212070/galeria/Pallas%20Galaxy%20Collection/a18wurfnvi9nlz2hyzbz.jpg",
-  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212695/galeria/galeria/Pallas%20Galaxy%20Collection/2019-2022/y6pwsm02rgvr8tdgxfsw.jpg",
+  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735935/galeria/undefined/bm0mvgleyrg6afvee5tr.jpg",
+  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1774285046/Fight_Racism_2_msgxe6.png",
 ];
 
 const ImageSlider = () => {
