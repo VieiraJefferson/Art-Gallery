@@ -6,13 +6,13 @@ import { ArrowRight } from "lucide-react";
 // Imagens da galeria para o grid assimétrico
 const galleryImages = [
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735624/galeria/undefined/dohkw8dz5kxv5mdu8qis.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747758329/galeria/undefined/xpfxv15kvzbspubq0rsw.jpg",
     artist: "Marei Pallas",
     year: "2024",
     size: "large",
   },
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747758329/galeria/undefined/xpfxv15kvzbspubq0rsw.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735624/galeria/undefined/dohkw8dz5kxv5mdu8qis.jpg",
     size: "medium",
   },
   {

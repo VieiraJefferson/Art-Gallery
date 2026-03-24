@@ -19,7 +19,7 @@ const KUNSTRAUB_TITLES = [
   'The real Weserkurier writes an article about the art action',
 ];
 
-const KUNSTRAUB_COLLECTION_ID = '33819d67-1811-41c2-9b5d-40e28fdf3483';
+const KUNSTRAUB_COLLECTION_ID = 'ddb60cb8-2a93-469e-a16f-c6075742e0d7';
 const STREET_ART_ACTIONS_ID = '86e4e5ba-b3a1-44e2-9f24-025b5cbc56cd';
 
 // Desired display order for Street Art Actions (filename patterns)
@@ -122,6 +122,7 @@ const SubColecao = () => {
   const [error, setError] = useState(null);
   const [loadedImages, setLoadedImages] = useState({});
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const [chalkPaintIndex, setChalkPaintIndex] = useState(null);
 
   useEffect(() => {
     const loadSubCollection = async () => {
@@ -261,20 +262,12 @@ const SubColecao = () => {
     return (
       <div className="min-h-screen bg-background pt-24 md:pt-32">
         {/* Header */}
-        <section className="container-custom mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Link
-              to="/gallery"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
-            >
+        <section className="container-custom mb-16">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <Link to="/gallery" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8">
               <ArrowLeft className="w-4 h-4" />
               <span className="text-sm tracking-[0.1em] uppercase">Back to Collections</span>
             </Link>
-
             <h1 className="text-5xl md:text-6xl font-display mb-4">
               Art Prank: A Stolen <span className="text-accent-italic">Masterpiece?</span>
             </h1>
@@ -284,147 +277,86 @@ const SubColecao = () => {
           </motion.div>
         </section>
 
-        {/* Intro + First Image */}
-        <section className="container-custom pb-16">
+        {/* 1 — Crime Scene */}
+        <section className="container-custom pb-16 md:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                What is art? What is reality? And how easily can people be deceived? With my art prank, 
-                an orchestrated art heist, I aimed to explore these very questions, leading Bremen on 
-                a playful yet thought-provoking wild chase.
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+              <h2 className="text-3xl md:text-4xl font-display mb-6">Crime Scene: <span className="text-accent-italic">Kunsthalle Bremen</span></h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                What is art? What is reality? And how easily can people be deceived? With my art prank, an orchestrated art heist, I aimed to explore these very questions, leading Bremen on a playful yet thought-provoking wild chase.
               </p>
-              <h3 className="text-2xl font-display text-foreground mb-4">
-                Crime Scene: Kunsthalle Bremen
-              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                On September 18, 2020, at exactly 5:37 PM, a spectacular art heist was said to have taken place at the Kunsthalle Bremen. The stolen artwork? My piece "I still have my red shoes in Virginia."
+              </p>
               <p className="text-muted-foreground leading-relaxed">
-                On September 18, 2020, at exactly 5:37 PM, a spectacular art heist was said to have 
-                taken place at the Kunsthalle Bremen. The stolen artwork? My piece "I still have my 
-                red shoes in Virginia."
+                At least, that's what mysterious posters appearing all over Bremen suggested. The "Cultural Senator" and the "Bremen Criminal Investigation Office" urged the public to assist in solving the case, offering a reward of up to €5,000 for any useful information.
               </p>
             </motion.div>
             {images[0] && renderImage(images[0], 0)}
           </div>
         </section>
 
-        {/* Second Image + Text */}
-        <section className="container-custom pb-16">
+        {/* 2 — The Poster */}
+        <section className="container-custom pb-16 md:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {images[1] && renderImage(images[1], 1, "order-2 lg:order-1")}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="order-1 lg:order-2"
-            >
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                At least, that's what mysterious posters appearing all over Bremen suggested. 
-                The "Cultural Senator" and the "Bremen Criminal Investigation Office" urged the 
-                public to assist in solving the case, offering a reward of up to €5,000 for 
-                any useful information.
+            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="order-1 lg:order-2">
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                The posters looked astonishingly real: a shadowy figure, unidentifiable, carrying a painting out of the Kunsthalle. The police were in pursuit, or were they?
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                The posters looked astonishingly real: a shadowy figure, unidentifiable, carrying a 
-                painting out of the Kunsthalle. The police were in pursuit, or were they?
+                The posters alone would have been enough to spark curiosity. But I wanted to take it further: a fabricated article in the Weser Kurier reported on the alleged art theft. People started speculating, was this an actual scandal or a brilliant artistic stunt? And who was the elusive thief?
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* A Game with Reality + Third Image */}
-        <section className="container-custom pb-16">
+        {/* 3 — A Game with Reality */}
+        <section className="container-custom pb-16 md:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h3 className="text-2xl font-display text-foreground mb-6">
-                A Game with <span className="text-accent-italic">Reality</span>
-              </h3>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                The posters alone would have been enough to spark curiosity. But I wanted to take it 
-                further: a fabricated article in the Weser Kurier reported on the alleged art theft. 
-                People started speculating, was this an actual scandal or a brilliant artistic stunt? 
-                And who was the elusive thief?
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+              <h2 className="text-3xl md:text-4xl font-display mb-6">A Game with <span className="text-accent-italic">Reality</span></h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Then, the inevitable happened: the real Weser Kurier caught wind of the project and eventually published their own report:
               </p>
+              <blockquote className="border-l-2 border-accent pl-6 py-2 italic text-foreground/80 text-sm leading-relaxed">
+                "Those walking attentively through the Viertel these days may come across a poster warning of something alarming at the Kunsthalle. The official-looking notice calls on the public, on behalf of the 'Cultural Senator' and the 'Bremen Criminal Investigation Office,' to help solve an art heist. Allegedly, the piece 'I still have my red shoes in Virginia' by the artist collective 'Pallasgalaxy' was stolen from the Kunsthalle in September. A €5,000 reward is being offered for useful tips. Before anyone takes up detective work: the poster campaign is a prank. There was no break-in at the Kunsthalle, and no one is missing the mentioned artwork, because it simply does not exist. The cultural institution assures the WESER-KURIER of this, cross their hearts."
+                <span className="block mt-2 text-muted-foreground not-italic">— Weser Kurier</span>
+              </blockquote>
             </motion.div>
             {images[2] && renderImage(images[2], 2)}
           </div>
         </section>
 
-        {/* Fourth Image + Police Notice */}
-        <section className="container-custom pb-16">
+        {/* 4 — The Real Article */}
+        <section className="container-custom pb-16 md:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {images[3] && renderImage(images[3], 3, "order-2 lg:order-1")}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="order-1 lg:order-2"
-            >
+            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="order-1 lg:order-2">
               <p className="text-muted-foreground leading-relaxed">
-                Then, the inevitable happened: the real Weser Kurier caught wind of the project and 
-                eventually published their own report. With that, the game reached its peak: the 
-                boundaries between fiction and reality blurred until reality itself became part 
-                of the narrative.
+                With that, the game reached its peak: the boundaries between fiction and reality blurred until reality itself became part of the narrative.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Blockquote + Fifth Image */}
-        <section className="container-custom pb-16">
+        {/* 5 — Social Experiment */}
+        <section className="container-custom pb-16 md:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <blockquote className="border-l-2 border-accent pl-6 py-2 italic text-foreground/80 text-sm leading-relaxed">
-                "Those walking attentively through the Viertel these days may come across a poster 
-                warning of something alarming at the Kunsthalle. The official-looking notice calls 
-                on the public to help solve an art heist. Before anyone takes up detective work: 
-                the poster campaign is a prank. There was no break-in at the Kunsthalle, and no one 
-                is missing the mentioned artwork, because it simply does not exist."
-                <span className="block mt-2 text-muted-foreground not-italic">— Weser Kurier</span>
-              </blockquote>
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+              <h2 className="text-3xl md:text-4xl font-display mb-6">An Art Heist as a <span className="text-accent-italic">Social Experiment</span></h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                This project was more than just a harmless prank. It raised questions about the power of images, our willingness to believe what appears official, and the fine line between fact and fabrication. How much do we trust what looks legitimate? When do we begin to doubt? And what happens when art seamlessly embeds itself into reality?
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                I thank everyone who played along: the passersby who stopped to stare, the readers who wondered, and the Weser Kurier, who unintentionally became a participant.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Perhaps nothing was stolen here, perhaps a moment of wonder was created instead. A playful challenge to our perceptions and realities, reminding us how thrilling it can be to question the world around us.
+              </p>
             </motion.div>
             {images[4] && renderImage(images[4], 4)}
-      </div>
-        </section>
-
-        {/* Conclusion */}
-        <section className="container-custom pb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <h3 className="text-2xl font-display text-foreground mb-6">
-              An Art Heist as a <span className="text-accent-italic">Social Experiment</span>
-            </h3>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              This project was more than just a harmless prank. It raised questions about the power 
-              of images, our willingness to believe what appears official, and the fine line between 
-              fact and fabrication.
-            </p>
-            <p className="text-foreground leading-relaxed text-lg">
-              Perhaps nothing was stolen here, perhaps a moment of wonder was created instead. 
-              A playful challenge to our perceptions and realities, reminding us how thrilling 
-              it can be to question the world around us.
-            </p>
-          </motion.div>
+          </div>
         </section>
 
         {/* Modal */}
@@ -450,6 +382,12 @@ const SubColecao = () => {
   // Street Art Actions special layout
   if (isStreetArt) {
     const sa = sortedStreetArt;
+    const chalkPaintSlides = sa[7] && sa[8]
+      ? [
+          { ...sa[8], name: 'Chalk Paint for Peace 02' },
+          { ...sa[7], name: 'Chalk Paint for Peace 03' },
+        ]
+      : [];
     return (
       <div className="min-h-screen bg-background pt-24 md:pt-32">
         {/* Header */}
@@ -533,9 +471,40 @@ const SubColecao = () => {
             <div className="grid grid-cols-1 gap-4">
               <div className="grid grid-cols-2 gap-4">
                 {sa[6] && renderImage(sa[6], 6)}
-                {sa[7] && renderImage(sa[7], 7)}
+                {sa[8] && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <button
+                      onClick={() => setChalkPaintIndex(0)}
+                      className="group block w-full text-left"
+                    >
+                      <div className="relative aspect-[4/5] rounded-sm overflow-hidden">
+                        {!loadedImages[sa[8]._id || sa[8].id || 8] && (
+                          <Skeleton className="absolute inset-0" />
+                        )}
+                        <img
+                          src={sa[8].src}
+                          alt="Chalk Paint for Peace 02"
+                          className={cn(
+                            "w-full h-full object-cover transition-all duration-500",
+                            loadedImages[sa[8]._id || sa[8].id || 8] ? "opacity-100" : "opacity-0",
+                            "group-hover:scale-105"
+                          )}
+                          onLoad={() => handleImageLoad(sa[8]._id || sa[8].id || 8)}
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
+                      </div>
+                      <p className="mt-4 text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+                        Chalk Paint for Peace 02
+                      </p>
+                    </button>
+                  </motion.div>
+                )}
               </div>
-              {sa[8] && renderImage(sa[8], 8)}
             </div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
               <h2 className="text-3xl md:text-4xl font-display mb-6">Chalk Paint <span className="text-accent-italic">for Peace</span></h2>
@@ -662,14 +631,39 @@ const SubColecao = () => {
         {/* 10 — Hug a terrorist */}
         {sa[18] && (
           <section className="container-custom pb-24">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="mb-8">
-              <h2 className="text-3xl md:text-4xl font-display">Hug a <span className="text-accent-italic">terrorist</span></h2>
-            </motion.div>
-            <div className="max-w-sm">
-              {renderImage(sa[18], 18)}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <div className="max-w-sm">
+                {renderImage(sa[18], 18)}
+              </div>
+              <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+                <h2 className="text-3xl md:text-4xl font-display mb-6">Hug a Terrorist, <span className="text-accent-italic">Love Is Stronger Than Hate</span></h2>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  In Frankfurt's pedestrian zone, Marei Pallas stood in a staged "terrorist" costume as part of a public performance. On her chest, she wore a cardboard heart with the words: "Hug a terrorist, love is stronger than hate."
+                </p>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  The work is a symbolic act. It does not trivialize violence. Rather, it asks how society responds to fear, hatred, and polarization. The performance invites people to resist hatred as a reflex and to protect their humanity, because solidarity, empathy, and inner strength are essential when facing violence and social division.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  People approached and embraced the artist, turning the action into a participatory moment. In these encounters, the artwork shifted from provocation to connection, a shared statement that hate should not define us.
+                </p>
+              </motion.div>
             </div>
           </section>
         )}
+
+        {/* Chalk Paint Carousel Modal */}
+        <AnimatePresence>
+          {chalkPaintIndex !== null && chalkPaintSlides[chalkPaintIndex] && (
+            <ImageModal
+              image={chalkPaintSlides[chalkPaintIndex]}
+              onClose={() => setChalkPaintIndex(null)}
+              onNext={() => setChalkPaintIndex((prev) => Math.min(prev + 1, chalkPaintSlides.length - 1))}
+              onPrev={() => setChalkPaintIndex((prev) => Math.max(prev - 1, 0))}
+              hasNext={chalkPaintIndex < chalkPaintSlides.length - 1}
+              hasPrev={chalkPaintIndex > 0}
+            />
+          )}
+        </AnimatePresence>
 
         {/* Modal */}
         <AnimatePresence>

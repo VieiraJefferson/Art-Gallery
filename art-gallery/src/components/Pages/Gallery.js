@@ -15,22 +15,11 @@ const Skeleton = ({ className }) => (
   />
 );
 
-// Capas personalizadas por índice (0-based, ordem alfabética das subcoleções)
-// 0: A Dream in Black and White | 1: Kunstraub | 2: Political Art
-// 3: Street Art Actions | 4: Surreal Dreams | 5: The Ordinary
-const CUSTOM_COVERS = {
-  0: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747733496/galeria/undefined/xz6lx4ildpogciduwyno.jpg",
-  1: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741213061/galeria/galeria/Pallas%20Galaxy%20Collection/Kunstraub/ypxcf7udzqnot5fgycsa.jpg",
-  2: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747756775/galeria/undefined/kfvebnxjosb1jwwp8w6m.jpg",
-  3: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741212818/galeria/galeria/Pallas%20Galaxy%20Collection/Street-art%20things/ehdza5vzxskisjdm4sg3.jpg",
-  4: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735996/galeria/undefined/xpd8aibqzfacwxdsqsjm.jpg",
-  5: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747758422/galeria/undefined/lmct3zkympwp1mrm4mip.jpg",
-};
 
 // Imagens da seção Artistic Philosophy
 const PHILOSOPHY_IMAGES = [
-  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1774285059/Sign_of_Peace_u8ayty.png",
-  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735919/galeria/undefined/obmufcituxvwupvyqqnv.jpg",
+  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747757796/galeria/undefined/xt2ngkhedtwdyas5kxnk.jpg",
+  "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735700/galeria/undefined/vic3j6aboxyctlztjo4k.jpg",
 ];
 
 const Gallery = () => {
@@ -46,10 +35,10 @@ const Gallery = () => {
         setLoading(true);
         const collections = await fetchAllCollections();
         const subs = extractSubCollections(collections);
-        // Filtrar subcoleção "Till Today" para não aparecer no frontend
+        const HIDDEN_SUBCOLLECTIONS = ["till today", "2013", "2014-2015", "2019-2022", "street-art things"];
         const filteredSubs = subs.filter(sub => {
-          const name = sub.name || sub.subCollectionName || "";
-          return !name.toLowerCase().includes("till today");
+          const name = (sub.name || sub.subCollectionName || "").toLowerCase();
+          return !HIDDEN_SUBCOLLECTIONS.some(hidden => name.includes(hidden));
         });
         setSubCollections(filteredSubs);
       } catch (err) {
@@ -68,25 +57,15 @@ const Gallery = () => {
   }, []);
 
   // Função para obter a imagem de capa
-  const getCoverImage = (subCollection, index) => {
-    // Verifica se tem capa personalizada por índice
-    if (CUSTOM_COVERS[index]) {
-      return CUSTOM_COVERS[index];
-    }
-    // Primeiro, verifica se tem coverPicture definida
+  const getCoverImage = (subCollection) => {
     if (subCollection.coverPicture && subCollection.coverPicture.src) {
       return subCollection.coverPicture.src;
     }
-    // Senão, procura uma imagem marcada como isCover
     if (subCollection.pictures && subCollection.pictures.length > 0) {
       const coverPic = subCollection.pictures.find(pic => pic.isCover);
-      if (coverPic) {
-        return coverPic.src;
-      }
-      // Se não encontrar, usa a primeira imagem
+      if (coverPic) return coverPic.src;
       return subCollection.pictures[0].src;
     }
-    // Fallback
     return "https://via.placeholder.com/400x500?text=No+Image";
   };
 
@@ -162,7 +141,7 @@ const Gallery = () => {
                       <Skeleton className="absolute inset-0" />
                     )}
                     <img
-                      src={getCoverImage(subCollection, index)}
+                      src={getCoverImage(subCollection)}
                       alt={subCollection.name || subCollection.subCollectionName}
                       className={cn(
                         "w-full h-full object-cover transition-all duration-700",

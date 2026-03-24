@@ -19,7 +19,7 @@ const ArtistProfile = () => {
             >
               <div className="aspect-[3/4] rounded-sm overflow-hidden">
                 <img
-                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1747734534/galeria/undefined/xo1mqmiiapwdyytxzhss.jpg"
+                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1747753189/galeria/undefined/a3wpzd8chta3yaw42yvz.jpg"
                   alt="Marei Pallas - Artist"
                   className="w-full h-full object-cover"
                 />
@@ -153,14 +153,14 @@ const ArtistProfile = () => {
             >
               <div className="aspect-[3/4] rounded-sm overflow-hidden">
                 <img
-                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1747758422/galeria/undefined/lmct3zkympwp1mrm4mip.jpg"
+                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1747757796/galeria/undefined/xt2ngkhedtwdyas5kxnk.jpg"
                   alt="Artwork sample"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="aspect-[3/4] rounded-sm overflow-hidden mt-8">
                 <img
-                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735812/galeria/undefined/y21kjxbajse55omudght.jpg"
+                  src="https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735700/galeria/undefined/vic3j6aboxyctlztjo4k.jpg"
                   alt="Artwork sample"
                   className="w-full h-full object-cover"
                 />
