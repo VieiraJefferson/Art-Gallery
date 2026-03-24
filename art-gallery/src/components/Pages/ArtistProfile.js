@@ -45,7 +45,7 @@ const ArtistProfile = () => {
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
                 A boundary-crossing artist, Marei Pallas blends contemporary surrealism
                 with symbolism shaped by real encounters. Her work invites viewers into
-                worlds where reality and imagination meet,an invitation to communicate
+                worlds where reality and imagination meet, an invitation to communicate
                 beyond words, through the language of the soul.
               </p>
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -82,7 +82,7 @@ const ArtistProfile = () => {
                 </p>
 
                 <p className="text-muted-foreground leading-relaxed">
-                  She spent half a year in Varna on a quiet, self-led retreat,painting daily
+                  She spent half a year in Varna on a quiet, self-led retreat, painting daily
                   and working intensely on developing her own artistic style.
                 </p>
 

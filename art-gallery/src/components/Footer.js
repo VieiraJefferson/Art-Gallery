@@ -7,6 +7,7 @@ const footerLinks = [
   { name: "About", path: "/artistProfile" },
   { name: "Gallery", path: "/gallery" },
   { name: "Blockchain Art", path: "/blockchain-art" },
+  { name: "Street Art Actions", path: "/gallery/86e4e5ba-b3a1-44e2-9f24-025b5cbc56cd" },
   { name: "Contact", path: "/contact" },
 ];
 
