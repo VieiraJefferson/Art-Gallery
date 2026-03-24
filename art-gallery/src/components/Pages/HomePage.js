@@ -24,7 +24,7 @@ const galleryImages = [
     size: "small",
   },
   {
-    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747755298/galeria/undefined/ewaibwjcvwealtrbqhpk.jpg",
+    src: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1741213061/galeria/galeria/Pallas%20Galaxy%20Collection/Kunstraub/ypxcf7udzqnot5fgycsa.jpg",
     size: "medium",
   },
 ];
@@ -252,7 +252,7 @@ const HomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { title: "Surreal Dreams", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735304/galeria/undefined/qh6yq34t2ltqj6g4iqft.jpg" },
-              { title: "The Ordinary", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747758553/galeria/undefined/a7pysumlzavzasgbl1n9.jpg" },
+              { title: "The Ordinary", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747758588/galeria/undefined/b2fxksgryjrp9d8h9aoc.jpg" },
               { title: "Political Art", image: "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747756775/galeria/undefined/kfvebnxjosb1jwwp8w6m.jpg" },
             ].map((collection, index) => (
               <motion.div

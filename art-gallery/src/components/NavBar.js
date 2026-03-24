@@ -8,6 +8,7 @@ const links = [
   { name: "Home", path: "/" },
   { name: "About", path: "/artistProfile" },
   { name: "Gallery", path: "/gallery" },
+  { name: "Street Art Actions", path: "/gallery/86e4e5ba-b3a1-44e2-9f24-025b5cbc56cd" },
   { name: "Blockchain Art", path: "/blockchain-art" },
   { name: "Contact", path: "/contact" },
 ];

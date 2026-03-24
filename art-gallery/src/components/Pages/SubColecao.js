@@ -261,6 +261,7 @@ const SubColecao = () => {
   if (isKunstraub && images.length >= 5) {
     return (
       <div className="min-h-screen bg-background pt-24 md:pt-32">
+
         {/* Header */}
         <section className="container-custom mb-16">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -277,9 +278,9 @@ const SubColecao = () => {
           </motion.div>
         </section>
 
-        {/* 1 — Crime Scene */}
+        {/* 1 — Crime Scene: text left + 2 images right */}
         <section className="container-custom pb-16 md:pb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
               <h2 className="text-3xl md:text-4xl font-display mb-6">Crime Scene: <span className="text-accent-italic">Kunsthalle Bremen</span></h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
@@ -292,14 +293,17 @@ const SubColecao = () => {
                 At least, that's what mysterious posters appearing all over Bremen suggested. The "Cultural Senator" and the "Bremen Criminal Investigation Office" urged the public to assist in solving the case, offering a reward of up to €5,000 for any useful information.
               </p>
             </motion.div>
-            {images[0] && renderImage(images[0], 0)}
+            <div className="grid grid-cols-2 gap-4">
+              {images[0] && renderImage(images[0], 0)}
+              {images[1] && renderImage(images[1], 1)}
+            </div>
           </div>
         </section>
 
-        {/* 2 — The Poster */}
+        {/* 2 — The Poster: image left + text right */}
         <section className="container-custom pb-16 md:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {images[1] && renderImage(images[1], 1, "order-2 lg:order-1")}
+            {images[2] && renderImage(images[2], 2, "order-2 lg:order-1")}
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="order-1 lg:order-2">
               <p className="text-muted-foreground leading-relaxed mb-4">
                 The posters looked astonishingly real: a shadowy figure, unidentifiable, carrying a painting out of the Kunsthalle. The police were in pursuit, or were they?
@@ -311,37 +315,30 @@ const SubColecao = () => {
           </div>
         </section>
 
-        {/* 3 — A Game with Reality */}
+        {/* 3 — A Game with Reality: text full-width + 3 images */}
         <section className="container-custom pb-16 md:pb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-              <h2 className="text-3xl md:text-4xl font-display mb-6">A Game with <span className="text-accent-italic">Reality</span></h2>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Then, the inevitable happened: the real Weser Kurier caught wind of the project and eventually published their own report:
-              </p>
-              <blockquote className="border-l-2 border-accent pl-6 py-2 italic text-foreground/80 text-sm leading-relaxed">
-                "Those walking attentively through the Viertel these days may come across a poster warning of something alarming at the Kunsthalle. The official-looking notice calls on the public, on behalf of the 'Cultural Senator' and the 'Bremen Criminal Investigation Office,' to help solve an art heist. Allegedly, the piece 'I still have my red shoes in Virginia' by the artist collective 'Pallasgalaxy' was stolen from the Kunsthalle in September. A €5,000 reward is being offered for useful tips. Before anyone takes up detective work: the poster campaign is a prank. There was no break-in at the Kunsthalle, and no one is missing the mentioned artwork, because it simply does not exist. The cultural institution assures the WESER-KURIER of this, cross their hearts."
-                <span className="block mt-2 text-muted-foreground not-italic">— Weser Kurier</span>
-              </blockquote>
-            </motion.div>
-            {images[2] && renderImage(images[2], 2)}
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="mb-12">
+            <h2 className="text-3xl md:text-4xl font-display mb-6">A Game with <span className="text-accent-italic">Reality</span></h2>
+            <p className="text-muted-foreground leading-relaxed max-w-3xl mb-4">
+              Then, the inevitable happened: the real Weser Kurier caught wind of the project and eventually published their own report:
+            </p>
+            <blockquote className="border-l-2 border-accent pl-6 py-2 italic text-foreground/80 text-sm leading-relaxed max-w-3xl">
+              "Those walking attentively through the Viertel these days may come across a poster warning of something alarming at the Kunsthalle. The official-looking notice calls on the public, on behalf of the 'Cultural Senator' and the 'Bremen Criminal Investigation Office,' to help solve an art heist. Allegedly, the piece 'I still have my red shoes in Virginia' by the artist collective 'Pallasgalaxy' was stolen from the Kunsthalle in September. A €5,000 reward is being offered for useful tips. Before anyone takes up detective work: the poster campaign is a prank. There was no break-in at the Kunsthalle, and no one is missing the mentioned artwork, because it simply does not exist. The cultural institution assures the WESER-KURIER of this, cross their hearts."
+              <span className="block mt-2 text-muted-foreground not-italic">— Weser Kurier</span>
+            </blockquote>
+            <p className="text-muted-foreground leading-relaxed max-w-3xl mt-4">
+              With that, the game reached its peak: the boundaries between fiction and reality blurred until reality itself became part of the narrative.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {images[3] && renderImage(images[3], 3)}
+            {images[4] && renderImage(images[4], 4)}
+            {images[5] && renderImage(images[5], 5)}
           </div>
         </section>
 
-        {/* 4 — The Real Article */}
-        <section className="container-custom pb-16 md:pb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {images[3] && renderImage(images[3], 3, "order-2 lg:order-1")}
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="order-1 lg:order-2">
-              <p className="text-muted-foreground leading-relaxed">
-                With that, the game reached its peak: the boundaries between fiction and reality blurred until reality itself became part of the narrative.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* 5 — Social Experiment */}
-        <section className="container-custom pb-16 md:pb-24">
+        {/* 4 — Social Experiment: text left + image right */}
+        <section className="container-custom pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
               <h2 className="text-3xl md:text-4xl font-display mb-6">An Art Heist as a <span className="text-accent-italic">Social Experiment</span></h2>
@@ -355,7 +352,7 @@ const SubColecao = () => {
                 Perhaps nothing was stolen here, perhaps a moment of wonder was created instead. A playful challenge to our perceptions and realities, reminding us how thrilling it can be to question the world around us.
               </p>
             </motion.div>
-            {images[4] && renderImage(images[4], 4)}
+            {images[6] && renderImage(images[6], 6)}
           </div>
         </section>
 
