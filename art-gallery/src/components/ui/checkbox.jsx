@@ -3,35 +3,25 @@ import { cn } from "../../lib/utils";
 
 const Checkbox = React.forwardRef(({ className, checked, onCheckedChange, id, ...props }, ref) => {
   return (
-    <div className="relative flex items-center">
+    <div className="relative h-4 w-4 shrink-0">
+      {/* Input invisível mas clicável — cobre o visual inteiramente */}
       <input
         type="checkbox"
         ref={ref}
         id={id}
         checked={checked}
         onChange={(e) => onCheckedChange?.(e.target.checked)}
-        className="sr-only peer"
+        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10 m-0"
         {...props}
       />
+
+      {/* Visual do checkbox */}
       <div
-        onClick={() => onCheckedChange?.(!checked)}
         className={cn(
-          "h-4 w-4 shrink-0 rounded-sm border border-border cursor-pointer transition-colors",
-          "flex items-center justify-center",
-          "peer-focus-visible:outline-none peer-focus-visible:ring-1 peer-focus-visible:ring-ring",
-          "peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
+          "h-4 w-4 rounded-sm border border-border transition-colors flex items-center justify-center pointer-events-none",
           checked ? "bg-primary border-primary" : "bg-background",
           className
         )}
-        role="checkbox"
-        aria-checked={checked}
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === " " || e.key === "Enter") {
-            e.preventDefault();
-            onCheckedChange?.(!checked);
-          }
-        }}
       >
         {checked && (
           <svg
