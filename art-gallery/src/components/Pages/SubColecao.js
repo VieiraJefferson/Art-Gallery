@@ -43,6 +43,7 @@ const STREET_ART_ORDER = [
   'oqkmrq7yjb4lfvb3pbnp',
   'yyvc5ayyybe9sgc706dx',
   'eagjs18f0whucdxj9anq',
+  'Verpixelt_1_qvmsng',
 ];
 
 // Modal component
@@ -644,6 +645,29 @@ const SubColecao = () => {
                   People approached and embraced the artist, turning the action into a participatory moment. In these encounters, the artwork shifted from provocation to connection, a shared statement that hate should not define us.
                 </p>
               </motion.div>
+            </div>
+          </section>
+        )}
+
+        {/* 11 — Circuskinder in the Street */}
+        {sa[19] && (
+          <section className="container-custom pb-24">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+                <h2 className="text-3xl md:text-4xl font-display mb-6">Circuskinder <span className="text-accent-italic">in the Street</span></h2>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  Many people have no access to digital art, not because they have no interest in art, but because they never enter the world of blockchain. Web3 remains unfamiliar, technically distant, or difficult to access for many.
+                </p>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  With this action, I wanted to bring the collection into a public space where encounter is possible without these barriers. Art also needs to go out into the street, into everyday life, into direct contact with people.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  It was especially important to me to show the Circuskinder to children as well. Each child was allowed to choose a Circuskind of their own, and the action was very well received.
+                </p>
+              </motion.div>
+              <div className="max-w-sm lg:max-w-none">
+                {renderImage(sa[19], 19)}
+              </div>
             </div>
           </section>
         )}

@@ -1,9 +1,19 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Loader2 } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { fetchAllCollections, extractSubCollections } from "../../services/api";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "../ui/dialog";
+import { Checkbox } from "../ui/checkbox";
+import { Button } from "../ui/button";
 
 // Skeleton loading component
 const Skeleton = ({ className }) => (
@@ -22,12 +32,21 @@ const PHILOSOPHY_IMAGES = [
   "https://res.cloudinary.com/dpilz4p6g/image/upload/v1747735700/galeria/undefined/vic3j6aboxyctlztjo4k.jpg",
 ];
 
+// Subcoleções que requerem verificação de maioridade (nomes normalizados)
+const ADULT_SUBCOLLECTIONS = ["a dream in black and white", "surreal dreams"];
+
 const Gallery = () => {
+  const navigate = useNavigate();
   const [subCollections, setSubCollections] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [loadedImages, setLoadedImages] = useState({});
   const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  // Estado do modal de verificação de idade
+  const [ageModalOpen, setAgeModalOpen] = useState(false);
+  const [ageConfirmed, setAgeConfirmed] = useState(false);
+  const [pendingNavigation, setPendingNavigation] = useState(null);
 
   useEffect(() => {
     const loadCollections = async () => {
@@ -69,6 +88,39 @@ const Gallery = () => {
     return "https://via.placeholder.com/400x500?text=No+Image";
   };
 
+  // Verifica se a subcoleção requer verificação de idade
+  const requiresAgeVerification = (subCollection) => {
+    const name = (subCollection.name || subCollection.subCollectionName || "").toLowerCase();
+    return ADULT_SUBCOLLECTIONS.some(adult => name.includes(adult));
+  };
+
+  // Handler de clique nos cards
+  const handleCardClick = (e, subId, subCollection) => {
+    if (requiresAgeVerification(subCollection)) {
+      e.preventDefault();
+      setPendingNavigation(`/gallery/${subId}`);
+      setAgeConfirmed(false);
+      setAgeModalOpen(true);
+    }
+  };
+
+  // Confirmar e navegar
+  const handleAgeConfirm = () => {
+    if (!ageConfirmed) return;
+    setAgeModalOpen(false);
+    if (pendingNavigation) {
+      navigate(pendingNavigation);
+      setPendingNavigation(null);
+    }
+  };
+
+  // Cancelar modal
+  const handleAgeCancel = () => {
+    setAgeModalOpen(false);
+    setAgeConfirmed(false);
+    setPendingNavigation(null);
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background pt-24 md:pt-32 flex items-center justify-center">
@@ -82,7 +134,7 @@ const Gallery = () => {
       <div className="min-h-screen bg-background pt-24 md:pt-32">
         <div className="container-custom text-center py-20">
           <p className="text-muted-foreground mb-4">{error}</p>
-          <button 
+          <button
             onClick={() => window.location.reload()}
             className="px-6 py-2 bg-primary text-primary-foreground rounded-sm hover:bg-accent transition-colors"
           >
@@ -95,6 +147,60 @@ const Gallery = () => {
 
   return (
     <div className="min-h-screen bg-background pt-24 md:pt-32">
+      {/* Modal de Verificação de Maioridade */}
+      <Dialog open={ageModalOpen} onOpenChange={(open) => { if (!open) handleAgeCancel(); }}>
+        <DialogContent className="max-w-md">
+          <DialogHeader className="space-y-3">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">18+</span>
+              <DialogTitle className="font-display text-xl">
+                Mature Content
+              </DialogTitle>
+            </div>
+            <DialogDescription className="text-sm leading-relaxed text-foreground/70">
+              This collection contains mature artistic content intended for adult audiences only.
+              By continuing, you confirm that you are 18 years of age or older.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="py-2">
+            <label
+              htmlFor="age-confirm"
+              className="flex items-start gap-3 cursor-pointer group"
+            >
+              <div className="mt-0.5">
+                <Checkbox
+                  id="age-confirm"
+                  checked={ageConfirmed}
+                  onCheckedChange={setAgeConfirmed}
+                />
+              </div>
+              <span className="text-sm text-foreground/80 leading-relaxed group-hover:text-foreground transition-colors select-none">
+                I confirm that I am 18 years of age or older and consent to viewing mature artistic content.
+              </span>
+            </label>
+          </div>
+
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button
+              variant="outline"
+              onClick={handleAgeCancel}
+              className="w-full sm:w-auto"
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="default"
+              onClick={handleAgeConfirm}
+              disabled={!ageConfirmed}
+              className="w-full sm:w-auto"
+            >
+              Enter Collection
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
       {/* Header */}
       <section className="container-custom mb-16">
         <motion.div
@@ -106,7 +212,7 @@ const Gallery = () => {
             Art <span className="text-accent-italic">Collections.</span>
           </h1>
           <p className="text-muted-foreground max-w-xl leading-relaxed">
-            Explore more than a decade of work through curated collections, 
+            Explore more than a decade of work through curated collections,
             each marking a chapter in Marei's creative path.
           </p>
         </motion.div>
@@ -122,6 +228,7 @@ const Gallery = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
             {subCollections.map((subCollection, index) => {
               const subId = subCollection._id || subCollection.id;
+              const isAdult = requiresAgeVerification(subCollection);
               return (
               <motion.div
                 key={subId}
@@ -134,6 +241,7 @@ const Gallery = () => {
                 <Link
                   to={`/gallery/${subId}`}
                   className="group block"
+                  onClick={(e) => handleCardClick(e, subId, subCollection)}
                 >
                   {/* Image Container */}
                   <div className="relative aspect-[3/4] rounded-sm overflow-hidden mb-6">
@@ -150,7 +258,14 @@ const Gallery = () => {
                       )}
                       onLoad={() => handleImageLoad(subId)}
                     />
-                    
+
+                    {/* Badge 18+ */}
+                    {isAdult && (
+                      <div className="absolute top-3 right-3 bg-black/70 text-white text-xs font-medium px-2 py-1 rounded-sm tracking-wider">
+                        18+
+                      </div>
+                    )}
+
                     {/* Hover Overlay */}
                     <AnimatePresence>
                       {hoveredIndex === index && (
@@ -202,7 +317,7 @@ const Gallery = () => {
                 Artistic <span className="text-accent-italic">Philosophy.</span>
               </h2>
               <p className="text-foreground leading-relaxed mb-6 text-lg italic">
-                "Art is crossing boundaries, stepping out of the ordinary and into the unknown. 
+                "Art is crossing boundaries, stepping out of the ordinary and into the unknown.
                 It's the language of the soul: an invitation to communicate with ourselves and with others."
               </p>
               <p className="text-muted-foreground leading-relaxed">
