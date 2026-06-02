@@ -94,7 +94,7 @@ const NFTs = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white rounded-sm hover:bg-accent/90 transition-colors text-lg font-medium group"
           >
-            View Full Collection on Magic Eden
+            View Full Collection on Gamma.io
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </a>
         </motion.div>
@@ -117,7 +117,7 @@ const NFTs = () => {
               rel="noopener noreferrer"
               className="text-sm text-muted-foreground hover:text-accent transition-colors flex items-center gap-1"
             >
-              See all on Magic Eden <ExternalLink className="w-3 h-3" />
+              See all on Gamma.io <ExternalLink className="w-3 h-3" />
             </a>
           </div>
 
@@ -165,7 +165,7 @@ const NFTs = () => {
                     {ordinal.name}
                   </h3>
                   <p className="text-muted-foreground text-xs">
-                    View on Magic Eden →
+                    View on Gamma.io →
                   </p>
                 </div>
               </motion.a>
@@ -187,7 +187,7 @@ const NFTs = () => {
               Explore the Full <span className="text-accent italic">Collection.</span>
             </h2>
             <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-              View all Ordinals, check prices, and make purchases directly on Magic Eden.
+              View all Ordinals, check prices, and make purchases directly on Gamma.io.
             </p>
             <a
               href={MAGIC_EDEN_URL}
@@ -196,7 +196,7 @@ const NFTs = () => {
               className="inline-flex items-center gap-3 px-8 py-4 bg-foreground text-background rounded-sm hover:bg-accent hover:text-white transition-colors text-lg font-medium group"
             >
               <ExternalLink className="w-5 h-5" />
-              Visit Magic Eden
+              Visit Gamma.io
             </a>
           </motion.div>
         </div>

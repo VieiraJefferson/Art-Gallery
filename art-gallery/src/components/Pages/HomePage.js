@@ -317,7 +317,7 @@ const HomePage = () => {
                   </div>
                   <h3 className="text-2xl text-white font-display mb-2">Circus Kinder</h3>
                   <p className="text-white/70 text-sm mb-4">
-                    View collection on Magic Eden →
+                    View collection on Gamma.io →
                   </p>
                 </div>
               </a>
