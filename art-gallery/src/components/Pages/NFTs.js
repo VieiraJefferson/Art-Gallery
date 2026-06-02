@@ -5,7 +5,7 @@ import { cn } from "../../lib/utils";
 
 // Coleção da artista
 const COLLECTION_NAME = "Circus Kinder";
-const MAGIC_EDEN_URL = "https://magiceden.io/ordinals/marketplace/circuskinder";
+const MAGIC_EDEN_URL = "https://gamma.io/ordinals/collections/circuskinder/items";
 
 // Dados estáticos dos 10 Ordinals
 const ORDINALS = [
@@ -67,7 +67,7 @@ const NFTs = () => {
   const getImageUrl = (id) => `https://ordinals.com/content/${id}`;
 
   // Gerar URL do Magic Eden
-  const getMagicEdenUrl = (id) => `https://magiceden.io/ordinals/item-details/${id}`;
+  const getMagicEdenUrl = (id) => `https://gamma.io/ordinals/collections/circuskinder/items`;
 
   return (
     <div className="min-h-screen bg-background pt-24 md:pt-32">

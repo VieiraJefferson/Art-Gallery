@@ -292,7 +292,7 @@ const HomePage = () => {
               className="order-2 lg:order-1"
             >
               <a
-                href="https://magiceden.io/ordinals/marketplace/circuskinder"
+                href="https://gamma.io/ordinals/collections/circuskinder/items"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block relative aspect-square rounded-sm overflow-hidden group"
