@@ -45,7 +45,7 @@ router.post("/", authMiddleware.authenticate, upload.single("file"), async (req,
       return res.status(400).json({ message: "subcollection_id e obrigatorio." });
     }
 
-    const fileUrl = await uploadToCloudinary(file.path);
+    const fileUrl = await uploadToCloudinary(file.buffer);
 
     const { data: picture, error } = await supabaseAdmin
       .from('pictures')

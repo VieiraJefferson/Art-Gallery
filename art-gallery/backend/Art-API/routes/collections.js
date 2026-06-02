@@ -29,7 +29,7 @@ router.post("/:collectionId/subcollections/:subCollectionId/pictures", upload.si
       return res.status(400).json({ message: "Nome e arquivo sao obrigatorios!" });
     }
 
-    const fileUrl = await uploadToCloudinary(file.path);
+    const fileUrl = await uploadToCloudinary(file.buffer);
 
     const { data: picture, error } = await supabaseAdmin
       .from('pictures')

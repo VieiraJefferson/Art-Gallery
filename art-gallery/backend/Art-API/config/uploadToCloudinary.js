@@ -9,24 +9,25 @@ cloudinary.config({
 });
 
 // Função para upload para o Cloudinary
-const uploadToCloudinary = async (imagePath, collectionName) => {
-  try {
-
-        // Define a pasta no Cloudinary com base no nome da coleção
-    const folder = `galeria/${collectionName}`
-
-    const result = await cloudinary.uploader.upload(imagePath, {
-      folder: folder, // Pasta dinâmica no Cloudinary
-      transformation: [
-        { width: 800, height: 600, crop: "limit" }, // Redimensiona a imagem
-        { quality: "auto" }, // Ajusta a qualidade
-        { fetch_format: "auto" }, // Formato ideal
-      ],
-    });
-    return result.secure_url; // Retorna a URL da imagem carregada no Cloudinary
-  } catch (error) {
-    throw new Error("Erro ao enviar imagem para o Cloudinary: " + error.message);
-  }
+const uploadToCloudinary = (buffer, collectionName) => {
+  return new Promise((resolve, reject) => {
+    const folder = collectionName ? `galeria/${collectionName}` : 'galeria';
+    const stream = cloudinary.uploader.upload_stream(
+      {
+        folder,
+        transformation: [
+          { width: 800, height: 600, crop: "limit" },
+          { quality: "auto" },
+          { fetch_format: "auto" },
+        ],
+      },
+      (error, result) => {
+        if (error) reject(new Error("Erro ao enviar imagem para o Cloudinary: " + error.message));
+        else resolve(result.secure_url);
+      }
+    );
+    stream.end(buffer);
+  });
 };
 
 module.exports = { uploadToCloudinary };
