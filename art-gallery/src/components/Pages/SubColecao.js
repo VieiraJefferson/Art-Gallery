@@ -177,6 +177,13 @@ const SubColecao = () => {
         .filter(Boolean)
     : images;
 
+  // Cloudinary random IDs: all lowercase alphanumeric, no underscores, 10+ chars
+  const isCloudinaryId = (name) => {
+    if (!name) return false;
+    const part = name.split('/').pop();
+    return /^[a-z0-9]{10,}$/.test(part);
+  };
+
   // Get display name for image
   const getImageTitle = (image, index) => {
     if (isKunstraub && KUNSTRAUB_TITLES[index]) {
@@ -250,9 +257,11 @@ const SubColecao = () => {
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
           </div>
-          <p className="mt-4 text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-            {getImageTitle(image, index)}
-          </p>
+          {!isCloudinaryId(getImageTitle(image, index)) && (
+            <p className="mt-4 text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+              {getImageTitle(image, index)}
+            </p>
+          )}
         </button>
       </motion.div>
     );
